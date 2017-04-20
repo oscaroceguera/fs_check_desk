@@ -1,0 +1,7 @@
+:root {
+  --color-pink500: #E91E63;
+  --color-red500: #F44336;
+  --color-grey500: #9E9E9E;
+  --transition: .3s;
+  --shadow-simple: 0px 0px 5px grey;
+}
