@@ -1,0 +1,20 @@
+.linkTitle {
+  /* border: 1px solid black; */
+}
+
+.linkTitle__link {
+  transition: .3s;
+  text-decoration: none;
+}
+
+.linkTitle__link:hover {
+  color: black;
+}
+
+.inActive {
+  color: var(--color-grey500);
+}
+
+.active {
+  color: black;
+}
