@@ -1,0 +1,28 @@
+.logo {
+  margin: .5em;
+  &__container {
+    width: 5em;
+    text-align: center;
+  }
+}
+
+.logo__container {
+  width: 5em;
+  text-align: center;
+}
+
+.logo__container__bg {
+  background: var(--color-pink500);
+  border-radius: 2px;
+  padding: .5em;
+  transition: var(--transition);
+}
+
+.logo__container__bg:hover {
+  background: var(--color-red500);
+  box-shadow: var(--shadow-simple);
+}
+
+.title__logo {
+  color: white;
+}
