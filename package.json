@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "email-validator": "^1.0.7",
+    "immutable": "^3.8.1",
+    "lodash": "^4.17.4",
     "material-ui": "^0.17.2",
     "normalize.css": "^6.0.0",
     "password-validator": "^2.2.0",
