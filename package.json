@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "email-validator": "^1.0.7",
     "material-ui": "^0.17.2",
     "normalize.css": "^6.0.0",
+    "password-validator": "^2.2.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.4",
