@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable'
 
 // Actions
-const SET_FIELDS = 'src/login/SET_FIELDS'
+const SET_FIELDS = 'src/signup/SET_FIELDS'
 
 // Actions creators
 export function setFields (section, item, value) {
@@ -16,18 +16,21 @@ export function setFields (section, item, value) {
 // Reducer
 const initialState = fromJS({
   fields : {
+    firstName: '',
+    secondName: '',
     email: '',
-    password: ''
+    password: '',
+    confPassword: ''
   }
 })
 
-function authReducer(state = initialState, action) {
+function signupReducer (state = initialState, action) {
   switch (action.type) {
     case SET_FIELDS:
       return state.setIn([action.section, action.item], action.value)
     default:
-      return state;
+      return state
   }
 }
 
-export default authReducer
+export default signupReducer
