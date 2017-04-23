@@ -11,18 +11,19 @@ schema
   // .has().digits()
 
 export default {
-  setDataField (state, e) {
-    const { fields } = state
-    const { name, value } = e.target
-    fields[name] = value
-    return fields
-  },
   isPassword (item) {
     if (item.length === 0) return 'Min 8 caracteres / Sin espacios en blanco'
     return schema.validate(item) ? '' : 'Min 8 caracteres / Sin espacios en blanc'
   },
+  isPasswordToSelector (item) {
+    if (item.length === 0) return
+    return schema.validate(item)
+  },
   isEmail (item ) {
     return emailValidator.validate(item) ? '' : 'Formato de email invalido'
+  },
+  isEmailSelector (item ) {
+    return emailValidator.validate(item)
   },
   hasText (item) {
     return item.length > 1 ? '' : 'Requerido'
