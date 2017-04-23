@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Logo from '../../components/Logo/Logo'
 import LinkTitle from '../../components/Links/LinkTitle'
+import './styles.css'
 
 // TODO: UI => Signup form
 // TODO: UI => Login form
@@ -15,6 +16,7 @@ import LinkTitle from '../../components/Links/LinkTitle'
 // TODO: COnectar con api Signup form
 // TODO: COnectar con api Login form
 
+
 class HomeContainer extends Component {
   static propTypes = {
     location: React.PropTypes.object
@@ -23,7 +25,7 @@ class HomeContainer extends Component {
     const {location} = this.props
     return (
       <div>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div className='links'>
           <LinkTitle
             path={'/home/signup'}
             title={'Signup'}
@@ -42,6 +44,5 @@ class HomeContainer extends Component {
   }
 }
 
-// TODO: propstypes pra location
 
 export default HomeContainer
