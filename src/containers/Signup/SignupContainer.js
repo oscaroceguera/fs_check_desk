@@ -1,35 +1,28 @@
 import React, {Component} from 'react'
-import aux from '../../helpers/AuxFunctions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as singupActions from '../../reducers/signupReducer'
 import SignupLoginWrapper from '../../components/Wrappers/SignupLoginWrapper'
 import GenericTextField from '../../components/Forms/GenericTextField'
+import GenericSubmit from '../../components/Forms/GenericSubmit'
+import aux from '../../helpers/AuxFunctions'
+import { passEqualsTxtMsg, showsubmit } from '../../selectors/signupSelector'
 
-// TODO: confirmar password
+
+// TODO: showsubmit
 class SignupContainer extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      fields : {
-        firstName: '',
-        secondName: '',
-        email: '',
-        password: '',
-        confPassword: ''
-      }
-    }
-  }
 
   onChangeInput = (e) => {
-    const fields = aux.setDataField(this.state, e)
-    this.setState(fields)
+    this.props.setFields('fields', e.target.name, e.target.value)
   }
 
   handleErrorText(field, type) {
-    return aux.errorTextMessage(this.state.fields[field], type)
+    const { fields } = this.props
+    return aux.errorTextMessage(fields[field], type)
   }
 
   render () {
-    console.log('STATE', this.state);
+    const { isPasswordEqual, disabled } = this.props
     return (
       <SignupLoginWrapper>
         <GenericTextField
@@ -61,12 +54,31 @@ class SignupContainer extends Component {
           title={'Confirmar Password'}
           name={'confPassword'}
           type={'password'}
-          errorText={this.handleErrorText('confPassword', 'password')}
+          errorText={isPasswordEqual}
           onChange={this.onChangeInput}
         />
+      <GenericSubmit
+        disabled={disabled}
+        label={'Signup'}
+      />
       </SignupLoginWrapper>
     )
   }
 }
 
-export default SignupContainer
+const mapStateToProps = (state) => {
+  const stateJS = state.signupReducer.toJS()
+  return {
+    fields: stateJS.fields,
+    isPasswordEqual: passEqualsTxtMsg(state),
+    disabled: !showsubmit(state)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    ...singupActions
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer)
