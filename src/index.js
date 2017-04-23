@@ -13,6 +13,10 @@ import getRoutes from './routes'
 
 import './index.css';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 const store = createStore(
   combineReducers({
     ...reducers,
@@ -28,7 +32,9 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
-    {getRoutes(history)}
+    <MuiThemeProvider>
+      {getRoutes(history)}
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
