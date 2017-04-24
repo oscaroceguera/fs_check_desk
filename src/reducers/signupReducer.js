@@ -1,11 +1,13 @@
 import { fromJS } from 'immutable'
 import axios from 'axios'
+import { browserHistory } from 'react-router'
 
 // Actions
 const SET_FIELDS = 'src/signup/SET_FIELDS'
 const SIGNUP_LOADING = 'src/signup/SIGNUP_LOADING'
 const SIGNUP_SUCCESS = 'src/signup/SIGNUP_SUCCESS'
 const SIGNUP_FAIL = 'src/signup/SIGNUP_FAIL'
+const RESET_FORM = 'src/signup/RESET_FORM'
 
 // Actions creators
 export function setFields (section, item, value) {
@@ -36,6 +38,12 @@ function signupFail (error) {
   }
 }
 
+export function resetForm () {
+  return {
+    type: RESET_FORM
+  }
+}
+
 export function signupFanout () {
   return (dispatch, getState) => {
     const data = getState().signupReducer.toJS().fields
@@ -49,6 +57,7 @@ export function signupFanout () {
     axios.post('http://localhost:8000/api/auth/register', dataPost)
       .then(function (register) {
         dispatch(signupSuccess())
+        browserHistory.push('/home/login')
       })
       .catch(function (err) {
         dispatch(signupFail(err))
@@ -61,6 +70,7 @@ const initialState = fromJS({
   savedLoading: false,
   savedFail: null,
   savedSucces: false,
+  message: '',
   fields : {
     firstName: '',
     secondName: '',
@@ -75,18 +85,24 @@ function signupReducer (state = initialState, action) {
     case SET_FIELDS:
       return state.setIn([action.section, action.item], action.value)
     case SIGNUP_LOADING:
-      return state.set('savedLoading', true)
+      return state.merge({
+        savedLoading:  true,
+        savedSucces: false
+      })
     case SIGNUP_FAIL:
       return state.merge({
         savedLoading: false,
-        savedFail: action.error,
+        savedFail: action.error.response.data.error,
       })
     case SIGNUP_SUCCESS:
       return state.merge({
         savedLoading: false,
         savedFail: null,
-        savedSucces: true
+        savedSucces: true,
+        message: 'Registro Exitoso!'
       })
+    case RESET_FORM:
+      return state.merge(initialState)
     default:
       return state
   }
