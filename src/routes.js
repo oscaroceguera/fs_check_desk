@@ -6,6 +6,8 @@ import App from './components/App/App';
 import SignupContainer from './containers/Signup/SignupContainer';
 import LoginContainer from './containers/Login/LoginContainer';
 import HomeContainer from './containers/Home/HomeContainer'
+import RequiredAuth from './containers/Auth/RequiredAuth'
+import DashboardContainer from './containers/Dashboard/DashboardContainer'
 
 export default function getRoutes (history) {
   return (
@@ -16,6 +18,7 @@ export default function getRoutes (history) {
           <Route path="signup"  component={SignupContainer} />
           <Route path="login"  component={LoginContainer} />
         </Route>
+        <Route path="dashboard" component={RequiredAuth(DashboardContainer)} />
       </Route>
     </Router>
   )
