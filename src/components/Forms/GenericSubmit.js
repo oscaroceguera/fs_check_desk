@@ -17,7 +17,7 @@ const { bool, string, func } = React.PropTypes
 GenericSubmit.propTypes = {
   disabled: bool.isRequired,
   label: string.isRequired,
-  onClick: func
+  onClick: func.isRequired
 }
 
 export default GenericSubmit
