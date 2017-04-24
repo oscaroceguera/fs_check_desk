@@ -55,11 +55,11 @@ export function signupFanout () {
     }
     dispatch(singupLoading())
     axios.post('http://localhost:8000/api/auth/register', dataPost)
-      .then(function (register) {
+      .then((register) => {
         dispatch(signupSuccess())
         browserHistory.push('/home/login')
       })
-      .catch(function (err) {
+      .catch((err) => {
         dispatch(signupFail(err))
       })
   }
