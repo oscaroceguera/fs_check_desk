@@ -3,44 +3,30 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../reducers/authReducer'
 import aux from '../../helpers/AuxFunctions'
-import GenericSubmit from '../../components/Forms/GenericSubmit'
-import SignupLoginWrapper from '../../components/Wrappers/SignupLoginWrapper'
-import GenericTextField from '../../components/Forms/GenericTextField'
+
+import Login from '../../components/Login/Login'
 import { fieldsNotNull } from '../../selectors/loginSelector'
 
 class LoginContainer extends Component {
   onChangeInput = (e) => {
     this.props.setFields('fields', e.target.name, e.target.value)
   }
-
-  handleErrorText(field, type) {
+  handleErrorText = (field, type) => {
     const { fields } = this.props
     return aux.errorTextMessage(fields[field], type)
   }
-
+  handleLogin = (e) => {
+    this.props.loginUser()
+  }
   render () {
     const { disabled } = this.props
-
     return (
-      <SignupLoginWrapper>
-        <GenericTextField
-          title={'Email'}
-          name={'email'}
-          errorText={this.handleErrorText('email', 'email')}
-          onChange={this.onChangeInput}
-        />
-        <GenericTextField
-          title={'Password'}
-          name={'password'}
-          type={'password'}
-          errorText={this.handleErrorText('password', 'password')}
-          onChange={this.onChangeInput}
-        />
-        <GenericSubmit
-          disabled={disabled}
-          label={'login'}
-        />
-      </SignupLoginWrapper>
+      <Login
+        disabled={disabled}
+        handleErrorText={this.handleErrorText}
+        onChangeInput={this.onChangeInput}
+        handleLogin={this.handleLogin}
+      />
     )
   }
 }
