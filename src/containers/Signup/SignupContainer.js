@@ -7,11 +7,12 @@ import { passEqualsTxtMsg, showsubmit } from '../../selectors/signupSelector'
 
 import Signup from '../../components/Signup/Signup'
 import CircularLoading from '../../components/Progress/CircularLoading'
+import SnackbarContainer from '../Snackbar/SnackbarContainer'
 
-// TODO: ADMISNTRAR LOADIN
-// TODO: MENSAJE DE SIGNUP_SUCCESS
-// TODO: MENSAJE DE SIGNUP_FAIL
 class SignupContainer extends Component {
+  componentWillMount () {
+    this.props.resetForm()
+  }
   onChangeInput = (e) => {
     this.props.setFields('fields', e.target.name, e.target.value)
   }
@@ -23,17 +24,26 @@ class SignupContainer extends Component {
     this.props.signupFanout()
   }
   render () {
-    const { isPasswordEqual, disabled, savedLoading } = this.props
+    const {
+      isPasswordEqual, disabled, savedLoading,
+      savedFail, savedSucces, message
+    } = this.props
     return (
-      savedLoading
-        ? <CircularLoading />
-        : <Signup
-            errorTxtContainer={this.handleErrorText}
-            onChangeInput={this.onChangeInput}
-            handleSignup={this.handleSignup}
-            disabled={disabled}
-            isPasswordEqual={isPasswordEqual}
-          />
+      <div>
+        {
+          savedLoading
+            ? <CircularLoading />
+            : <Signup
+              errorTxtContainer={this.handleErrorText}
+              onChangeInput={this.onChangeInput}
+              handleSignup={this.handleSignup}
+              disabled={disabled}
+              isPasswordEqual={isPasswordEqual}
+              />
+        }
+        {savedFail && <SnackbarContainer msg={savedFail}/>}
+        {savedSucces && <SnackbarContainer msg={message}/>}
+      </div>
     )
   }
 }
@@ -47,6 +57,7 @@ const mapStateToProps = (state) => {
     savedLoading: stateJS.savedLoading,
     savedFail: stateJS.savedFail,
     savedSucces: stateJS.savedSucces,
+    message: stateJS.message
   }
 }
 
@@ -56,13 +67,16 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
+const { object, string, bool, any } = React.PropTypes
+
 SignupContainer.propTypes = {
-  fields: React.PropTypes.object.isRequired,
-  isPasswordEqual: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool.isRequired,
-  savedLoading: React.PropTypes.bool.isRequired,
-  savedFail: React.PropTypes.any,
-  savedSucces: React.PropTypes.bool.isRequired,
+  fields: object.isRequired,
+  isPasswordEqual: string.isRequired,
+  disabled: bool.isRequired,
+  savedLoading: bool.isRequired,
+  savedFail: any,
+  savedSucces: bool.isRequired,
+  message: string.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer)
