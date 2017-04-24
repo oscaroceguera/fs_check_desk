@@ -3,20 +3,6 @@ import Logo from '../../components/Logo/Logo'
 import LinkTitle from '../../components/Links/LinkTitle'
 import './styles.css'
 
-// TODO: UI => Signup form
-// TODO: UI => Login form
-// TODO: Mostar Signup form
-// TODO: Mostar Login form
-// TODO: validacion de campos Signup form
-// TODO: validacion de campos Login form
-// TODO: show submit Signup form
-// TODO: show submit Login form
-// TODO: Guardar datos con redux Signup form
-// TODO: Guardar datos con redux Login form
-// TODO: COnectar con api Signup form
-// TODO: COnectar con api Login form
-
-
 class HomeContainer extends Component {
   static propTypes = {
     location: React.PropTypes.object
