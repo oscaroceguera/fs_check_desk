@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
-
+import { AUTH_USER } from './reducers/authReducer'
 import { browserHistory } from 'react-router'
 
 import thunk from 'redux-thunk'
@@ -27,6 +27,12 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )
 )
+
+const token = localStorage.getItem('token');
+
+if (token) {
+  store.dispatch({ type: AUTH_USER });
+}
 
 const history = syncHistoryWithStore(browserHistory, store)
 
