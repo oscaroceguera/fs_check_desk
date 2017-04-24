@@ -59,4 +59,9 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
+LoginContainer.propTypes = {
+  fields: React.PropTypes.object.isRequired,
+  disabled: React.PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
