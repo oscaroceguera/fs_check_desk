@@ -1,18 +1,20 @@
 import React from 'react'
 import CheckIcon from './checked.svg'
-import './Logo.css'
+import { LogoHero, LogoBx, LogoBG, LogoImg, Title } from './styles'
 
-const IMG_WITDH = { width: '3em' }
-
-const Logo = () => (
-  <div className='logo'>
-    <div className='logo__container'>
-      <div className='logo__container__bg'>
-        <div><img style={IMG_WITDH} src={CheckIcon} alt='check-icon'/></div>
-        <div className='title__logo'>{'checks'}</div>
-      </div>
-    </div>
-  </div>
+const Logo = ({home}) => (
+  <LogoHero home={home}>
+    <LogoBx home={home}>
+      <LogoBG home={home}>
+        <div><LogoImg src={CheckIcon} alt='check-icon' home={home}/></div>
+        <Title home={home}>{'checks'}</Title>
+      </LogoBG>
+    </LogoBx>
+  </LogoHero>
 )
+
+Logo.defaultProps = { home: true }
+
+Logo.propTypes = { home: React.PropTypes.bool.isRequired }
 
 export default Logo
