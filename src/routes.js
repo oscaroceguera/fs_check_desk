@@ -18,8 +18,8 @@ export default function getRoutes (history) {
           <Route path="signup"  component={SignupContainer} />
           <Route path="login"  component={LoginContainer} />
         </Route>
-        <Route path="dashboard" component={RequiredAuth(DashboardContainer)} />
       </Route>
+      <Route path="dashboard" component={RequiredAuth(DashboardContainer)} />
     </Router>
   )
 }
