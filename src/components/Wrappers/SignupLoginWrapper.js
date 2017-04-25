@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const PapeStyled = styled.div`
-  width: 300px;
+  width: 250px;
   margin: 1em auto;
   padding: 1em;
 `
