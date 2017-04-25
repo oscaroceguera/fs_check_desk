@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import Appbar from '../../components/Appbar/Appbar'
 
 class DashboardContainer extends Component {
   render () {
-    return <h1>EL SADHBOAR MI CAMARAS</h1>
+    return (
+      <div>
+        <Appbar/>
+      </div>
+    )
   }
 }
 
