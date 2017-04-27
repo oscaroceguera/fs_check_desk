@@ -66,7 +66,7 @@ export function logoutUser () {
     dispatch(unAuthUser())
     localStorage.removeItem('token')
     localStorage.removeItem('user')
-    browserHistory.push('/home')
+    browserHistory.push('/')
   }
 }
 
