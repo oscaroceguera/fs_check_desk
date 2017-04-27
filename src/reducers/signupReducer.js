@@ -10,41 +10,13 @@ const SIGNUP_FAIL = 'src/signup/SIGNUP_FAIL'
 const RESET_FORM = 'src/signup/RESET_FORM'
 
 // Actions creators
-export function setFields (section, item, value) {
-  return {
-    type: SET_FIELDS,
-    section,
-    item,
-    value
-  }
-}
+export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
+const singupLoading = () => ({ type: SIGNUP_LOADING })
+const signupSuccess = () => ({ type: SIGNUP_SUCCESS })
+const signupFail = (error) => ({ type: SIGNUP_FAIL, error })
+export const resetForm = () => ({ type: RESET_FORM })
 
-function singupLoading () {
-  return {
-    type: SIGNUP_LOADING
-  }
-}
-
-function signupSuccess () {
-  return {
-    type: SIGNUP_SUCCESS
-  }
-}
-
-function signupFail (error) {
-  return {
-    type: SIGNUP_FAIL,
-    error
-  }
-}
-
-export function resetForm () {
-  return {
-    type: RESET_FORM
-  }
-}
-
-export function signupFanout () {
+export const signupFanout = () => {
   return (dispatch, getState) => {
     const data = getState().signupReducer.toJS().fields
     const dataPost = {
