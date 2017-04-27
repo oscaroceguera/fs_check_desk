@@ -2,7 +2,7 @@ import React from 'react'
 import {IconButton, IconMenu, MenuItem, Avatar} from 'material-ui';
 import {greenA700} from '../../sharedStyles/variables'
 
-const IconMenuAppbar = () => (
+const IconMenuAppbar = ({logout}) => (
   <IconMenu
     iconButtonElement={
       <IconButton style={{ padding: 0, margin: 0 }}>
@@ -10,8 +10,12 @@ const IconMenuAppbar = () => (
       </IconButton>
   }>
     <MenuItem primaryText="Perfil" />
-    <MenuItem primaryText="Cerrar sesión" />
+    <MenuItem onClick={logout} primaryText="Cerrar sesión" />
   </IconMenu>
 )
+
+IconMenuAppbar.propTypes = {
+  logout: React.PropTypes.func.isRequired
+}
 
 export default IconMenuAppbar

@@ -13,12 +13,16 @@ const AppbarStyled = styled.div`
   box-shadow: ${BX_SHADOW};
 `
 
-const Appbar = () => (
+const Appbar = ({logout}) => (
   <AppbarStyled>
     <Hamburger />
     <Logo home={false}/>
-    <IconMenuAppbar />
+    <IconMenuAppbar logout={logout}/>
   </AppbarStyled>
 )
+
+Appbar.propTypes = {
+  logout: React.PropTypes.func.isRequired
+}
 
 export default Appbar
