@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux'
 import * as snackbarActions from '../../reducers/snackbarReducer'
 
 class SnackbarContainer extends Component {
+  componentWillMount () {
+    this.props.openSnackbar()
+  }
   handleActionTouchTap = () => {
     this.props.closeSnackbar()
   }
@@ -39,11 +42,13 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const { bool, string } = React.PropTypes
+const { bool, string, func } = React.PropTypes
 
 SnackbarContainer.propTypes = {
   open: bool.isRequired,
-  msg: string.isRequired
+  msg: string.isRequired,
+  openSnackbar: func.isRequired,
+  closeSnackbar: func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SnackbarContainer)
