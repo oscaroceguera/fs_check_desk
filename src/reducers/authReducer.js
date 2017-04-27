@@ -8,45 +8,20 @@ const LOGIN_LOADING = 'src/login/LOGIN_LOADING'
 export const AUTH_USER = 'src/login/AUTH_USER'
 const AUTH_USER_FAIL = 'src/login/AUTH_USER_FAIL'
 const UNAUTH_USER = 'src/login/UNAUTH_USER'
+const RESET_ERROR = 'src/login/RESET_ERROR'
 
 // Actions creators
-export function setFields (section, item, value) {
-  return {
-    type: SET_FIELDS,
-    section,
-    item,
-    value
-  }
-}
+export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
+const loginLoading = () => ({ type: LOGIN_LOADING })
+const authUser = () => ({ type: AUTH_USER })
+const authUserFail = (err) => ({ type: AUTH_USER_FAIL, err })
+const unAuthUser = () => ({ type: UNAUTH_USER })
+const resetError = () => ({ type: RESET_ERROR })
 
-function loginLoading () {
-  return {
-    type: LOGIN_LOADING
-  }
-}
-
-function authUser () {
-  return {
-    type: AUTH_USER
-  }
-}
-
-function authUserFail (err) {
-  return {
-    type: AUTH_USER_FAIL,
-    err
-  }
-}
-
-function unAuthUser () {
-  return {
-    type: UNAUTH_USER
-  }
-}
-
-export function loginUser () {
+export const loginUser = () => {
   return (dispatch, getState) => {
     const data = getState().authReducer.toJS().fields
+    dispatch(resetError())
     dispatch(loginLoading())
     axios.post('http://localhost:8000/api/auth/login', data)
       .then((response) => {
@@ -61,7 +36,7 @@ export function loginUser () {
   }
 }
 
-export function logoutUser () {
+export const logoutUser = () => {
   return (dispatch) => {
     dispatch(unAuthUser())
     localStorage.removeItem('token')
@@ -72,10 +47,9 @@ export function logoutUser () {
 
 // Reducer
 const initialState = fromJS({
-  login: false,
+  loading: false,
   error: null,
   profile: {},
-  message: '',
   authenticated: false,
   fields : {
     email: '',
@@ -88,21 +62,23 @@ function authReducer(state = initialState, action) {
     case SET_FIELDS:
       return state.setIn([action.section, action.item], action.value)
     case LOGIN_LOADING:
-      return state.set('login', true)
+      return state.set('loading', true)
     case AUTH_USER:
       return state.merge({
-        login: false,
+        loading: false,
         error: null,
         profile: JSON.parse(localStorage.getItem('user')),
         authenticated: true
       })
     case AUTH_USER_FAIL:
       return state.merge({
-        login: false,
-        error: action.err
+        loading: false,
+        error: action.err.response.data
       })
     case UNAUTH_USER:
       return state.set('authenticated', false)
+    case RESET_ERROR:
+      return state.set('error', null)
     default:
       return state;
   }
