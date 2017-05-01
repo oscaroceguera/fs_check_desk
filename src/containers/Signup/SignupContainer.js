@@ -21,7 +21,7 @@ class SignupContainer extends Component {
     return aux.errorTextMessage(fields[field], type)
   }
   handleSignup = (e) => {
-    this.props.signupFanout()
+    this.props.setSignup()
   }
   render () {
     const {
