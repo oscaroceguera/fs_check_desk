@@ -1,9 +1,8 @@
 import { fromJS } from 'immutable'
-import axios from 'axios'
-import { browserHistory } from 'react-router'
 
 // Actions
 const SET_FIELDS = 'src/signup/SET_FIELDS'
+export const SET_SIGNUP = 'src/signup/SET_SIGNUP'
 const SIGNUP_LOADING = 'src/signup/SIGNUP_LOADING'
 const SIGNUP_SUCCESS = 'src/signup/SIGNUP_SUCCESS'
 const SIGNUP_FAIL = 'src/signup/SIGNUP_FAIL'
@@ -11,31 +10,11 @@ const RESET_FORM = 'src/signup/RESET_FORM'
 
 // Actions creators
 export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
-const singupLoading = () => ({ type: SIGNUP_LOADING })
-const signupSuccess = () => ({ type: SIGNUP_SUCCESS })
-const signupFail = (error) => ({ type: SIGNUP_FAIL, error })
+export const setSignup =  () => ({ type:  SET_SIGNUP })
+export const singupLoading = () => ({ type: SIGNUP_LOADING })
+export const signupSuccess = () => ({ type: SIGNUP_SUCCESS })
+export const signupFail = (error) => ({ type: SIGNUP_FAIL, error })
 export const resetForm = () => ({ type: RESET_FORM })
-
-export const signupFanout = () => {
-  return (dispatch, getState) => {
-    const data = getState().signupReducer.toJS().fields
-    const dataPost = {
-      firstName: data.firstName,
-      lastName: data.secondName,
-      email: data.email,
-      password: data.password
-    }
-    dispatch(singupLoading())
-    axios.post('http://localhost:8000/api/auth/register', dataPost)
-      .then((register) => {
-        dispatch(signupSuccess())
-        browserHistory.push('/home/login')
-      })
-      .catch((err) => {
-        dispatch(signupFail(err))
-      })
-  }
-}
 
 // Reducer
 const initialState = fromJS({
