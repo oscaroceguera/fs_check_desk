@@ -5,3 +5,8 @@ export const signupUser = (data) =>
   axios
     .post(`${api}/auth/register`, data)
     .then((items) => items)
+
+export const login = (data) =>
+  axios
+    .post(`${api}/auth/login`, data)
+    .then((response) => response)
