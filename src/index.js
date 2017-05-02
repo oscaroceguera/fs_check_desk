@@ -6,9 +6,11 @@ import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
 import { AUTH_USER } from './reducers/authReducer'
 import { browserHistory } from 'react-router'
 
-import thunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 
 import * as reducers from './reducers'
+import rootSaga from './sagas'
+
 import getRoutes from './routes'
 
 import './index.css';
@@ -17,16 +19,20 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
+const sagaMiddleware = createSagaMiddleware()
+
 const store = createStore(
   combineReducers({
     ...reducers,
     routing: routerReducer
   }),
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )
 )
+
+rootSaga.forEach(saga => sagaMiddleware.run(saga))
 
 const token = localStorage.getItem('token');
 
