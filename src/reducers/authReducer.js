@@ -1,49 +1,24 @@
 import { fromJS } from 'immutable'
-import axios from 'axios'
-import { browserHistory } from 'react-router'
 
 // Actions
 const SET_FIELDS = 'src/login/SET_FIELDS'
-const LOGIN_LOADING = 'src/login/LOGIN_LOADING'
+export const LOGIN_USER = 'src/login/LOGIN_USER'
+export const LOGIN_LOADING = 'src/login/LOGIN_LOADING'
 export const AUTH_USER = 'src/login/AUTH_USER'
-const AUTH_USER_FAIL = 'src/login/AUTH_USER_FAIL'
-const UNAUTH_USER = 'src/login/UNAUTH_USER'
-const RESET_ERROR = 'src/login/RESET_ERROR'
+export const AUTH_USER_FAIL = 'src/login/AUTH_USER_FAIL'
+export const LOGOUT_USER = 'src/login/LOGOUT_USER'
+export const UNAUTH_USER = 'src/login/UNAUTH_USER'
+export const RESET_ERROR = 'src/login/RESET_ERROR'
 
 // Actions creators
 export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
-const loginLoading = () => ({ type: LOGIN_LOADING })
-const authUser = () => ({ type: AUTH_USER })
-const authUserFail = (err) => ({ type: AUTH_USER_FAIL, err })
-const unAuthUser = () => ({ type: UNAUTH_USER })
-const resetError = () => ({ type: RESET_ERROR })
-
-export const loginUser = () => {
-  return (dispatch, getState) => {
-    const data = getState().authReducer.toJS().fields
-    dispatch(resetError())
-    dispatch(loginLoading())
-    axios.post('http://localhost:8000/api/auth/login', data)
-      .then((response) => {
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('user', JSON.stringify(response.data.user))
-        dispatch(authUser())
-        browserHistory.push('/dashboard')
-      })
-      .catch((err) => {
-        dispatch(authUserFail(err))
-      })
-  }
-}
-
-export const logoutUser = () => {
-  return (dispatch) => {
-    dispatch(unAuthUser())
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    browserHistory.push('/')
-  }
-}
+export const loginUser = () => ({ type: LOGIN_USER })
+export const loginLoading = () => ({ type: LOGIN_LOADING })
+export const logoutUser = () => ({ type: LOGOUT_USER })
+export const authUser = () => ({ type: AUTH_USER })
+export const authUserFail = (err) => ({ type: AUTH_USER_FAIL, err })
+export const unAuthUser = () => ({ type: UNAUTH_USER })
+export const resetError = () => ({ type: RESET_ERROR })
 
 // Reducer
 const initialState = fromJS({
