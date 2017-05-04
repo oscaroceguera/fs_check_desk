@@ -1,6 +1,5 @@
 import React from 'react'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
+import { Drawer, MenuItem } from 'material-ui'
 
 const DrawerMenu = ({ open, handleClose }) => (
   <Drawer open={open}>
