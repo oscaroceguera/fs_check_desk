@@ -1,8 +1,8 @@
 import { delay } from 'redux-saga'
-import { fork, call, put, select, take, cancel } from 'redux-saga/effects'
+import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 import { login } from '../../helpers/api'
-import { LOGIN_USER, LOGOUT_USER, AUTH_USER_FAIL, loginLoading, resetError, authUser, authUserFail, unAuthUser } from '../../reducers/authReducer'
+import { LOGIN_USER, LOGOUT_USER, loginLoading, resetError, authUser, authUserFail, unAuthUser } from '../../reducers/authReducer'
 
 const setTokenLS = (token) => localStorage.setItem('token', token)
 
@@ -11,15 +11,6 @@ const setUserLS = (user) => localStorage.setItem('user', JSON.stringify(user))
 const removeTokenLS = () => localStorage.removeItem('token')
 
 const removeUserLS = () => localStorage.removeItem('user')
-
-function* authFlowSaga () {
-  while (true) {
-    yield take(LOGIN_USER)
-    yield fork(authorize)
-    yield take([LOGOUT_USER, AUTH_USER_FAIL])
-    yield call(logoutFanout)
-  }
-}
 
 function* authorize () {
   yield [put(resetError()), put(loginLoading())]
@@ -43,7 +34,8 @@ function* logoutFanout () {
 
 function* defaultSaga () {
     yield [
-      fork(authFlowSaga)
+      takeLatest(LOGIN_USER, authorize),
+      takeLatest(LOGOUT_USER, logoutFanout)
     ]
 }
 
