@@ -5,8 +5,8 @@ import './LinkMenuDesk.css'
 const LinkMenuDesk = ({ location, path, label }) => (
   <Link
     className={location === path
-      ? 'linkTitle__link active'
-      : 'linkTitle__link inActive'}
+      ? 'linkTitleDesk__link activeDesk'
+      : 'linkTitleDesk__link inActiveDesk'}
     to={path}
   >
     {label}

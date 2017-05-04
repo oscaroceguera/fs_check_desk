@@ -1,4 +1,4 @@
-.linkTitle__link {
+.linkTitleDesk__link {
   transition: .3s;
   text-decoration: none;
   display: block;
@@ -7,14 +7,14 @@
   padding: .2em;
 }
 
-.linkTitle__link:hover {
+.linkTitleDesk__link:hover {
   color: var(--color-deepPurple500);
 }
 
-.inActive {
+.inActiveDesk {
   color: var(--color-grey500);
 }
 
-.active {
+.activeDesk {
   color: var(--color-deepPurple500);
 }
