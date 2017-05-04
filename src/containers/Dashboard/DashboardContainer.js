@@ -8,6 +8,12 @@ import Appbar from '../../components/Appbar/Appbar'
 import DrawerMenu from '../../components/DrawerMenu/DrawerMenu'
 import MenuDesk from '../../components/MenuDesk/MenuDesk'
 
+const links = [
+  { path: '/dashboard/schemas', label: 'Schemas' },
+  { path: '/dashboard/checklists', label: 'Checklists' },
+  { path: '/dashboard/schedules', label: 'Schedules' }
+]
+
 
 class DashboardContainer extends Component {
   // Handle logout
@@ -28,10 +34,15 @@ class DashboardContainer extends Component {
           handleToggle={this.onMenu}
         />
         <div style={{ display: 'flex' }}>
-          <MenuDesk location={location.pathname}/>
+          <MenuDesk
+            location={location.pathname}
+            links={links}
+          />
           <DrawerMenu
             open={this.props.drawerOpen}
             handleClose={this.onMenuClose}
+            location={location.pathname}
+            links={links}
           />
           <div style={{ flexGrow: 1, padding: '1.5em 3em' }}>
             {this.props.children}
