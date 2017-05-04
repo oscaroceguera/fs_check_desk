@@ -20,12 +20,16 @@ const HamburgerStyled = styled.div`
   `}
 `
 
-const Hamburger = () => (
-  <HamburgerStyled>
+const Hamburger = ({ handleToggle }) => (
+  <HamburgerStyled onClick={handleToggle}>
     <IconButton>
       <Reorder color={lightBlue900}/>
     </IconButton>
   </HamburgerStyled>
 )
+
+Hamburger.propTypes = {
+  handleToggle: React.PropTypes.func.isRequired
+}
 
 export default Hamburger
