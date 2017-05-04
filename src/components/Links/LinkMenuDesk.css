@@ -1,0 +1,20 @@
+.linkTitle__link {
+  transition: .3s;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin-bottom: .5em;
+  padding: .2em;
+}
+
+.linkTitle__link:hover {
+  color: var(--color-deepPurple500);
+}
+
+.inActive {
+  color: var(--color-grey500);
+}
+
+.active {
+  color: var(--color-deepPurple500);
+}
