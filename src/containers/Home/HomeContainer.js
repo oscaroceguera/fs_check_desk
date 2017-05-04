@@ -4,8 +4,6 @@ import Logo from '../../components/Logo/Logo'
 import LinkTitle from '../../components/Links/LinkTitle'
 import './styles.css'
 
-// TODO: Cuando este en el home y si ya esta logueado mandar a dasboard
-
 class HomeContainer extends Component {
   static contextTypes = {
     router: React.PropTypes.object
