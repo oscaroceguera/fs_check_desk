@@ -5,7 +5,7 @@ import LinkMenuDesk from '../Links/LinkMenuDesk'
 
 const MenuContainer = styled.div`
   display: none;
-  padding: 1em;
+  padding: 2em 1em;
   ${breakpoint('tablet')`
     display: block;
     font-size: 16px;
