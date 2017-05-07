@@ -1,27 +1,43 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as schemaActions from '../../reducers/schemasReducer'
 import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import SchemaCard from '../../components/Cards/SchemaCard'
 import AddButton from '../../components/AddButton/AddButton'
+import CircularLoading from '../../components/Progress/CircularLoading'
 
-const schemas = [
-  { name: 'SENASICA BUMA GLOBAL GAGLOBALB GLOBAL GLOBAL', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'Primus gfs', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA BUMA GLOBAL GAB SENASICA BUMA GLOBAL GAB SENASICA BUMA GLOBAL GAB', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA BUMA GLOBAL GAB', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA BUMA GLOBAL GAB', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA BUMA GLOBAL GAB', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' },
-  { name: 'SENASICA BUMA GLOBAL GAB SENASICA BUMA GLOBAL GAB SENASICA BUMA GLOBAL GAB', version: '1.2', description: 'Design Patterns is a library with its code with a lightweight 3D library for transferring data fetching. VueJS is a high-level.  VueJS is a.' }
-]
+class SchemasContainer extends React.Component {
+  componentWillMount () {
+    this.props.fetchSchemas()
+  }
+  render () {
+    const { schemas, schemasLoading } = this.props
 
-const SchemasContainer = () => (
-  <DashboardWrapper
-    title={'Schemas'}
-    desc={'Schemas administrator'}
-  >
-    <SchemaCard schemas={schemas} />
-    <AddButton path={'dashboard/schemas/new'}/>
-  </DashboardWrapper>
-)
+    return schemasLoading
+      ? <CircularLoading />
+      : <DashboardWrapper
+          title={'Schemas'}
+          desc={'Schemas administrator'}
+        >
+        <SchemaCard schemas={schemas} />
+        <AddButton path={'dashboard/schemas/new'}/>
+      </DashboardWrapper>
+  }
+}
 
-export default SchemasContainer
+const mapStateToProps = (state) => {
+  const stateJS = state.schemasReducer.toJS()
+  return {
+    schemas: stateJS.schemas,
+    schemasLoading: stateJS.schemasLoading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    ...schemaActions
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SchemasContainer)
