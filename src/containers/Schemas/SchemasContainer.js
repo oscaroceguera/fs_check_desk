@@ -20,7 +20,7 @@ const SchemasContainer = () => (
     desc={'Schemas administrator'}
   >
     <SchemaCard schemas={schemas} />
-    <AddButton />
+    <AddButton path={'dashboard/schemas/new'}/>
   </DashboardWrapper>
 )
 
