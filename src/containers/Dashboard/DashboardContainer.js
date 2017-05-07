@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../reducers/authReducer'
 import * as dashboarActions from '../../reducers/dashboardReducer'
-
+import styled from 'styled-components'
 import Appbar from '../../components/Appbar/Appbar'
 import DrawerMenu from '../../components/DrawerMenu/DrawerMenu'
 import MenuDesk from '../../components/MenuDesk/MenuDesk'
@@ -14,6 +14,14 @@ const links = [
   { path: '/dashboard/schedules', label: 'Schedules' }
 ]
 
+const PanelContainer = styled.div`
+  display: flex;
+`
+
+const PanelChildren = styled.div`
+  flex-grow: 1;
+  padding: 1.5em 3em;
+`
 
 class DashboardContainer extends Component {
   // Handle logout
@@ -33,7 +41,7 @@ class DashboardContainer extends Component {
           logout={this.onLogout}
           handleToggle={this.onMenu}
         />
-        <div style={{ display: 'flex' }}>
+        <PanelContainer>
           <MenuDesk
             location={location.pathname}
             links={links}
@@ -44,10 +52,10 @@ class DashboardContainer extends Component {
             location={location.pathname}
             links={links}
           />
-          <div style={{ flexGrow: 1, padding: '1.5em 3em' }}>
+          <PanelChildren>
             {this.props.children}
-          </div>
-        </div>
+          </PanelChildren>
+        </PanelContainer>
       </div>
     )
   }
