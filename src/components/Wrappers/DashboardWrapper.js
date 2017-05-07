@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   margin: auto;
   max-width: 530px;
   margin: auto;
+  position: relative;
   ${breakpoint('desktop')`
     max-width: 800px;
   `}
@@ -32,7 +33,7 @@ const DashboardWrapper = ({title, desc, children}) => (
 DashboardWrapper.propTypes = {
   title: React.PropTypes.string.isRequired,
   desc: React.PropTypes.string.isRequired,
-  children: React.PropTypes.object.isRequired,
+  children: React.PropTypes.array.isRequired,
 }
 
 export default DashboardWrapper
