@@ -15,9 +15,9 @@ import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 // TODO: cuando se guarde cambiar el boton por el de actualizar
 // TODO: Pasar el guardar schema a un compoennte
 class SchemaFormContainer extends React.Component {
-  // TODO: generic onchange for all fields
-  onChangeInput = (e) => {
-    this.props.setFields('schema', e.target.name, e.target.value)
+
+  onChangeInput = (e, section) => {
+    this.props.setFields(section, e.target.name, e.target.value)
   }
 
   handleErrorText = (section, field, type) => {
@@ -41,21 +41,21 @@ class SchemaFormContainer extends React.Component {
             floatingLabelText={'Nombre'}
             name={'name'}
             errorText={this.handleErrorText('schema', 'name', 'txt')}
-            onChange={this.onChangeInput}
+            onChange={(e, section) => this.onChangeInput(e, 'schema')}
           />
           <TxtFieldResponsive
             floatingLabelText={'Versión'}
             name={'version'}
             width={'15%'}
             errorText={this.handleErrorText('schema', 'version', 'txt')}
-            onChange={this.onChangeInput}
+            onChange={(e, section) => this.onChangeInput(e, 'schema')}
           />
           <TxtFieldResponsive
             floatingLabelText={'Descripción'}
             name={'description'}
             width={'100%'}
             errorText={this.handleErrorText('schema', 'description', 'txt')}
-            onChange={this.onChangeInput}
+            onChange={(e, section) => this.onChangeInput(e, 'schema')}
           />
           <GenericSubmit
             disabled={false}
