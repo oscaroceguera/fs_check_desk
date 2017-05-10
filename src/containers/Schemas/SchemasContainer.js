@@ -17,11 +17,11 @@ class SchemasContainer extends React.Component {
     return schemasLoading
       ? <CircularLoading />
       : <DashboardWrapper
-          title={'Schemas'}
-          desc={'Schemas administrator'}
+          title={'Esquemas'}
+          desc={'Administrador de Esquemas'}
         >
         <SchemaCard schemas={schemas} />
-        <AddButton path={'dashboard/schemas/new'}/>
+        <AddButton path={'/dashboard/schemas/new'}/>
       </DashboardWrapper>
   }
 }
