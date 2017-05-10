@@ -54,7 +54,7 @@ class SchemaFormContainer extends React.Component {
             floatingLabelText={'Descripción'}
             name={'description'}
             width={'100%'}
-            errorText={this.handleErrorText('schema', 'description', 'txt')}
+            errorText={this.handleErrorText('schema', 'description', 'max140')}
             onChange={(e, section) => this.onChangeInput(e, 'schema')}
           />
           <GenericSubmit

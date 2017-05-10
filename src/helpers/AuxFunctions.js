@@ -28,9 +28,14 @@ export default {
   hasText (item) {
     return item.length > 1 ? '' : 'Requerido'
   },
+  max140 (item) {
+    if (item.length < 1 ) return 'Requerido'
+    if (item.length > 140) return 'es max 140'
+  },
   errorTextMessage (item, type) {
     if (type === 'txt') return this.hasText(item)
     if (type === 'password') return this.isPassword(item)
     if (type === 'email') return this.isEmail(item)
+    if (type === 'max140') return this.max140(item)
   }
 }
