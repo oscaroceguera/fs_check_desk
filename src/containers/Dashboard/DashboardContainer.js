@@ -9,9 +9,9 @@ import DrawerMenu from '../../components/DrawerMenu/DrawerMenu'
 import MenuDesk from '../../components/MenuDesk/MenuDesk'
 
 const links = [
-  { path: '/dashboard/schemas', label: 'Schemas' },
+  { path: '/dashboard/schemas', label: 'Esquemas' },
   { path: '/dashboard/checklists', label: 'Checklists' },
-  { path: '/dashboard/schedules', label: 'Schedules' }
+  { path: '/dashboard/schedules', label: 'Seguimiento' }
 ]
 
 const PanelContainer = styled.div`
