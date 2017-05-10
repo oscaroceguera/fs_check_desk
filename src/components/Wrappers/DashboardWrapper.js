@@ -33,7 +33,7 @@ const DashboardWrapper = ({title, desc, children}) => (
 DashboardWrapper.propTypes = {
   title: React.PropTypes.string.isRequired,
   desc: React.PropTypes.string.isRequired,
-  children: React.PropTypes.array.isRequired,
+  children: React.PropTypes.any.isRequired,
 }
 
 export default DashboardWrapper
