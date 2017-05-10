@@ -47,6 +47,14 @@ const Signup = ({errorTxtContainer, onChangeInput, disabled, isPasswordEqual, ha
   )
 }
 
-// TODO: proptypes
+const { func, bool, string } = React.PropTypes
+
+Signup.propTypes = {
+  errorTxtContainer: func.isRequired,
+  onChangeInput: func.isRequired,
+  disabled: bool.isRequired,
+  isPasswordEqual: string.isRequired,
+  handleSignup: func.isRequired
+}
 
 export default Signup
