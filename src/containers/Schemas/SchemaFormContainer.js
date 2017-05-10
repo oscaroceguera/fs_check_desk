@@ -19,10 +19,10 @@ class SchemaFormContainer extends React.Component {
   onChangeInput = (e) => {
     this.props.setFields('schema', e.target.name, e.target.value)
   }
-  // TODO: generic handleErrorText for all fields
-  handleErrorText = (field, type) => {
-    const { schema } = this.props
-    return aux.errorTextMessage(schema[field], type)
+
+  handleErrorText = (section, field, type) => {
+    const _section = this.props[section]
+    return aux.errorTextMessage(_section[field], type)
   }
 
   saveSchema = (e) => this.props.setSavedSchema()
@@ -40,21 +40,21 @@ class SchemaFormContainer extends React.Component {
           <TxtFieldResponsive
             floatingLabelText={'Nombre'}
             name={'name'}
-            errorText={this.handleErrorText('name', 'txt')}
+            errorText={this.handleErrorText('schema', 'name', 'txt')}
             onChange={this.onChangeInput}
           />
           <TxtFieldResponsive
             floatingLabelText={'Versión'}
             name={'version'}
             width={'15%'}
-            errorText={this.handleErrorText('version', 'txt')}
+            errorText={this.handleErrorText('schema', 'version', 'txt')}
             onChange={this.onChangeInput}
           />
           <TxtFieldResponsive
             floatingLabelText={'Descripción'}
             name={'description'}
             width={'100%'}
-            errorText={this.handleErrorText('description', 'txt')}
+            errorText={this.handleErrorText('schema', 'description', 'txt')}
             onChange={this.onChangeInput}
           />
           <GenericSubmit
