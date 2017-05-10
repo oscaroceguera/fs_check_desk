@@ -8,12 +8,11 @@ class SnackbarContainer extends Component {
   componentWillMount () {
     this.props.openSnackbar()
   }
-  handleActionTouchTap = () => {
-    this.props.closeSnackbar()
-  }
-  handleRequestClose = () => {
-    this.props.closeSnackbar()
-  }
+
+  handleActionTouchTap = () => this.props.closeSnackbar()
+
+  handleRequestClose = () => this.props.closeSnackbar()
+
   render () {
     const { open, msg } = this.props
     return (

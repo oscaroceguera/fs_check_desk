@@ -13,16 +13,16 @@ class SignupContainer extends Component {
   componentWillMount () {
     this.props.resetForm()
   }
-  onChangeInput = (e) => {
-    this.props.setFields('fields', e.target.name, e.target.value)
-  }
+  
+  onChangeInput = (e) => this.props.setFields('fields', e.target.name, e.target.value)
+
   handleErrorText = (field, type) => {
     const { fields } = this.props
     return aux.errorTextMessage(fields[field], type)
   }
-  handleSignup = (e) => {
-    this.props.setSignup()
-  }
+
+  handleSignup = (e) => this.props.setSignup()
+
   render () {
     const {
       isPasswordEqual, disabled, savedLoading,

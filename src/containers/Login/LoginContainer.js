@@ -10,16 +10,16 @@ import Login from '../../components/Login/Login'
 import { fieldsNotNull } from '../../selectors/loginSelector'
 
 class LoginContainer extends Component {
-  onChangeInput = (e) => {
-    this.props.setFields('fields', e.target.name, e.target.value)
-  }
+
+  onChangeInput = (e) => this.props.setFields('fields', e.target.name, e.target.value)
+
   handleErrorText = (field, type) => {
     const { fields } = this.props
     return aux.errorTextMessage(fields[field], type)
   }
-  handleLogin = (e) => {
-    this.props.loginUser()
-  }
+
+  handleLogin = (e) => this.props.loginUser()
+
   render () {
     const { disabled, loading, error } = this.props
     return (
