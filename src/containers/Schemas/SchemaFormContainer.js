@@ -2,18 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as schemaActions from '../../reducers/schemasReducer'
+import { submitSchema } from '../../selectors/schemaSelector'
 import aux from '../../helpers/AuxFunctions'
-import GenericSubmit from '../../components/Forms/GenericSubmit'
 
-import TxtFieldResponsive from '../../components/Forms/TxtFieldResponsive'
 import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
-// import {TextField} from 'material-ui'
+import SchemaForm from '../../components/Schema/SchemaForm'
+import CircularLoading from '../../components/Progress/CircularLoading'
 
-// TODO: Comprobacion de maximo de caracteres
-// TODO: LOADING SAVE schema
-// TODO: ALguardar mostrar el id del elemento guardado
-// TODO: cuando se guarde cambiar el boton por el de actualizar
-// TODO: Pasar el guardar schema a un compoennte
+// TODO: CAMBIAR LA RUTA UNA VEZ SE HAY CREADO EL SCEHMA CON SU ID (EDIT/1221-1qwdqw-12-121w)
+// TODO: PERSISTENCIA DE DATOS AL AHCER REFRESH
 class SchemaFormContainer extends React.Component {
 
   onChangeInput = (e, section) => {
@@ -27,42 +24,28 @@ class SchemaFormContainer extends React.Component {
 
   saveSchema = (e) => this.props.setSavedSchema()
 
+  updateSchema = (e) => {
+    console.log('UPDATE');
+  }
+
   render () {
     return (
       <DashboardWrapper
-          title={'Esquemas'}
-          desc={'Crear Esquema'}
-        >
-        <div style={{ display: 'flex', flexWrap: 'wrap'}}>
-          {/* <TextField
-            floatingLabelText={'ID'}
-          /> */}
-          <TxtFieldResponsive
-            floatingLabelText={'Nombre'}
-            name={'name'}
-            errorText={this.handleErrorText('schema', 'name', 'txt')}
-            onChange={(e, section) => this.onChangeInput(e, 'schema')}
-          />
-          <TxtFieldResponsive
-            floatingLabelText={'Versión'}
-            name={'version'}
-            width={'15%'}
-            errorText={this.handleErrorText('schema', 'version', 'txt')}
-            onChange={(e, section) => this.onChangeInput(e, 'schema')}
-          />
-          <TxtFieldResponsive
-            floatingLabelText={'Descripción'}
-            name={'description'}
-            width={'100%'}
-            errorText={this.handleErrorText('schema', 'description', 'max140')}
-            onChange={(e, section) => this.onChangeInput(e, 'schema')}
-          />
-          <GenericSubmit
-            disabled={false}
-            label={'Guardar'}
-            onClick={this.saveSchema}
-          />
-        </div>
+        title={'Esquemas'}
+        desc={'Crear Esquema'}
+      >
+        {
+          this.props.SSLoading
+            ? <CircularLoading />
+            : <SchemaForm
+                item={this.props.schema}
+                handleErrorText={this.handleErrorText}
+                onChangeInput={this.onChangeInput}
+                submitSchema={this.props.submitSchema}
+                updateSchema={this.updateSchema}
+                saveSchema={this.saveSchema}
+              />
+        }
       </DashboardWrapper>
     )
   }
@@ -72,6 +55,8 @@ const mapStateToProps = (state) => {
   const stateJS = state.schemasReducer.toJS()
   return {
     schema: stateJS.schema,
+    submitSchema: !submitSchema(state),
+    SSLoading: stateJS.savedSchemasLoading
   }
 }
 
