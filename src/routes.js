@@ -33,3 +33,5 @@ export default function getRoutes (history) {
     </Router>
   )
 }
+
+// TODO: USAR LA NUEVA VERSION DEL ROUTER

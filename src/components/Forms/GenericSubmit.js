@@ -13,7 +13,6 @@ const GenericSubmit = ({disabled, label, onClick}) => (
 
 const { bool, string, func } = React.PropTypes
 
-// TODO: onClick is required
 GenericSubmit.propTypes = {
   disabled: bool.isRequired,
   label: string.isRequired,
