@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as schemaActions from '../../reducers/schemasReducer'
+import * as schemaActions from '../../reducers/getSchemasReducer'
 import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import SchemaCard from '../../components/Cards/SchemaCard'
 import AddButton from '../../components/AddButton/AddButton'
@@ -27,7 +27,7 @@ class SchemasContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const stateJS = state.schemasReducer.toJS()
+  const stateJS = state.getSchemasReducer.toJS()
   return {
     schemas: stateJS.schemas,
     schemasLoading: stateJS.schemasLoading
@@ -39,5 +39,7 @@ const mapDispatchToProps = (dispatch) => {
     ...schemaActions
   }, dispatch)
 }
+
+// TODO: PROPTYPES
 
 export default connect(mapStateToProps, mapDispatchToProps)(SchemasContainer)
