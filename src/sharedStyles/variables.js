@@ -7,4 +7,5 @@ export const greenA700 = Colors.greenA700
 export const tealA200 = Colors.tealA200
 export const grey800 = Colors.grey800
 export const grey700 = Colors.grey700
+export const grey400 = Colors.grey400
 export const BX_SHADOW = '0px 0px 5px grey'
