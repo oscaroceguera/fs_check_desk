@@ -11,7 +11,15 @@ import CircularLoading from '../../components/Progress/CircularLoading'
 
 // TODO: CAMBIAR LA RUTA UNA VEZ SE HAY CREADO EL SCEHMA CON SU ID (EDIT/1221-1qwdqw-12-121w)
 // TODO: PERSISTENCIA DE DATOS AL AHCER REFRESH
+// TODO: SCHEMA FAIL MESSAGE
+// TODO: REDUCER PARA GUARDAR ESQUEMA
+// TODO: REDUCER PARA GUARDAR MODULOS
+// TODO: REDUCER PARA GUARDAR LOS ITEMS
 class SchemaFormContainer extends React.Component {
+
+  componentWillMount () {
+    this.props.resetFields()
+  }
 
   onChangeInput = (e, section) => {
     this.props.setFields(section, e.target.name, e.target.value)
