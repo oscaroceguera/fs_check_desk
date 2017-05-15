@@ -12,7 +12,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
         name={'name'}
         value={item.name}
         errorText={handleErrorText('schema', 'name', 'txt')}
-        onChange={(e, section) => onChangeInput(e, 'schema')}
+        onChange={(e, section, type) => onChangeInput(e, 'schema', 'setSchemaFields')}
       />
       <TxtFieldResponsive
         floatingLabelText={'Versión'}
@@ -20,7 +20,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
         width={'15%'}
         value={item.version}
         errorText={handleErrorText('schema', 'version', 'txt')}
-        onChange={(e, section) => onChangeInput(e, 'schema')}
+        onChange={(e, section, type) => onChangeInput(e, 'schema', 'setSchemaFields')}
       />
       <TxtFieldResponsive
         floatingLabelText={'Descripción'}
@@ -28,7 +28,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
         width={'100%'}
         value={item.description}
         errorText={handleErrorText('schema', 'description', 'max140')}
-        onChange={(e, section) => onChangeInput(e, 'schema')}
+        onChange={(e, section, type) => onChangeInput(e, 'schema', 'setSchemaFields')}
       />
       <GenericSubmit
         disabled={submitSchema}
