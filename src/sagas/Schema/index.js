@@ -1,5 +1,6 @@
 import { delay } from 'redux-saga'
 import { call, put, select, takeLatest } from 'redux-saga/effects'
+import { browserHistory } from 'react-router'
 import {
   SET_SAVED_SCHEMA,
   setSavedSchemaLoading,
@@ -22,6 +23,7 @@ function* savedSchema() {
       description: schema.description
     }
     yield put(setSavedSchemaSuccess(_schema))
+    browserHistory.push(`/dashboard/schemas/${_schema.id}`)
   } catch (err) {
     yield put(setSavedSchemaFail(err))
   }
