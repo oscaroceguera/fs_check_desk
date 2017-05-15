@@ -8,7 +8,7 @@ export const SET_SAVED_SCHEMA_LOADING = 'src/schemas/SET_SAVED_SCHEMA_LOADING'
 export const SET_SAVED_SCHEMA_SUCCESS = 'src/schemas/SET_SAVED_SCHEMA_SUCCESS'
 export const SET_SAVED_SCHEMA_FAIL = 'src/schemas/SET_SAVED_SCHEMA_FAIL'
 
-export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
+export const setSchemaFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
 export const resetFields = () => ({ type: RESET_FIELDS })
 export const setSavedSchema = () => ({ type: SET_SAVED_SCHEMA })
 export const setSavedSchemaLoading = () => ({ type: SET_SAVED_SCHEMA_LOADING })
@@ -20,7 +20,9 @@ const initialState = fromJS({
     name: '',
     version: '',
     description: ''
-  }
+  },
+  savedSchemasLoading: false,
+  savedSchemaFail: null
 })
 
 function schemasReducer (state = initialState, action) {
