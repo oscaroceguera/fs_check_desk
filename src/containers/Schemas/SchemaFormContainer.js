@@ -2,17 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as schemaActions from '../../reducers/schemasReducer'
+import * as modalActions from '../../reducers/modalReducer'
+import * as modulesActions from '../../reducers/modulesReducer'
 import { submitSchema } from '../../selectors/schemaSelector'
 import aux from '../../helpers/AuxFunctions'
 
 import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import SchemaForm from '../../components/Schema/SchemaForm'
+import Modules from '../../components/Schema/Modules'
+import ItemsForm from '../../components/Schema/ItemsForm'
 import CircularLoading from '../../components/Progress/CircularLoading'
 
-// TODO: CAMBIAR LA RUTA UNA VEZ SE HAY CREADO EL SCEHMA CON SU ID (EDIT/1221-1qwdqw-12-121w)
+// TODO: MODAL CONTAINER
+// TODO: SCHEMA FORM CONTAINER
+// TODO; MODULES CONTAIENR
+// TODO: ITEMS CONTAINER
 // TODO: PERSISTENCIA DE DATOS AL AHCER REFRESH
 // TODO: SCHEMA FAIL MESSAGE
-// TODO: REDUCER PARA GUARDAR ESQUEMA
 // TODO: REDUCER PARA GUARDAR MODULOS
 // TODO: REDUCER PARA GUARDAR LOS ITEMS
 class SchemaFormContainer extends React.Component {
@@ -21,9 +27,7 @@ class SchemaFormContainer extends React.Component {
     this.props.resetFields()
   }
 
-  onChangeInput = (e, section) => {
-    this.props.setFields(section, e.target.name, e.target.value)
-  }
+  onChangeInput = (e, section, type) => this.props[type](section, e.target.name, e.target.value)
 
   handleErrorText = (section, field, type) => {
     const _section = this.props[section]
@@ -36,41 +40,64 @@ class SchemaFormContainer extends React.Component {
     console.log('UPDATE');
   }
 
+  handleModalOpen = () => this.props.openModal()
+
+  handleModalClose = () => this.props.closeModal()
+
   render () {
+    const { SSLoading, schema, submitSchema, modalStatus } = this.props
     return (
       <DashboardWrapper
         title={'Esquemas'}
         desc={'Crear Esquema'}
       >
         {
-          this.props.SSLoading
+          SSLoading
             ? <CircularLoading />
             : <SchemaForm
-                item={this.props.schema}
+                item={schema}
                 handleErrorText={this.handleErrorText}
                 onChangeInput={this.onChangeInput}
-                submitSchema={this.props.submitSchema}
+                submitSchema={submitSchema}
                 updateSchema={this.updateSchema}
                 saveSchema={this.saveSchema}
               />
         }
+        <div style={{display: 'flex'}}>
+          <Modules
+            modalStatus={modalStatus}
+            handleModalOpen={this.handleModalOpen}
+            handleModalClose={this.handleModalClose}
+            onChangeInput={this.onChangeInput}
+            handleErrorText={this.handleErrorText}
+          />
+          <ItemsForm />
+          {/* {schema.id && <Modules />}
+          {schema.id && <ItemsForm />} */}
+        </div>
       </DashboardWrapper>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  const stateJS = state.schemasReducer.toJS()
+  const schemaJS = state.schemasReducer.toJS()
+  const modalJS = state.modalReducer.toJS()
+  const modulesJS = state.modulesReducer.toJS()
   return {
-    schema: stateJS.schema,
+    schema: schemaJS.schema,
     submitSchema: !submitSchema(state),
-    SSLoading: stateJS.savedSchemasLoading
+    SSLoading: schemaJS.savedSchemasLoading,
+    modalStatus: modalJS.open,
+    module: modulesJS.module
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    ...schemaActions
+    ...schemaActions,
+    ...modalActions,
+    ...modulesActions
   }, dispatch)
 }
 
