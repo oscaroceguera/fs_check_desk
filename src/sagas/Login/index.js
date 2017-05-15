@@ -14,11 +14,11 @@ const removeUserLS = () => localStorage.removeItem('user')
 
 function* authorize () {
   yield [put(resetError()), put(loginLoading())]
-  yield delay(1000)
   const data = yield select((state) => state.authReducer.toJS().fields)
   try {
     const response = yield call(login, data)
     yield [call(setTokenLS, response.data.token), call(setUserLS, response.data.user)]
+
     yield put(authUser())
     browserHistory.push('/dashboard')
   } catch (err) {
