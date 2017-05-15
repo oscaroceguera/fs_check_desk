@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 
@@ -27,6 +26,7 @@ export default function getRoutes (history) {
         <IndexRoute component={SchemasContainer} />
         <Route path="schemas" component={SchemasContainer} />
         <Route path="schemas/new" component={SchemaFormContainer} />
+        <Route path="schemas/:schemaId" component={SchemaFormContainer} />
         <Route path="checklists" component={ChecklistsContainer} />
         <Route path="schedules" component={SchedulesContainer} />
       </Route>
