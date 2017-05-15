@@ -1,14 +1,7 @@
 import { delay } from 'redux-saga'
 import { call, put, takeLatest } from 'redux-saga/effects'
-import {
-  FETCH_SCHEMAS,
-  fetchSchemasLoading,
-  fetchSchemaSuccess,
-  fetchSchemasFail
-} from '../../reducers/getSchemasReducer'
-
 import { getSchemas } from '../../helpers/api'
-
+import { FETCH_SCHEMAS, fetchSchemasLoading, fetchSchemaSuccess, fetchSchemasFail } from '../../reducers/getSchemasReducer'
 
 function* fetchSchemas() {
   yield put(fetchSchemasLoading())
