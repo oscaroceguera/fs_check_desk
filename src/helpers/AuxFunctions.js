@@ -28,14 +28,22 @@ export default {
   hasText (item) {
     return item.length > 1 ? '' : 'Requerido'
   },
+  hasTextZero (item) {
+    return item.length > 0 ? '' : 'Requerido'
+  },
   max140 (item) {
     if (item.length < 1 ) return 'Requerido'
     if (item.length > 140) return 'es max 140'
   },
+  number (item) {
+    return Number(item) ? '' : 'Formato númerico'
+  },
   errorTextMessage (item, type) {
     if (type === 'txt') return this.hasText(item)
+    if (type === 'txtZero') return this.hasTextZero(item)
     if (type === 'password') return this.isPassword(item)
     if (type === 'email') return this.isEmail(item)
     if (type === 'max140') return this.max140(item)
+    if (type === 'number') return this.number(item)
   }
 }
