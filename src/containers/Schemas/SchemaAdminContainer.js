@@ -11,21 +11,19 @@ import ItemListContainer from './Items/ItemListContainer'
 // TODO: 2 - Agregar al API con sagas
 // TODO: 3 - actulizar datos en el listado de datos
 // TODO: 4 - usar listado container y listado component
-// TODO: LSITAR MODULOS AGREGADOS
 // TODO: ELIMIANR MODULO
 // TODO: ACTUALIZAR MODULO
-// TODO: LSITADO DE MODULOS NO HAY
 // TODO: LISTADO DE MODULOS FAIL
 
 const Modules = () => (
-  <div style={{ margin: '2em 0' }}>
+  <div style={{margin: '2em 0', width: '30%'}}>
     <ModuleFormContainer />
     <ModuleListContainer />
   </div>
 )
 
 const Items = () => (
-  <div style={{flexGrow: 1, margin: '2em 0', textAlign: 'center'}}>
+  <div style={{maxWidth: '600px', minWidth: '600px', margin: '2em 0'}}>
     <ItemFormContainer />
     <ItemListContainer />
   </div>
@@ -44,8 +42,8 @@ class SchemaAdminContainer extends React.Component {
     return (
       <DashboardWrapper title={'Esquemas'} desc={'Crear Esquema'}>
         <SchemaFormContainer />
-        {/* {this.props.schema.id && <ModulesAndItems />} */}
-        <ModulesAndItems />
+        {this.props.schema.id && <ModulesAndItems />}
+        {/* <ModulesAndItems /> */}
       </DashboardWrapper>
     )
   }
