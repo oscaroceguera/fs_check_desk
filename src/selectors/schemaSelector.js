@@ -28,3 +28,19 @@ export const everyModuleItems = createSelector(
   getModuleItems,
   ({module}) => lnMajor(module.name, 1) && lnMajor(module.number, 0) && Number(module.order)
 )
+
+/**
+ ** Answer Form
+ */
+const getAnswerItems = (state) => state.itemsReducer.toJS()
+
+export const everyItems = createSelector(
+  getAnswerItems,
+  ({item}) =>
+    lnMajor(item.moduleId, 1) &&
+    lnMajor(item.number, 0) &&
+    Number(item.order) &&
+    lnMajor(item.answer, 1) &&
+    lnMajor(item.recommend, 1) &&
+    Number(item.value)
+)
