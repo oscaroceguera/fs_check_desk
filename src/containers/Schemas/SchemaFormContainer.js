@@ -9,11 +9,6 @@ import CircularLoading from '../../components/Progress/CircularLoading'
 import SchemaForm from '../../components/Schema/SchemaForm'
 
 class SchemaFormContainer extends React.Component {
-
-  componentWillMount () {
-    this.props.resetFields()
-  }
-
   onChangeInput = (e, section) => this.props.setSchemaFields(section, e.target.name, e.target.value)
 
   handleErrorText = (section, field, type) => {

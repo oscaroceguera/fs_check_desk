@@ -10,7 +10,7 @@ import CircularLoading from '../../../components/Progress/CircularLoading'
 
 class ModuleFormContainer extends React.Component {
 
-  onChangeInput = (e, section, type) => this.props.setModuleFields(section, e.target.name, e.target.value)
+  onChangeInput = (e, section) => this.props.setModuleFields(section, e.target.name, e.target.value)
 
   handleErrorText = (section, field, type) => {
     const _section = this.props[section]
@@ -21,7 +21,7 @@ class ModuleFormContainer extends React.Component {
 
   render () {
     return (
-      <Modal label={'Agregar módulo'}>
+      <Modal label={'Agregar modulo'}>
         {
           this.props.loading
             ? <CircularLoading />
