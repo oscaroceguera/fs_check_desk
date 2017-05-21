@@ -7,18 +7,20 @@ import {
   setSavedModuleFail,
   resetFields
 } from '../../reducers/modulesReducer'
+import { fetchModules } from '../../reducers/getModulesReducer'
 import { closeModal } from '../../reducers/modalReducer'
-
-// TODO: INSERTAR EN MONGO
-// TODO: MENSAJE DE QUE SE GUARDO
-// TODO: CERRAR MODAL Y MOSTRR ERROR
+import { postModule } from '../../helpers/api'
 
 function* savedModule () {
   yield put(setSavedModuleLoading())
+  const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
   const data = yield select((state) => state.modulesReducer.toJS().module)
+  data.schemaId = schemaId
   yield delay(1000)
   try {
-    yield put(setSavedModuleSuccess(data))
+    const module = yield call(postModule, data, localStorage.getItem('token'))
+    yield put(setSavedModuleSuccess(module))
+    yield put(fetchModules())
     yield put(resetFields())
     yield put(closeModal())
   } catch (err) {
