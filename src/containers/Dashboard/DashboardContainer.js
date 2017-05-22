@@ -10,8 +10,7 @@ import MenuDesk from '../../components/MenuDesk/MenuDesk'
 
 const links = [
   { path: '/dashboard/schemas', label: 'Esquemas' },
-  { path: '/dashboard/checklists', label: 'Checklists' },
-  { path: '/dashboard/schedules', label: 'Seguimiento' }
+  { path: '/dashboard/checklists', label: 'Checklists' }
 ]
 
 const PanelContainer = styled.div`

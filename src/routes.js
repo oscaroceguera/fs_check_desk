@@ -10,7 +10,6 @@ import DashboardContainer from './containers/Dashboard/DashboardContainer'
 import SchemasContainer from './containers/Schemas/SchemasContainer'
 import SchemaAdminContainer from './containers/Schemas/SchemaAdminContainer'
 import ChecklistsContainer from './containers/Checklists/ChecklistsContainer'
-import SchedulesContainer from './containers/Schedules/SchedulesContainer'
 
 export default function getRoutes (history) {
   return (
@@ -28,7 +27,6 @@ export default function getRoutes (history) {
         <Route path="schemas/new" component={RequiredAuth(SchemaAdminContainer)} />
         <Route path="schemas/:schemaId" component={RequiredAuth(SchemaAdminContainer)} />
         <Route path="checklists" component={RequiredAuth(ChecklistsContainer)} />
-        <Route path="schedules" component={RequiredAuth(SchedulesContainer)} />
       </Route>
     </Router>
   )
