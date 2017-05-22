@@ -12,7 +12,7 @@ const ModuleItem = styled.div`
   padding: .5em;
 `
 
-const ModuleItemSection = ({title, label}) => <p><strong>{title}</strong>{label}</p>
+const ModuleItemSection = ({title, label}) => <p style={{ margin: 0 }}><strong>{title}</strong>{label}</p>
 
 ModuleItemSection.propTypes = {
   title: React.PropTypes.string.isRequired,
