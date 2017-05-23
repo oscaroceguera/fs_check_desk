@@ -11,6 +11,9 @@ import SchemasContainer from './containers/Schemas/SchemasContainer'
 import SchemaAdminContainer from './containers/Schemas/SchemaAdminContainer'
 import ChecklistsContainer from './containers/Checklists/ChecklistsContainer'
 
+// TODO: Crear UI para esta ruta
+const My404Component = () => <h1>{'ESTA RUTA NO EXISTE!'}</h1>
+
 export default function getRoutes (history) {
   return (
     <Router history={history}>
@@ -25,9 +28,10 @@ export default function getRoutes (history) {
         <IndexRoute component={RequiredAuth(SchemasContainer)} />
         <Route path="schemas" component={RequiredAuth(SchemasContainer)} />
         <Route path="schemas/new" component={RequiredAuth(SchemaAdminContainer)} />
-        <Route path="schemas/:schemaId" component={RequiredAuth(SchemaAdminContainer)} />
+        <Route path="schemas/new/:schemaId" component={RequiredAuth(SchemaAdminContainer)} />
         <Route path="checklists" component={RequiredAuth(ChecklistsContainer)} />
       </Route>
+      <Route path='*' component={My404Component} />
     </Router>
   )
 }
