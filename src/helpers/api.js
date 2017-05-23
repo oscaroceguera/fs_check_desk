@@ -18,6 +18,11 @@ export const getSchemas = (token) =>
     .get(`${api}/auth/schemas`, headers(token))
     .then((items) => items.data)
 
+export const getSchemaById = (id, token) =>
+  axios
+    .get(`${api}/auth/schemas/${id}`, headers(token))
+    .then((items) => items.data)
+
 export const postSchema = (data, token) =>
   axios
     .post(`${api}/auth/schema`, data, headers(token))
@@ -33,7 +38,12 @@ export const getModulesBySchemaId = (schemaId, token) =>
     .get(`${api}/auth/modules/${schemaId}`, headers(token))
     .then((items) => items.data)
 
-// export const getModulesBySchemaId = (schemaId = '8432ecb8-f371-491e-9b05-3f5424a9f02c', token) =>
-//   axios
-//     .get(`${api}/auth/modules/${schemaId}`, headers(token))
-//     .then((items) => items.data)
+export const postItem = (data, token) =>
+  axios
+    .post(`${api}/auth/item`, data, headers(token))
+    .then((response) => response.data)
+
+export const getItemsBySchemaId = (schemaId, token) =>
+  axios
+    .get(`${api}/auth/items/${schemaId}`, headers(token))
+    .then((items) => items.data)
