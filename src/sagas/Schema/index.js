@@ -3,12 +3,14 @@ import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 import {
   SET_SAVED_SCHEMA,
+  FETCH_SCHEMA,
   setSavedSchemaLoading,
   setSavedSchemaSuccess,
-  setSavedSchemaFail
+  setSavedSchemaFail,
+  fetchSchemaSucess,
+  fetchSchemaFail
 } from '../../reducers/schemasReducer'
-import { postSchema } from '../../helpers/api'
-
+import { postSchema, getSchemaById } from '../../helpers/api'
 
 function* savedSchema() {
   yield put(setSavedSchemaLoading())
@@ -23,15 +25,27 @@ function* savedSchema() {
       description: schema.description
     }
     yield put(setSavedSchemaSuccess(_schema))
-    browserHistory.push(`/dashboard/schemas/${_schema.id}`)
+    browserHistory.push(`/dashboard/schemas/new/${_schema.id}`)
   } catch (err) {
     yield put(setSavedSchemaFail(err))
   }
 }
 
+function* fetchSchemaWatch(action) {
+  try {
+    const schema = yield call(getSchemaById, action.id, localStorage.getItem('token'))
+    const _schema = schema.map( x => ({ id: x._id, name: x.name, version: x.version, description: x.description }))
+    yield put(fetchSchemaSucess(_schema[0]))
+  } catch (e) {
+    yield put(fetchSchemaFail(e))
+  }
+}
+
+
 function* defaultSaga () {
   yield [
-    takeLatest(SET_SAVED_SCHEMA, savedSchema)
+    takeLatest(SET_SAVED_SCHEMA, savedSchema),
+    takeLatest(FETCH_SCHEMA, fetchSchemaWatch)
   ]
 }
 
