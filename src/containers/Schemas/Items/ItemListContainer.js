@@ -10,7 +10,6 @@ class ItemListContainer extends React.Component {
   }
 
   render () {
-    console.log('items', this.props.items);
     return (
       <div style={{paddingLeft: '2em'}}>
         <h3 style={{color: 'gray', textAlign: 'center'}}>{'Reactivos'}</h3>
