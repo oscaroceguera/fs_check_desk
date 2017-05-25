@@ -1,7 +1,6 @@
 import React from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { browserHistory } from 'react-router'
 
 const FLOAT_CONTAINER = {
   position: 'fixed',
@@ -9,17 +8,17 @@ const FLOAT_CONTAINER = {
   bottom: '2em'
 }
 
-const AddButton  = ({ path }) => (
+const AddButton  = ({goToAddSchema}) => (
   <FloatingActionButton
     secondary
     style={FLOAT_CONTAINER}
-    onTouchTap={() => browserHistory.push(path)}>
+    onTouchTap={goToAddSchema}>
     <ContentAdd />
   </FloatingActionButton>
 )
 
 AddButton.propTypes = {
-  path: React.PropTypes.string.isRequired
+  goToAddSchema: React.PropTypes.func.isRequired
 }
 
 export default AddButton

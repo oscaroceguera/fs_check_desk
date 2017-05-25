@@ -8,9 +8,22 @@ import AddButton from '../../components/AddButton/AddButton'
 import CircularLoading from '../../components/Progress/CircularLoading'
 
 class SchemasContainer extends React.Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  static propTypes = {
+    location: React.PropTypes.object
+  }
+
+  goToSchema = (e, id) => this.context.router.push(`/dashboard/schemas/new/${id}`)
+
+  goToAddSchema = (e) => this.props.goToAddNewSchema()
+
   componentWillMount () {
     this.props.fetchSchemas()
   }
+
   render () {
     const { schemas, schemasLoading } = this.props
 
@@ -20,8 +33,8 @@ class SchemasContainer extends React.Component {
           title={'Esquemas'}
           desc={'Administrador de Esquemas'}
         >
-        <SchemaCard schemas={schemas} />
-        <AddButton path={'/dashboard/schemas/new'}/>
+        <SchemaCard schemas={schemas} goToSchema={this.goToSchema}/>
+        <AddButton goToAddSchema={this.goToAddSchema}/>
       </DashboardWrapper>
   }
 }

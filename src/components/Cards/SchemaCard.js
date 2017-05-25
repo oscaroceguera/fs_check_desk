@@ -9,8 +9,8 @@ const H2_STYLE = {
 
 const ThereArentSchemas = () => <h2 style={H2_STYLE}>{'¡No existen esquemas registrados aún!'}</h2>
 
-const ThereAreSchemas = ({ item }) => (
-  <Card>
+const ThereAreSchemas = ({ item, goToSchema }) => (
+  <Card onClick={(e, id) => goToSchema(e, item._id)}>
     <CardHeader>
       <CardHeaderTitle>{item.name}</CardHeaderTitle>
       <CardHeaderVersion>{`Version: ${item.version}`}</CardHeaderVersion>
@@ -21,11 +21,14 @@ const ThereAreSchemas = ({ item }) => (
   </Card>
 )
 
-ThereAreSchemas.propTypes = { item: React.PropTypes.object.isRequired }
+ThereAreSchemas.propTypes = {
+  goToSchema: React.PropTypes.func.isRequired,
+  item: React.PropTypes.object.isRequired
+}
 
-const SchemaCard = ({ schemas }) => (
+const SchemaCard = ({ schemas, goToSchema }) => (
   <CardContainer>
-    { schemas.length > 0 ? schemas.map((item, key) => <ThereAreSchemas key={key} item={item} />) : <ThereArentSchemas /> }
+    { schemas.length > 0 ? schemas.map((item, key) => <ThereAreSchemas goToSchema={goToSchema} key={key} item={item} />) : <ThereArentSchemas /> }
   </CardContainer>
 )
 
