@@ -1,9 +1,12 @@
 import { fromJS, List } from 'immutable'
+export const GO_TO_ADD_NEW_SCHEMA = 'src/schemas/GO_TO_ADD_NEW_SCHEMA'
 
 export const FETCH_SCHEMAS = 'src/schemas/FETCH_SCHEMAS'
 export const FETCH_SCHEMAS_LOADING = 'src/schemas/FETCH_SCHEMAS_LOADING'
 export const FETCH_SCHEMAS_SUCCESS = 'src/schemas/FETCH_SCHEMAS_SUCCESS'
 export const FETCH_SCHEMAS_FAIL = 'src/schemas/FETCH_SCHEMAS_FAIL'
+
+export const goToAddNewSchema = () => ({ type: GO_TO_ADD_NEW_SCHEMA })
 
 export const fetchSchemas = () => ({ type: FETCH_SCHEMAS })
 export const fetchSchemasLoading = () => ({ type: FETCH_SCHEMAS_LOADING })
