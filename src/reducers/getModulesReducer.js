@@ -4,7 +4,9 @@ export const FETCH_MODULES = 'src/modules/FETCH_MODULES'
 export const FETCH_MODULES_LOADING = 'src/modules/FETCH_MODULES_LOADING'
 export const FETCH_MODULES_SUCCESS = 'src/modules/FETCH_MODULES_SUCCESS'
 export const FETCH_MODULES_FAIL = 'src/modules/FETCH_MODULES_FAIL'
+export const RESET_MODULES = 'src/modules/RESET_MODULES'
 
+export const resetModules = () => ({ type: RESET_MODULES })
 export const fetchModules = () => ({ type: FETCH_MODULES })
 export const fetchModulesLoading = () => ({ type: FETCH_MODULES_LOADING })
 export const fetchModulesSuccess = (modules) => ({ type: FETCH_MODULES_SUCCESS, modules })
@@ -33,6 +35,8 @@ function getModulesReducer (state = initialState, action) {
         modulesLoading: false,
         modulesFail: action.err
       })
+    case RESET_MODULES:
+      return state.merge(initialState)
     default:
       return state
   }

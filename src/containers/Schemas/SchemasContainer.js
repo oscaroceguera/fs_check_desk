@@ -16,7 +16,7 @@ class SchemasContainer extends React.Component {
     location: React.PropTypes.object
   }
 
-  goToSchema = (e, id) => this.context.router.push(`/dashboard/schemas/new/${id}`)
+  goToSchema = (e, id) => this.props.goToSchema(id)
 
   goToAddSchema = (e) => this.props.goToAddNewSchema()
 
