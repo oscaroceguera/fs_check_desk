@@ -47,3 +47,8 @@ export const getItemsBySchemaId = (schemaId, token) =>
   axios
     .get(`${api}/auth/items/${schemaId}`, headers(token))
     .then((items) => items.data)
+
+export const putSchema = (schemaId, data, token) =>
+  axios
+    .put(`${api}/auth/schemas/${schemaId}`, data, headers(token))
+    .then((response) => response.data)
