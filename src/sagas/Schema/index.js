@@ -1,31 +1,37 @@
 import { delay } from 'redux-saga'
 import { call, put, select, takeLatest } from 'redux-saga/effects'
-import { browserHistory } from 'react-router'
 import {
   SET_SAVED_SCHEMA,
   FETCH_SCHEMA,
+  SET_UPDATE_SCHEMA,
   setSavedSchemaLoading,
   setSavedSchemaSuccess,
   setSavedSchemaFail,
   fetchSchemaSucess,
-  fetchSchemaFail
+  fetchSchemaFail,
+  setUpdateSchemaSuccess
 } from '../../reducers/schemasReducer'
-import { postSchema, getSchemaById } from '../../helpers/api'
+import { postSchema, getSchemaById, putSchema} from '../../helpers/api'
+import { addApiSaga } from '../commons/genericSagas'
 
 function* savedSchema() {
+  const data = yield select((state) => state.schemasReducer.toJS().schema)
+  yield* addApiSaga(postSchema, [data, localStorage.getItem('token')], true, setSavedSchemaLoading, setSavedSchemaSuccess, setSavedSchemaFail)
+}
+
+function* updateSchema() {
   yield put(setSavedSchemaLoading())
   const data = yield select((state) => state.schemasReducer.toJS().schema)
   yield delay(1000)
   try {
-    const schema = yield call(postSchema, data, localStorage.getItem('token'))
+    const schema = yield call(putSchema, data.id, data, localStorage.getItem('token'))
     const _schema = {
       id: schema._id,
       name: schema.name,
       version: schema.version,
       description: schema.description
     }
-    yield put(setSavedSchemaSuccess(_schema))
-    browserHistory.push(`/dashboard/schemas/new/${_schema.id}`)
+    yield put(setUpdateSchemaSuccess(_schema))
   } catch (err) {
     yield put(setSavedSchemaFail(err))
   }
@@ -45,7 +51,8 @@ function* fetchSchemaWatch(action) {
 function* defaultSaga () {
   yield [
     takeLatest(SET_SAVED_SCHEMA, savedSchema),
-    takeLatest(FETCH_SCHEMA, fetchSchemaWatch)
+    takeLatest(FETCH_SCHEMA, fetchSchemaWatch),
+    takeLatest(SET_UPDATE_SCHEMA, updateSchema)
   ]
 }
 
