@@ -18,9 +18,7 @@ class SchemaFormContainer extends React.Component {
 
   saveSchema = (e) => this.props.setSavedSchema()
 
-  updateSchema = (e) => {
-    console.log('UPDATE');
-  }
+  updateSchema = (e) => this.props.setUpdateSchema()
 
   render () {
     const { SSLoading, schema, submitSchema } = this.props
