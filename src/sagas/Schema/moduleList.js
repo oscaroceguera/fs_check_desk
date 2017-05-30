@@ -1,16 +1,11 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects'
+import { select, takeEvery } from 'redux-saga/effects'
 import { getModulesBySchemaId } from '../../helpers/api'
 import { FETCH_MODULES, fetchModulesLoading, fetchModulesSuccess, fetchModulesFail } from '../../reducers/getModulesReducer'
+import { fetchApiSaga } from '../commons/genericSagas'
 
 function* fetchModules() {
-  yield put(fetchModulesLoading())
   const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
-  try {
-    const schemas = yield call(getModulesBySchemaId, schemaId, localStorage.getItem('token'))
-    yield put(fetchModulesSuccess(schemas))
-  } catch (err) {
-    yield put(fetchModulesFail(err))
-  }
+  yield* fetchApiSaga(getModulesBySchemaId, [schemaId, localStorage.getItem('token')], fetchModulesLoading, fetchModulesSuccess, fetchModulesFail)
 }
 
 function* defaultSaga () {
