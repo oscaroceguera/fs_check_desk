@@ -33,6 +33,11 @@ export const postModule = (data, token) =>
     .post(`${api}/auth/module`, data, headers(token))
     .then((response) => response.data)
 
+export const putModule = (id, data, token) =>
+  axios
+    .put(`${api}/auth/modules/${id}`, data, headers(token))
+    .then((response) => response.data)
+
 export const getModulesBySchemaId = (schemaId, token) =>
   axios
     .get(`${api}/auth/modules/${schemaId}`, headers(token))
