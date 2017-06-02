@@ -9,32 +9,29 @@ import { everyItems } from '../../../selectors/schemaSelector'
 import CircularLoading from '../../../components/Progress/CircularLoading'
 
 class ItemFormContainer extends React.Component {
-  onChangeInput = (e, section) => this.props.setItemFields(section, e.target.name, e.target.value)
+  onChange = (e, section) =>
+    this.props.setItemFields(section, e.target.name, e.target.value)
 
-  selectChange = (event, index, value) => {
+  onSelect = (event, index, value) =>
     this.props.selectedModule(value)
-  }
 
-  handleErrorText = (section, field, type) => {
-    const _section = this.props[section]
-    return aux.errorTextMessage(_section[field], type)
-  }
-  onSaved = (e) => {
+  errTxt = (section, field, type) =>
+    aux.errorTextMessage(this.props[section][field], type)
+
+  onSaved = (e) =>
     this.props.setSavedItem()
-  }
-
 
   render () {
     return (
-      <div style={{paddingLeft: '2em'}}>
+      <div style={{ paddingLeft: '2em' }}>
         {
           this.props.loading
             ? <CircularLoading />
             : <ItemsForm
                 {...this.props}
-                selectChange={this.selectChange}
-                handleErrorText={this.handleErrorText}
-                onChangeInput={this.onChangeInput}
+                selectChange={this.onSelect}
+                handleErrorText={this.errTxt}
+                onChangeInput={this.onChange}
                 onSaved={this.onSaved}
               />
         }
@@ -54,11 +51,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    ...itemsActions
-  }, dispatch)
-}
+const mapDispatchToProps = dispatch => bindActionCreators({ ...itemsActions }, dispatch)
 
 // TODO: PROPTYPES
 
