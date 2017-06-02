@@ -19,6 +19,8 @@ class ModuleFormContainer extends React.Component {
 
   onSaved = (e) => this.props.setSavedModule()
 
+  onUpdate = (e) => this.props.setUpdateModule()
+
   render () {
     return (
       <Modal label={'Agregar modulo'}>
@@ -29,7 +31,9 @@ class ModuleFormContainer extends React.Component {
                 onChangeInput={this.onChangeInput}
                 handleErrorText={this.handleErrorText}
                 onSaved={this.onSaved}
+                onUpdate={this.onUpdate}
                 submit={this.props.submit}
+                module={this.props.module}
               />
         }
       </Modal>
