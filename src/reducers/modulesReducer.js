@@ -8,12 +8,18 @@ export const SET_SAVED_MODULE_LOADING = 'src/modules/SET_SAVED_MODULE_LOADING'
 export const SET_SAVED_MODULE_SUCCESS = 'src/modules/SET_SAVED_MODULE_SUCCESS'
 export const SET_SAVED_MODULE_FAIL = 'src/modules/SET_SAVED_MODULE_FAIL'
 
+export const SHOW_MODAL_UPDATE_MODULE = 'src/modules/SHOW_MODAL_UPDATE_MODULE'
+export const SET_UPDATE_MODULE = 'src/modules/SET_UPDATE_MODULE'
+
 export const setModuleFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
 export const resetFields = () => ({ type: RESET_FIELDS })
 export const setSavedModule = () => ({ type: SET_SAVED_MODULE })
 export const setSavedModuleLoading = () => ({ type: SET_SAVED_MODULE_LOADING })
 export const setSavedModuleSuccess = (module) => ({ type: SET_SAVED_MODULE_SUCCESS, module })
 export const setSavedModuleFail = (err) => ({ type: SET_SAVED_MODULE_FAIL, err })
+
+export const showModalUpdateModule = (module) => ({ type: SHOW_MODAL_UPDATE_MODULE, module })
+export const setUpdateModule = () => ({ type: SET_UPDATE_MODULE })
 
 const initialState = fromJS({
   module: {
