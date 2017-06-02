@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as modulesActions from '../../../reducers/getModulesReducer'
+import * as modulesUpdateActions from '../../../reducers/modulesReducer'
 import {orderBy} from 'lodash/collection'
 import styled from 'styled-components'
 import ModuleList, {NotModules} from '../../../components/Schema/Module/ModuleList'
@@ -18,11 +19,22 @@ class ModuleListContainer extends React.Component {
     this.props.fetchModules()
   }
 
+  modalUpdate = (e, module) => {
+    const _module = {
+      number: module.number,
+      order: module.order,
+      schemaId: module.schemaId,
+      name: module.name,
+      id: module._id
+    }
+    this.props.showModalUpdateModule(_module)
+  }
+
   render () {
     const { modules } = this.props
     return (
       <ListContainer>
-        { modules.length > 0 ? modules.map((i,k) => <ModuleList key={k} item={i} />) : <NotModules /> }
+        { modules.length > 0 ? modules.map((i,k) => <ModuleList modalUpdate={this.modalUpdate} key={k} item={i} />) : <NotModules /> }
       </ListContainer>
     )
   }
@@ -37,7 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    ...modulesActions
+    ...modulesActions,
+    ...modulesUpdateActions
   }, dispatch)
 }
 
