@@ -30,3 +30,9 @@ export const RowBodyStyled = styled.p`
   padding: .5em;
   text-align: {props => props.align};
 `
+
+export const NotItemsMsg = styled.p`
+  padding: 1em;
+  color: gray;
+  text-align: center;
+`

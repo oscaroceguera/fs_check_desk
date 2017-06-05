@@ -4,8 +4,12 @@ import CircularLoading from '../../Progress/CircularLoading'
 import {
   Container, Title, Table,
   TableHeader, RowHeaderStyled,
-  TableBodyStyled, RowBodyStyled
+  TableBodyStyled, RowBodyStyled,
+  NotItemsMsg
 } from './styles'
+
+
+const NotItems = () => <NotItemsMsg>{'¡No hay reactivos registrados!'}</NotItemsMsg>
 
 const TableBody = ({item}) => (
   <div>
@@ -35,11 +39,9 @@ const ItemList = ({items, loading}) => (
       {
         loading
           ? <CircularLoading />
-          : items.map((item, index) => {
-            return (
-              <TableBody key={index} item={item}/>
-            )
-          })
+          : items.length > 0
+            ? items.map((item, index) => <TableBody key={index} item={item}/>)
+            : <NotItems />
       }
     </Table>
   </Container>
