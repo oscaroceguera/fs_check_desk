@@ -8,6 +8,8 @@ import ModuleForm from '../../../components/Schema/Module/ModuleForm'
 import { everyModuleItems } from '../../../selectors/schemaSelector'
 import CircularLoading from '../../../components/Progress/CircularLoading'
 
+// TODO: Al precionar cangelar o salir del modal limpiar datos del modal.
+
 class ModuleFormContainer extends React.Component {
 
   onChangeInput = (e, section) => this.props.setModuleFields(section, e.target.name, e.target.value)
