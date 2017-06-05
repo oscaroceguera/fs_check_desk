@@ -1,37 +1,11 @@
 import React from 'react'
 import Divider from 'material-ui/Divider'
-import styled from 'styled-components'
-
-const Container = styled.div`
-  padding-left: 2em;
-`
-const Title = styled.h3`
-  color: gray;
-  text-align: center;
-`
-const Table = styled.div`
-  box-shadow: 0px 0px 5px gray;
-`
-const TableHeader = styled.div`
-  display: flex;
-  text-align: center;
-  color: gray;
-  padding: 0 0.5em;
-`
-const RowHeaderStyled = styled.p`
-  width: ${props => props.width};
-`
-const TableBodyStyled = styled.div`
-  display: flex;
-  font-size: 12px;
-  padding: .5em;
-`
-const RowBodyStyled = styled.p`
-  width: ${props => props.width};
-  margin: 0;
-  padding: .5em;
-  text-align: {props => props.align};
-`
+import CircularLoading from '../../Progress/CircularLoading'
+import {
+  Container, Title, Table,
+  TableHeader, RowHeaderStyled,
+  TableBodyStyled, RowBodyStyled
+} from './styles'
 
 const TableBody = ({item}) => (
   <div>
@@ -45,11 +19,9 @@ const TableBody = ({item}) => (
   </div>
 )
 
-TableBody.propTypes = {
-  Items: React.PropTypes.array
-}
+TableBody.propTypes = { Items: React.PropTypes.array }
 
-const ItemList = ({items}) => (
+const ItemList = ({items, loading}) => (
   <Container>
     <Title>{'Reactivos'}</Title>
     <Table>
@@ -61,18 +33,21 @@ const ItemList = ({items}) => (
       </TableHeader>
       <Divider />
       {
-        items.map((item, index) => {
-          return (
-            <TableBody key={index} item={item}/>
-          )
-        })
+        loading
+          ? <CircularLoading />
+          : items.map((item, index) => {
+            return (
+              <TableBody key={index} item={item}/>
+            )
+          })
       }
     </Table>
   </Container>
 )
 
 ItemList.propTypes = {
-  Items: React.PropTypes.array
+  Items: React.PropTypes.array,
+  loading: React.PropTypes.bool.isRequired
 }
 
 export default ItemList
