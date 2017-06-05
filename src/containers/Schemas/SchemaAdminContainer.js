@@ -6,34 +6,35 @@ import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import SchemaFormContainer from './SchemaFormContainer'
 import ModuleFormContainer from './Modules/ModuleFormContainer'
 import ModuleListContainer from './Modules/ModuleListContainer'
-import ItemFormContainer from './Items/ItemFormContainer'
+// import ItemFormContainer from './Items/ItemFormContainer'
 import ItemListContainer from './Items/ItemListContainer'
 
-// TODO: ELIMIANR MODULO
-// TODO: ACTUALIZAR MODULO
-// TODO: LISTADO DE MODULOS FAIL
-
-const Modules = () => (
+const Modules = ({modulesLoading}) => (
   <div style={{margin: '2em 0', width: '30%'}}>
     <ModuleFormContainer />
-    <ModuleListContainer />
+  <ModuleListContainer modulesLoading={modulesLoading}/>
   </div>
 )
 
-const Items = () => (
-  <div style={{maxWidth: '600px', minWidth: '600px', margin: '2em 0'}}>
-    <ItemFormContainer />
-    <ItemListContainer />
+// TODO: Modules protypes
+
+const Items = ({itemsLoading}) => (
+  <div style={{maxWidth: '600px', minWidth: '600px'}}>
+    {/* <ItemFormContainer /> */}
+    <ItemListContainer itemsLoading={itemsLoading}/>
   </div>
 )
 
-const ModulesAndItems = () => (
+// TODO: Items protypes
+
+const ModulesAndItems = (props) => (
   <div style={{display: 'flex'}}>
-    <Modules />
-    <Items />
+    <Modules {...props}/>
+    <Items {...props}/>
   </div>
 )
 
+// TODO: ModulesAndItems protypes
 
 class SchemaAdminContainer extends React.Component {
 
@@ -44,11 +45,10 @@ class SchemaAdminContainer extends React.Component {
   }
 
   render () {
-
     return (
       <DashboardWrapper title={'Esquemas'} desc={'Crear Esquema'}>
         <SchemaFormContainer />
-        {this.props.schema.id && <ModulesAndItems />}
+      {this.props.schema.id && <ModulesAndItems {...this.props}/>}
         {/* <ModulesAndItems /> */}
       </DashboardWrapper>
     )
@@ -57,8 +57,12 @@ class SchemaAdminContainer extends React.Component {
 
 const mapStateToProps = (state, props) => {
   const stateJS = state.schemasReducer.toJS()
+  const modules = state.getModulesReducer.toJS()
+  const items = state.getItemsReducer.toJS()
   return {
     schema: stateJS.schema,
+    modulesLoading: modules.modulesLoading,
+    itemsLoading: items.itemsLoading
   }
 }
 
