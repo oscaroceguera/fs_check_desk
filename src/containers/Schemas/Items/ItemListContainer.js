@@ -8,11 +8,14 @@ class ItemListContainer extends React.Component {
   componentWillMount () { this.props.fetchItems() }
 
   render () {
-    return <ItemList items={this.props.items}/>
+    const { items, loading } = this.props
+    return <ItemList items={items} loading={loading}/>
   }
 }
 
+// TODO: PROPTYPES
+
 export default connect(
-  state => ({ items: state.getItemsReducer.toJS().items }),
+  (state, props) => ({ items: state.getItemsReducer.toJS().items, loading: props.itemsLoading }),
   dispatch => bindActionCreators({ ...itemsActions }, dispatch)
 )(ItemListContainer)

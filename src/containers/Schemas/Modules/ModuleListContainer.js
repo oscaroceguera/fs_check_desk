@@ -5,7 +5,8 @@ import * as modulesActions from '../../../reducers/getModulesReducer'
 import * as modulesUpdateActions from '../../../reducers/modulesReducer'
 import {orderBy} from 'lodash/collection'
 import styled from 'styled-components'
-import ModuleList, {NotModules} from '../../../components/Schema/Module/ModuleList'
+import ModuleList, { NotModules } from '../../../components/Schema/Module/ModuleList'
+import LnProgress from '../../../components/Progress/LinearProgress'
 
 const ListContainer = styled.div`
   box-shadow: 0px 0px 5px gray;
@@ -31,19 +32,27 @@ class ModuleListContainer extends React.Component {
   }
 
   render () {
-    const { modules } = this.props
+    const { modules, loading } = this.props
+
+    if (loading) return <LnProgress />
+
     return (
       <ListContainer>
-        { modules.length > 0 ? modules.map((i,k) => <ModuleList modalUpdate={this.modalUpdate} key={k} item={i} />) : <NotModules /> }
+        {
+          modules.length > 0
+            ? modules.map((i,k) => <ModuleList modalUpdate={this.modalUpdate} key={k} item={i} />)
+            : <NotModules />
+        }
       </ListContainer>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   const modulesJS = state.getModulesReducer.toJS()
   return {
-    modules: orderBy(modulesJS.modules, ['order'], ['asc'])
+    modules: orderBy(modulesJS.modules, ['order'], ['asc']),
+    loading: props.modulesLoading
   }
 }
 
