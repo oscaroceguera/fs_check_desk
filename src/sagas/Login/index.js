@@ -33,12 +33,12 @@ function* logoutFanout () {
 }
 
 function* defaultSaga () {
-    yield [
-      takeLatest(LOGIN_USER, authorize),
-      takeLatest(LOGOUT_USER, logoutFanout)
-    ]
+  yield [
+    takeLatest(LOGIN_USER, authorize),
+    takeLatest(LOGOUT_USER, logoutFanout)
+  ]
 }
 
- export const sagas = [
+export const sagas = [
   defaultSaga
 ]

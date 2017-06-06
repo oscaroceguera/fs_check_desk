@@ -19,7 +19,7 @@ const MenuContainer = styled.div`
 
 const MenuDesk = ({ location, links }) => (
   <MenuContainer>
-    {links.map(({path, label}, key) => <LinkMenuDesk key={key} location={location} path={path} label={label}/>)}
+    {links.map(({path, label}, key) => <LinkMenuDesk key={key} location={location} path={path} label={label} />)}
   </MenuContainer>
 )
 

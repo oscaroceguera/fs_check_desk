@@ -5,9 +5,9 @@ import LinkMenuDesk from '../Links/LinkMenuDesk'
 const DrawerMenu = ({ open, handleClose, links, location }) => (
   <Drawer open={open} width={150}>
     {
-      links.map(({path, label}, key) =>  (
+      links.map(({path, label}, key) => (
         <MenuItem key={key} onTouchTap={handleClose}>
-          <LinkMenuDesk key={key} location={location} path={path} label={label}/>
+          <LinkMenuDesk key={key} location={location} path={path} label={label} />
         </MenuItem>
       ))
     }

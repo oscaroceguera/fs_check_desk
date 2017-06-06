@@ -26,9 +26,9 @@ export const setSavedSchemaFail = (err) => ({ type: SET_SAVED_SCHEMA_FAIL, err }
 export const setUpdateSchema = () => ({ type: SET_UPDATE_SCHEMA })
 export const setUpdateSchemaSuccess = (schema) => ({ type: SET_UPDATE_SCHEMA_SUCCESS, schema })
 
-export const fetchSchema = (id) => ({ type: FETCH_SCHEMA, id})
-export const fetchSchemaSucess = (schema) => ({ type: FETCH_SCHEMA_SUCCESS, schema})
-export const fetchSchemaFail = (err) => ({ type: FETCH_SCHEMA_FAIL, err})
+export const fetchSchema = (id) => ({ type: FETCH_SCHEMA, id })
+export const fetchSchemaSucess = (schema) => ({ type: FETCH_SCHEMA_SUCCESS, schema })
+export const fetchSchemaFail = (err) => ({ type: FETCH_SCHEMA_FAIL, err })
 
 const initialState = fromJS({
   schema: {
@@ -37,7 +37,7 @@ const initialState = fromJS({
     description: ''
   },
   savedSchemasLoading: false,
-  savedSchemaFail: null,
+  savedSchemaFail: null
 })
 
 function schemasReducer (state = initialState, action) {
@@ -56,7 +56,7 @@ function schemasReducer (state = initialState, action) {
     case SET_SAVED_SCHEMA_SUCCESS:
       return state.merge({
         schema: action.schema,
-        savedSchemasLoading: false,
+        savedSchemasLoading: false
       })
     case FETCH_SCHEMA_FAIL:
     case SET_SAVED_SCHEMA_FAIL:

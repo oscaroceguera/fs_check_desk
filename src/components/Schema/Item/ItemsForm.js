@@ -19,7 +19,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       onChange={selectChange}
       fullWidth
     >
-      { modulesTypes.map((i,k) => <MenuItem key={k} value={i._id} primaryText={i.name} />) }
+      { modulesTypes.map((i, k) => <MenuItem key={k} value={i._id} primaryText={i.name} />) }
     </SelectField>
     <TxtFieldResponsive
       floatingLabelText={'Número'}
@@ -48,7 +48,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       width={'100%'}
       errorText={handleErrorText('item', 'answer', 'txt')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
-      multiLine={true}
+      multiLine
       rows={2}
     />
     <TxtFieldResponsive
@@ -57,7 +57,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       width={'100%'}
       errorText={handleErrorText('item', 'recommend', 'txt')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
-      multiLine={true}
+      multiLine
       rows={2}
     />
     <GenericSubmit

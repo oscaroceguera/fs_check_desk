@@ -11,15 +11,15 @@ import {
   fetchSchemaFail,
   setUpdateSchemaSuccess
 } from '../../reducers/schemasReducer'
-import { postSchema, getSchemaById, putSchema} from '../../helpers/api'
+import { postSchema, getSchemaById, putSchema } from '../../helpers/api'
 import { addApiSaga } from '../commons/genericSagas'
 
-function* savedSchema() {
+function* savedSchema () {
   const data = yield select((state) => state.schemasReducer.toJS().schema)
   yield* addApiSaga(postSchema, [data, localStorage.getItem('token')], true, setSavedSchemaLoading, setSavedSchemaSuccess, setSavedSchemaFail)
 }
 
-function* updateSchema() {
+function* updateSchema () {
   yield put(setSavedSchemaLoading())
   const data = yield select((state) => state.schemasReducer.toJS().schema)
   yield delay(1000)
@@ -37,16 +37,15 @@ function* updateSchema() {
   }
 }
 
-function* fetchSchemaWatch(action) {
+function* fetchSchemaWatch (action) {
   try {
     const schema = yield call(getSchemaById, action.id, localStorage.getItem('token'))
-    const _schema = schema.map( x => ({ id: x._id, name: x.name, version: x.version, description: x.description }))
+    const _schema = schema.map(x => ({id: x._id, name: x.name, version: x.version, description: x.description}))
     yield put(fetchSchemaSucess(_schema[0]))
   } catch (e) {
     yield put(fetchSchemaFail(e))
   }
 }
-
 
 function* defaultSaga () {
   yield [
@@ -56,6 +55,6 @@ function* defaultSaga () {
   ]
 }
 
-export const sagas =  [
+export const sagas = [
   defaultSaga
 ]

@@ -1,15 +1,14 @@
 import React from 'react'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import {Dialog, FlatButton} from 'material-ui'
 
-const Modal = ({ handleModalOpen, handleModalClose, modalStatus, title,  children }) => (
+const Modal = ({ handleModalOpen, handleModalClose, modalStatus, title, children }) => (
   <Dialog
     title={title}
     actions={<FlatButton label={'Cancelar'} primary onTouchTap={handleModalClose} />}
     modal={false}
     open={modalStatus}
     onRequestClose={handleModalClose}
-    autoScrollBodyContent={true}
+    autoScrollBodyContent
   >
     { children }
   </Dialog>

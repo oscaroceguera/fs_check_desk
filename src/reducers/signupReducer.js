@@ -10,7 +10,7 @@ const RESET_FORM = 'src/signup/RESET_FORM'
 
 // Actions creators
 export const setFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
-export const setSignup =  () => ({ type:  SET_SIGNUP })
+export const setSignup = () => ({ type: SET_SIGNUP })
 export const singupLoading = () => ({ type: SIGNUP_LOADING })
 export const signupSuccess = () => ({ type: SIGNUP_SUCCESS })
 export const signupFail = (error) => ({ type: SIGNUP_FAIL, error })
@@ -22,7 +22,7 @@ const initialState = fromJS({
   savedFail: null,
   savedSucces: false,
   message: '',
-  fields : {
+  fields: {
     firstName: '',
     secondName: '',
     email: '',
@@ -37,13 +37,13 @@ function signupReducer (state = initialState, action) {
       return state.setIn([action.section, action.item], action.value)
     case SIGNUP_LOADING:
       return state.merge({
-        savedLoading:  true,
+        savedLoading: true,
         savedSucces: false
       })
     case SIGNUP_FAIL:
       return state.merge({
         savedLoading: false,
-        savedFail: action.error.response.data.error,
+        savedFail: action.error.response.data.error
       })
     case SIGNUP_SUCCESS:
       return state.merge({

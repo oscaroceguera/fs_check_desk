@@ -32,7 +32,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
       />
       <GenericSubmit
         disabled={submitSchema}
-        label={item.id ? 'Actualizar' : 'Guardar' }
+        label={item.id ? 'Actualizar' : 'Guardar'}
         onClick={item.id ? updateSchema : saveSchema}
       />
     </div>

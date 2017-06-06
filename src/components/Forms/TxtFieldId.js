@@ -6,7 +6,7 @@ const TxtFieldId = ({ item }) => (
     style={{ display: item.id ? 'block' : 'none ', width: '310px' }}
     floatingLabelText={'ID'}
     value={item.id ? item.id : ''}
-    disabled={true}
+    disabled
   />
 )
 

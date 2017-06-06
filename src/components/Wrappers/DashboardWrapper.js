@@ -4,11 +4,12 @@ import breakpoint from 'styled-components-breakpoint'
 
 const Wrapper = styled.div`
   margin: auto;
+  border: 1px solid green;
   max-width: 530px;
   margin: auto;
   position: relative;
   ${breakpoint('desktop')`
-    max-width: 800px;
+    max-width: 1000px;
   `}
 `
 const WrapperTitle = styled.h1`
@@ -33,7 +34,7 @@ const DashboardWrapper = ({title, desc, children}) => (
 DashboardWrapper.propTypes = {
   title: React.PropTypes.string.isRequired,
   desc: React.PropTypes.string.isRequired,
-  children: React.PropTypes.any.isRequired,
+  children: React.PropTypes.any.isRequired
 }
 
 export default DashboardWrapper

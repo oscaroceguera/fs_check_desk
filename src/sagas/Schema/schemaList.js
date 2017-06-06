@@ -3,7 +3,7 @@ import { getSchemas } from '../../helpers/api'
 import { FETCH_SCHEMAS, fetchSchemasLoading, fetchSchemaSuccess, fetchSchemasFail } from '../../reducers/getSchemasReducer'
 import { fetchApiSaga } from '../commons/genericSagas'
 
-function* fetchSchemas() {
+function* fetchSchemas () {
   yield* fetchApiSaga(getSchemas, [localStorage.getItem('token')], fetchSchemasLoading, fetchSchemaSuccess, fetchSchemasFail)
 }
 
@@ -13,6 +13,6 @@ function* defaultSaga () {
   ]
 }
 
-export const sagas =  [
+export const sagas = [
   defaultSaga
 ]

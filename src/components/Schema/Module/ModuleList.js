@@ -1,7 +1,7 @@
 import React from 'react'
 import Divider from 'material-ui/Divider'
 import styled from 'styled-components'
-import CreateIcon from 'material-ui/svg-icons/content/create';
+import CreateIcon from 'material-ui/svg-icons/content/create'
 
 const ModuleContainer = styled.div`
   display: flex;
@@ -40,11 +40,11 @@ const ModuleList = ({item, modalUpdate}) => (
   <div>
     <ModuleContainer>
       <ModuleItem>
-        <ModuleItemSection title={'Módulo: '} label={item.number}/>
-        <ModuleItemSection title={'Nombre: '} label={item.name}/>
+        <ModuleItemSection title={'Módulo: '} label={item.number} />
+        <ModuleItemSection title={'Nombre: '} label={item.name} />
       </ModuleItem>
-      <ItemOption onClick={(e, module) => modalUpdate(e,item)}>
-        <CreateIcon style={{ color: '#757575' }}/>
+      <ItemOption onClick={(e, module) => modalUpdate(e, item)}>
+        <CreateIcon style={{ color: '#757575' }} />
       </ItemOption>
     </ModuleContainer>
     <Divider />

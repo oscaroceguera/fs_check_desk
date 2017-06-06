@@ -15,9 +15,9 @@ const AppbarStyled = styled.div`
 
 const Appbar = ({ logout, handleToggle }) => (
   <AppbarStyled>
-    <Hamburger handleToggle={handleToggle}/>
-    <Logo home={false}/>
-    <IconMenuAppbar logout={logout}/>
+    <Hamburger handleToggle={handleToggle} />
+    <Logo home={false} />
+    <IconMenuAppbar logout={logout} />
   </AppbarStyled>
 )
 

@@ -1,7 +1,7 @@
 import emailValidator from 'email-validator'
-import passwordValidator from 'password-validator'
+import PasswordValidator from 'password-validator'
 
-const schema = new passwordValidator()
+const schema = new PasswordValidator()
 schema
   .isMin(8)
   .isMax(100)
@@ -19,10 +19,10 @@ export default {
     if (item.length === 0) return
     return schema.validate(item)
   },
-  isEmail (item ) {
+  isEmail (item) {
     return emailValidator.validate(item) ? '' : 'Formato de email invalido'
   },
-  isEmailSelector (item ) {
+  isEmailSelector (item) {
     return emailValidator.validate(item)
   },
   hasText (item) {
@@ -32,7 +32,7 @@ export default {
     return item.length > 0 ? '' : 'Requerido'
   },
   max140 (item) {
-    if (item.length < 1 ) return 'Requerido'
+    if (item.length < 1) return 'Requerido'
     if (item.length > 140) return 'es max 140'
   },
   number (item) {

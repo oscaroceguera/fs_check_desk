@@ -3,7 +3,7 @@ import { getItemsBySchemaId } from '../../helpers/api'
 import { FETCH_ITEMS, fetchItemsLoading, fetchItemsSuccess, fetchItemsFail } from '../../reducers/getItemsReducer'
 import { fetchApiSaga } from '../commons/genericSagas'
 
-function* fetchItems() {
+function* fetchItems () {
   const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
   yield* fetchApiSaga(getItemsBySchemaId, [schemaId, localStorage.getItem('token')], fetchItemsLoading, fetchItemsSuccess, fetchItemsFail)
 }
@@ -14,6 +14,6 @@ function* defaultSaga () {
   ]
 }
 
-export const sagas =  [
+export const sagas = [
   defaultSaga
 ]

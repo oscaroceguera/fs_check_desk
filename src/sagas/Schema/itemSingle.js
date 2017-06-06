@@ -11,19 +11,19 @@ import { postItem } from '../../helpers/api'
 
 function* savedItem () {
   yield put(setSavedItemLoading())
-  const [schemaId, data] = yield([select(state => state.schemasReducer.toJS().schema.id), select((state) => state.itemsReducer.toJS().item)])
+  const [schemaId, data] = yield ([select(state => state.schemasReducer.toJS().schema.id), select((state) => state.itemsReducer.toJS().item)])
   data.schemaId = schemaId
   try {
     const item = yield call(postItem, data, localStorage.getItem('token'))
     yield put(setSavedItemSuccess(item))
     yield put(resetState())
     yield put(fetchItems())
-  } catch(err) {
+  } catch (err) {
     yield put(setSavedItemFail(err))
   }
 }
 
-function* defaultSaga() {
+function* defaultSaga () {
   yield [
     takeLatest(SET_SAVED_ITEM, savedItem)
   ]

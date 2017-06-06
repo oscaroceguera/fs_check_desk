@@ -1,6 +1,5 @@
 import React from 'react'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import {FloatingActionButton, ContentAdd} from 'material-ui'
 
 const FLOAT_CONTAINER = {
   position: 'fixed',
@@ -8,7 +7,7 @@ const FLOAT_CONTAINER = {
   bottom: '2em'
 }
 
-const AddButton  = ({goToAddSchema}) => (
+const AddButton = ({goToAddSchema}) => (
   <FloatingActionButton
     secondary
     style={FLOAT_CONTAINER}

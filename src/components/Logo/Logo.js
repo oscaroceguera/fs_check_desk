@@ -6,7 +6,7 @@ const Logo = ({home}) => (
   <LogoHero home={home}>
     <LogoBx home={home}>
       <LogoBG home={home}>
-        <div><LogoImg src={CheckIcon} alt='check-icon' home={home}/></div>
+        <div><LogoImg src={CheckIcon} alt='check-icon' home={home} /></div>
         <Title home={home}>{'checks'}</Title>
       </LogoBG>
     </LogoBx>

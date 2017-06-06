@@ -1,5 +1,5 @@
 import React from 'react'
-import RaisedButton from 'material-ui/RaisedButton';
+import { RaisedButton } from 'material-ui'
 
 const GenericSubmit = ({disabled, label, onClick}) => (
   <div style={{ textAlign: 'center' }}>
@@ -7,7 +7,7 @@ const GenericSubmit = ({disabled, label, onClick}) => (
       disabled={disabled}
       label={label}
       onClick={onClick}
-      primary/>
+      primary />
   </div>
 )
 

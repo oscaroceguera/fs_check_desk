@@ -12,16 +12,16 @@ import ItemListContainer from './Items/ItemListContainer'
 const Modules = ({modulesLoading}) => (
   <div style={{margin: '2em 0', width: '30%'}}>
     <ModuleFormContainer />
-  <ModuleListContainer modulesLoading={modulesLoading}/>
+    <ModuleListContainer modulesLoading={modulesLoading} />
   </div>
 )
 
 // TODO: Modules protypes
 
 const Items = ({itemsLoading}) => (
-  <div style={{maxWidth: '600px', minWidth: '600px'}}>
+  <div style={{width: '800px'}}>
     {/* <ItemFormContainer /> */}
-    <ItemListContainer itemsLoading={itemsLoading}/>
+    <ItemListContainer itemsLoading={itemsLoading} />
   </div>
 )
 
@@ -29,8 +29,8 @@ const Items = ({itemsLoading}) => (
 
 const ModulesAndItems = (props) => (
   <div style={{display: 'flex'}}>
-    <Modules {...props}/>
-    <Items {...props}/>
+    <Modules {...props} />
+    <Items {...props} />
   </div>
 )
 
@@ -38,7 +38,7 @@ const ModulesAndItems = (props) => (
 
 class SchemaAdminContainer extends React.Component {
 
-  componentWillMount() {
+  componentWillMount () {
     if (this.props.schema.id !== this.props.params.schemaId) {
       this.props.fetchSchema(this.props.params.schemaId)
     }
@@ -48,7 +48,7 @@ class SchemaAdminContainer extends React.Component {
     return (
       <DashboardWrapper title={'Esquemas'} desc={'Crear Esquema'}>
         <SchemaFormContainer />
-      {this.props.schema.id && <ModulesAndItems {...this.props}/>}
+        {this.props.schema.id && <ModulesAndItems {...this.props} />}
         {/* <ModulesAndItems /> */}
       </DashboardWrapper>
     )

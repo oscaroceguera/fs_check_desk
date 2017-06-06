@@ -29,7 +29,7 @@ const Login = ({disabled, handleErrorText, onChangeInput, handleLogin}) => (
 const { bool, func } = React.PropTypes
 
 Login.propTypes = {
-  disabled : bool.isRequired,
+  disabled: bool.isRequired,
   handleErrorText: func.isRequired,
   onChangeInput: func.isRequired,
   handleLogin: func.isRequired

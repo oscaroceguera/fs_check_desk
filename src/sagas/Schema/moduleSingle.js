@@ -34,7 +34,7 @@ function* modalUpdateModule (action) {
   yield put(openModal())
 }
 
-function* updateModule() {
+function* updateModule () {
   yield put(setSavedModuleLoading())
   const data = yield select((state) => state.modulesReducer.toJS().module)
   yield delay(1000)

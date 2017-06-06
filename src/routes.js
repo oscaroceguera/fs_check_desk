@@ -1,9 +1,9 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 
-import App from './components/App/App';
-import SignupContainer from './containers/Signup/SignupContainer';
-import LoginContainer from './containers/Login/LoginContainer';
+import App from './components/App/App'
+import SignupContainer from './containers/Signup/SignupContainer'
+import LoginContainer from './containers/Login/LoginContainer'
 import HomeContainer from './containers/Home/HomeContainer'
 import RequiredAuth from './containers/Auth/RequiredAuth'
 import DashboardContainer from './containers/Dashboard/DashboardContainer'
@@ -17,19 +17,19 @@ const My404Component = () => <h1>{'ESTA RUTA NO EXISTE!'}</h1>
 export default function getRoutes (history) {
   return (
     <Router history={history}>
-      <Route path="/" component={App}>
+      <Route path='/' component={App}>
         <IndexRoute component={HomeContainer} />
-        <Route path="home" component={HomeContainer}>
-          <Route path="signup" component={SignupContainer} />
-          <Route path="login" component={LoginContainer} />
+        <Route path='home' component={HomeContainer}>
+          <Route path='signup' component={SignupContainer} />
+          <Route path='login' component={LoginContainer} />
         </Route>
       </Route>
-      <Route path="dashboard" component={RequiredAuth(DashboardContainer)}>
+      <Route path='dashboard' component={RequiredAuth(DashboardContainer)}>
         <IndexRoute component={RequiredAuth(SchemasContainer)} />
-        <Route path="schemas" component={RequiredAuth(SchemasContainer)} />
-        <Route path="schemas/new" component={RequiredAuth(SchemaAdminContainer)} />
-        <Route path="schemas/new/:schemaId" component={RequiredAuth(SchemaAdminContainer)} />
-        <Route path="checklists" component={RequiredAuth(ChecklistsContainer)} />
+        <Route path='schemas' component={RequiredAuth(SchemasContainer)} />
+        <Route path='schemas/new' component={RequiredAuth(SchemaAdminContainer)} />
+        <Route path='schemas/new/:schemaId' component={RequiredAuth(SchemaAdminContainer)} />
+        <Route path='checklists' component={RequiredAuth(ChecklistsContainer)} />
       </Route>
       <Route path='*' component={My404Component} />
     </Router>

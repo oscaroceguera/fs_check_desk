@@ -23,14 +23,14 @@ const isPassword = createSelector(
 )
 
 export const passEqualsTxtMsg = createSelector(
-  [confPasswordLength,passAreEquals, isPassword],
+  [confPasswordLength, passAreEquals, isPassword],
   (passLength, equals, isPassword) => {
     return passLength && equals && isPassword ? '' : 'Los passwords no son iguales'
   }
 )
 
 const passEquals = createSelector(
-  [confPasswordLength,passAreEquals, isPassword],
+  [confPasswordLength, passAreEquals, isPassword],
   (passLength, equals, isPassword) => {
     return passLength && equals && isPassword
   }

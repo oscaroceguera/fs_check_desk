@@ -26,13 +26,13 @@ const initialState = fromJS({
   error: null,
   profile: {},
   authenticated: false,
-  fields : {
+  fields: {
     email: '',
     password: ''
   }
 })
 
-function authReducer(state = initialState, action) {
+function authReducer (state = initialState, action) {
   switch (action.type) {
     case SET_FIELDS:
       return state.setIn([action.section, action.item], action.value)
@@ -55,7 +55,7 @@ function authReducer(state = initialState, action) {
     case RESET_ERROR:
       return state.set('error', null)
     default:
-      return state;
+      return state
   }
 }
 

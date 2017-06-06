@@ -38,11 +38,11 @@ const Signup = ({errorTxtContainer, onChangeInput, disabled, isPasswordEqual, ha
         errorText={isPasswordEqual}
         onChange={onChangeInput}
       />
-    <GenericSubmit
-      disabled={disabled}
-      label={'Signup'}
-      onClick={handleSignup}
-    />
+      <GenericSubmit
+        disabled={disabled}
+        label={'Signup'}
+        onClick={handleSignup}
+      />
     </SignupLoginWrapper>
   )
 }

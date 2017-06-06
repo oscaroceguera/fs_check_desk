@@ -15,7 +15,7 @@ function* goToAddSchemaWatch () {
   browserHistory.push(`/dashboard/schemas/new`)
 }
 
-function* defaultSaga() {
+function* defaultSaga () {
   yield [
     takeLatest(GO_TO_ADD_NEW_SCHEMA, goToAddSchemaWatch),
     takeLatest(GO_TO_SCHEMA, goToSchemaWatch)

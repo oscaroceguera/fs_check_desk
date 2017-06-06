@@ -2,8 +2,7 @@ import React from 'react'
 import breakpoint from 'styled-components-breakpoint'
 import styled from 'styled-components'
 import { lightBlue900 } from '../../sharedStyles/variables'
-import IconButton from 'material-ui/IconButton';
-import Reorder from 'material-ui/svg-icons/action/reorder'
+import {IconButton, Reorder} from 'material-ui/IconButton'
 
 const HamburgerStyled = styled.div`
   display: block;
@@ -23,7 +22,7 @@ const HamburgerStyled = styled.div`
 const Hamburger = ({ handleToggle }) => (
   <HamburgerStyled onClick={handleToggle}>
     <IconButton>
-      <Reorder color={lightBlue900}/>
+      <Reorder color={lightBlue900} />
     </IconButton>
   </HamburgerStyled>
 )

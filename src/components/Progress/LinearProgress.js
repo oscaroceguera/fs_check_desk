@@ -1,10 +1,10 @@
 import React from 'react'
-import LinearProgress from 'material-ui/LinearProgress';
+import {LinearProgress} from 'material-ui'
 import './style.css'
 
 const LnProgress = () => (
   <div className='linearContainer'>
-    <LinearProgress mode="indeterminate" />
+    <LinearProgress mode='indeterminate' />
   </div>
 )
 
