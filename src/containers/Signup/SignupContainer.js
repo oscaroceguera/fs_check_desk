@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as singupActions from '../../reducers/signupReducer'
@@ -13,7 +14,7 @@ class SignupContainer extends Component {
   componentWillMount () {
     this.props.resetForm()
   }
-  
+
   onChangeInput = (e) => this.props.setFields('fields', e.target.name, e.target.value)
 
   handleErrorText = (field, type) => {
@@ -67,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const { object, string, bool, any } = React.PropTypes
+const { object, string, bool, any } = PropTypes
 
 SignupContainer.propTypes = {
   fields: object.isRequired,

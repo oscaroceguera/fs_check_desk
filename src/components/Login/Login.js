@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import SignupLoginWrapper from '../Wrappers/SignupLoginWrapper'
 import GenericTextField from '../Forms/GenericTextField'
 import GenericSubmit from '../Forms/GenericSubmit'
@@ -26,7 +27,7 @@ const Login = ({disabled, handleErrorText, onChangeInput, handleLogin}) => (
   </SignupLoginWrapper>
 )
 
-const { bool, func } = React.PropTypes
+const { bool, func } = PropTypes
 
 Login.propTypes = {
   disabled: bool.isRequired,

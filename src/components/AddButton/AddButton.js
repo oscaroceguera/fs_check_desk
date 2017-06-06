@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {FloatingActionButton} from 'material-ui'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
@@ -18,7 +19,7 @@ const AddButton = ({goToAddSchema}) => (
 )
 
 AddButton.propTypes = {
-  goToAddSchema: React.PropTypes.func.isRequired
+  goToAddSchema: PropTypes.func.isRequired
 }
 
 export default AddButton

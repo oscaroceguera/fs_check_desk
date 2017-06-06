@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const PapeStyled = styled.div`
@@ -15,7 +15,7 @@ const SignupLoginWrapper = ({children}) => (
 )
 
 SignupLoginWrapper.propTypes = {
-  children: React.PropTypes.array.isRequired
+  children: PropTypes.array.isRequired
 }
 
 export default SignupLoginWrapper

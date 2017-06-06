@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Divider from 'material-ui/Divider'
 import styled from 'styled-components'
 import CreateIcon from 'material-ui/svg-icons/content/create'
@@ -30,8 +31,8 @@ const ItemOption = styled.div`
 const ModuleItemSection = ({title, label}) => <p style={{ margin: 0 }}><strong>{title}</strong>{label}</p>
 
 ModuleItemSection.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 }
 
 export const NotModules = () => <NotModulesMsg>{'¡No hay módulos registrados!'}</NotModulesMsg>
@@ -52,8 +53,8 @@ const ModuleList = ({item, modalUpdate}) => (
 )
 
 ModuleList.propTypes = {
-  item: React.PropTypes.object.isRequired,
-  modalUpdate: React.PropTypes.func.isRequired
+  item: PropTypes.object.isRequired,
+  modalUpdate: PropTypes.func.isRequired
 }
 
 export default ModuleList

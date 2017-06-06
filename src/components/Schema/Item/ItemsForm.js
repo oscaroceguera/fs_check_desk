@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {SelectField, MenuItem} from 'material-ui'
 import TxtFieldResponsive from '../../Forms/TxtFieldResponsive'
 import styled from 'styled-components'
@@ -69,13 +70,13 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
 )
 
 ItemsForm.propTypes = {
-  item: React.PropTypes.object.isRequired,
-  modulesTypes: React.PropTypes.array.isRequired,
-  selectChange: React.PropTypes.func.isRequired,
-  handleErrorText: React.PropTypes.func.isRequired,
-  onChangeInput: React.PropTypes.func.isRequired,
-  submit: React.PropTypes.bool.isRequired,
-  onSaved: React.PropTypes.func.isRequired
+  item: PropTypes.object.isRequired,
+  modulesTypes: PropTypes.array.isRequired,
+  selectChange: PropTypes.func.isRequired,
+  handleErrorText: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  submit: PropTypes.bool.isRequired,
+  onSaved: PropTypes.func.isRequired
 }
 
 export default ItemsForm

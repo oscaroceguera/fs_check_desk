@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {CardContainer, Card, CardHeader, CardHeaderTitle, CardHeaderVersion, CardDescription} from './styles'
 import { grey400 } from '../../sharedStyles/variables'
 
@@ -22,8 +23,8 @@ const ThereAreSchemas = ({ item, goToSchema }) => (
 )
 
 ThereAreSchemas.propTypes = {
-  goToSchema: React.PropTypes.func.isRequired,
-  item: React.PropTypes.object.isRequired
+  goToSchema: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
 }
 
 const SchemaCard = ({ schemas, goToSchema }) => (
@@ -32,6 +33,6 @@ const SchemaCard = ({ schemas, goToSchema }) => (
   </CardContainer>
 )
 
-SchemaCard.propTypes = { schemas: React.PropTypes.array.isRequired }
+SchemaCard.propTypes = { schemas: PropTypes.array.isRequired }
 
 export default SchemaCard

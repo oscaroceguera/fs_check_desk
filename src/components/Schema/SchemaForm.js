@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import TxtFieldId from '../Forms/TxtFieldId'
 import TxtFieldResponsive from '../Forms/TxtFieldResponsive'
 import GenericSubmit from '../Forms/GenericSubmit'
@@ -39,7 +40,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
   </div>
 )
 
-const { object, func, bool } = React.PropTypes
+const { object, func, bool } = PropTypes
 
 SchemaForm.propTypes = {
   item: object.isRequired,

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../reducers/authReducer'
@@ -56,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const { object, bool, string, func } = React.PropTypes
+const { object, bool, string, func } = PropTypes
 
 LoginContainer.propTypes = {
   fields: object.isRequired,

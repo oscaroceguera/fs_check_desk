@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 
@@ -32,9 +33,9 @@ const DashboardWrapper = ({title, desc, children}) => (
 )
 
 DashboardWrapper.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  desc: React.PropTypes.string.isRequired,
-  children: React.PropTypes.any.isRequired
+  title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired
 }
 
 export default DashboardWrapper

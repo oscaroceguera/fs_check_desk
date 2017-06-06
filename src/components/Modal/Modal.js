@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Dialog, FlatButton} from 'material-ui'
 
 const Modal = ({ handleModalOpen, handleModalClose, modalStatus, title, children }) => (
@@ -14,7 +15,7 @@ const Modal = ({ handleModalOpen, handleModalClose, modalStatus, title, children
   </Dialog>
 )
 
-const { func, bool, string, object } = React.PropTypes
+const { func, bool, string, object } = PropTypes
 
 Modal.propTypes = {
   handleModalOpen: func.isRequired,

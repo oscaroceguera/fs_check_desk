@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Link} from 'react-router'
 import './LinkTitle.css'
 
@@ -16,9 +17,9 @@ const LinkTitle = ({path, title, location}) => (
 )
 
 LinkTitle.propTypes = {
-  path: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  location: React.PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired
 }
 
 export default LinkTitle

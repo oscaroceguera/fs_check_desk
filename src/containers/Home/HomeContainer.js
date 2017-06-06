@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo/Logo'
 import LinkTitle from '../../components/Links/LinkTitle'
@@ -6,11 +7,11 @@ import './styles.css'
 
 class HomeContainer extends Component {
   static contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
   }
 
   static propTypes = {
-    location: React.PropTypes.object
+    location: PropTypes.object
   }
 
   componentWillMount () {

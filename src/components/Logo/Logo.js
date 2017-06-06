@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import CheckIcon from './checked.svg'
 import { LogoHero, LogoBx, LogoBG, LogoImg, Title } from './styles'
 
@@ -15,6 +16,6 @@ const Logo = ({home}) => (
 
 Logo.defaultProps = { home: true }
 
-Logo.propTypes = { home: React.PropTypes.bool.isRequired }
+Logo.propTypes = { home: PropTypes.bool.isRequired }
 
 export default Logo

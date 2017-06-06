@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {TextField} from 'material-ui'
 
 const GenericTextField = ({title, name, errorText, onChange, type = 'text'}) => (
@@ -12,7 +13,7 @@ const GenericTextField = ({title, name, errorText, onChange, type = 'text'}) => 
   />
 )
 
-const { string, func } = React.PropTypes
+const { string, func } = PropTypes
 
 GenericTextField.propTypes = {
   title: string.isRequired,

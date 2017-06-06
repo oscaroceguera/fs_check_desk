@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import TxtFieldResponsive from '../../Forms/TxtFieldResponsive'
 import GenericSubmit from '../../Forms/GenericSubmit'
 import styled from 'styled-components'
@@ -43,12 +44,12 @@ const ModuleForm = ({ handleErrorText, onChangeInput, submit, onSaved, onUpdate,
 )
 
 ModuleForm.propTypes = {
-  handleErrorText: React.PropTypes.func.isRequired,
-  onChangeInput: React.PropTypes.func.isRequired,
-  submit: React.PropTypes.bool.isRequired,
-  onSaved: React.PropTypes.func.isRequired,
-  module: React.PropTypes.object.isRequired,
-  onUpdate: React.PropTypes.func.isRequired
+  handleErrorText: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  submit: PropTypes.bool.isRequired,
+  onSaved: PropTypes.func.isRequired,
+  module: PropTypes.object.isRequired,
+  onUpdate: PropTypes.func.isRequired
 }
 
 export default ModuleForm

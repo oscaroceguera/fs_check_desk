@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import SignupLoginWrapper from '../Wrappers/SignupLoginWrapper'
 import GenericTextField from '../Forms/GenericTextField'
 import GenericSubmit from '../Forms/GenericSubmit'
@@ -47,7 +48,7 @@ const Signup = ({errorTxtContainer, onChangeInput, disabled, isPasswordEqual, ha
   )
 }
 
-const { func, bool, string } = React.PropTypes
+const { func, bool, string } = PropTypes
 
 Signup.propTypes = {
   errorTxtContainer: func.isRequired,

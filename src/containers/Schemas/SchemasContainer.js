@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as schemaActions from '../../reducers/getSchemasReducer'
@@ -9,11 +10,11 @@ import CircularLoading from '../../components/Progress/CircularLoading'
 
 class SchemasContainer extends React.Component {
   static contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
   }
 
   static propTypes = {
-    location: React.PropTypes.object
+    location: PropTypes.object
   }
 
   goToSchema = (e, id) => this.props.goToSchema(id)

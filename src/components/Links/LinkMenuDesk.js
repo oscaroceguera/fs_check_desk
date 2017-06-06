@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import './LinkMenuDesk.css'
 
@@ -14,9 +15,9 @@ const LinkMenuDesk = ({ location, path, label }) => (
 )
 
 LinkMenuDesk.propTypes = {
-  location: React.PropTypes.string.isRequired,
-  path: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired
+  location: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 }
 
 export default LinkMenuDesk

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Snackbar from 'material-ui/Snackbar';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -41,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const { bool, string, func } = React.PropTypes
+const { bool, string, func } = PropTypes
 
 SnackbarContainer.propTypes = {
   open: bool.isRequired,

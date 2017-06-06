@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Drawer, MenuItem } from 'material-ui'
 import LinkMenuDesk from '../Links/LinkMenuDesk'
 
@@ -15,10 +16,10 @@ const DrawerMenu = ({ open, handleClose, links, location }) => (
 )
 
 DrawerMenu.propTypes = {
-  open: React.PropTypes.bool.isRequired,
-  handleClose: React.PropTypes.func.isRequired,
-  links: React.PropTypes.array.isRequired,
-  location: React.PropTypes.string.isRequired
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  links: PropTypes.array.isRequired,
+  location: PropTypes.string.isRequired
 }
 
 export default DrawerMenu

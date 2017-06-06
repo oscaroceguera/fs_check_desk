@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 import LinkMenuDesk from '../Links/LinkMenuDesk'
@@ -24,8 +25,8 @@ const MenuDesk = ({ location, links }) => (
 )
 
 MenuDesk.propTypes = {
-  location: React.PropTypes.string.isRequired,
-  links: React.PropTypes.array.isRequired
+  location: PropTypes.string.isRequired,
+  links: PropTypes.array.isRequired
 }
 
 export default MenuDesk

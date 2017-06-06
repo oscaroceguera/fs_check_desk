@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import breakpoint from 'styled-components-breakpoint'
 import styled from 'styled-components'
 import { lightBlue900 } from '../../sharedStyles/variables'
@@ -29,7 +30,7 @@ const Hamburger = ({ handleToggle }) => (
 )
 
 Hamburger.propTypes = {
-  handleToggle: React.PropTypes.func.isRequired
+  handleToggle: PropTypes.func.isRequired
 }
 
 export default Hamburger

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {IconButton, IconMenu, MenuItem, Avatar} from 'material-ui'
 import {greenA700} from '../../sharedStyles/variables'
 
@@ -15,7 +16,7 @@ const IconMenuAppbar = ({logout}) => (
 )
 
 IconMenuAppbar.propTypes = {
-  logout: React.PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired
 }
 
 export default IconMenuAppbar

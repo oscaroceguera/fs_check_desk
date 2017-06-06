@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Hamburger from './Hamburger'
 import Logo from '../../components/Logo/Logo'
@@ -22,8 +23,8 @@ const Appbar = ({ logout, handleToggle }) => (
 )
 
 Appbar.propTypes = {
-  logout: React.PropTypes.func.isRequired,
-  handleToggle: React.PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  handleToggle: PropTypes.func.isRequired
 }
 
 export default Appbar

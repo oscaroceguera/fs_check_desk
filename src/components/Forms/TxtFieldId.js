@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {TextField} from 'material-ui'
 
 const TxtFieldId = ({ item }) => (
@@ -11,7 +12,7 @@ const TxtFieldId = ({ item }) => (
 )
 
 TxtFieldId.propTypes = {
-  item: React.PropTypes.object.isRequired
+  item: PropTypes.object.isRequired
 }
 
 export default TxtFieldId

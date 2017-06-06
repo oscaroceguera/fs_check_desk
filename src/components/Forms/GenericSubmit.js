@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { RaisedButton } from 'material-ui'
 
 const GenericSubmit = ({disabled, label, onClick}) => (
@@ -11,7 +12,7 @@ const GenericSubmit = ({disabled, label, onClick}) => (
   </div>
 )
 
-const { bool, string, func } = React.PropTypes
+const { bool, string, func } = PropTypes
 
 GenericSubmit.propTypes = {
   disabled: bool.isRequired,
