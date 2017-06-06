@@ -1,5 +1,7 @@
 import { fromJS } from 'immutable'
 
+const CLOSE_FORM = 'src/items/CLOSE_FORM'
+const OPEN_FORM = 'src/items/OPEN_FORM'
 const SELECTED_MODULE = 'scr/items/SELECTED_MODULE'
 const SET_FIELDS = 'src/items/SET_FIELDS'
 export const SET_SAVED_ITEM = 'src/items/SET_SAVED_ITEM'
@@ -8,6 +10,8 @@ export const SET_SAVED_ITEM_SUCCESS = 'src/items/SET_SAVED_ITEM_SUCCESS'
 export const SET_SAVED_ITEM_FAIL = 'src/items/SET_SAVED_ITEM_FAIL'
 const RESET_STATE = 'src/items/RESET_STATE'
 
+export const closeForm = () => ({ type: CLOSE_FORM })
+export const openForm = () => ({ type: OPEN_FORM })
 export const selectedModule = (moduleId) => ({ type: SELECTED_MODULE, moduleId })
 export const setItemFields = (section, item, value) => ({ type: SET_FIELDS, section, item, value })
 export const setSavedItem = () => ({ type: SET_SAVED_ITEM })
@@ -26,11 +30,16 @@ const initialState = fromJS({
     value: ''
   },
   savedLoading: false,
-  savedFail: null
+  savedFail: null,
+  openFormModal: false
 })
 
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case OPEN_FORM:
+      return state.set('openFormModal', true)
+    case CLOSE_FORM:
+      return state.set('openFormModal', false)
     case SET_FIELDS:
       return state.setIn([action.section, action.item], action.value)
     case SELECTED_MODULE:
