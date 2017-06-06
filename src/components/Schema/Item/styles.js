@@ -3,9 +3,17 @@ import styled from 'styled-components'
 export const Container = styled.div`
   padding-left: 2em;
 `
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const Title = styled.h2`
   color: gray;
   text-align: center;
+  flex-grow: 1;
 `
 export const Table = styled.div`
   box-shadow: 0px 0px 5px gray;
