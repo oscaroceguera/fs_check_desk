@@ -1,5 +1,6 @@
 import React from 'react'
-import {FloatingActionButton, ContentAdd} from 'material-ui'
+import {FloatingActionButton} from 'material-ui'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 
 const FLOAT_CONTAINER = {
   position: 'fixed',

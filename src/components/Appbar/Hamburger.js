@@ -2,7 +2,8 @@ import React from 'react'
 import breakpoint from 'styled-components-breakpoint'
 import styled from 'styled-components'
 import { lightBlue900 } from '../../sharedStyles/variables'
-import {IconButton, Reorder} from 'material-ui/IconButton'
+import {IconButton} from 'material-ui'
+import Reorder from 'material-ui/svg-icons/action/reorder'
 
 const HamburgerStyled = styled.div`
   display: block;
