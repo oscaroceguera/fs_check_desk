@@ -10,12 +10,22 @@ class ItemListContainer extends React.Component {
     this.props.fetchItems()
   }
 
+  onUpdateItem (id, index) {
+    console.log('Update', id, index)
+  }
+  
+  onDeleteItem = (id, index) => {
+    this.props.setDeleteItem(id, index)
+  }
+
   render () {
     return (
       <ItemList
         {...this.props}
         onOpenForm={() => this.props.openForm()}
         onCloseForm={() => this.props.closeForm()}
+        onUpdateItem={this.onUpdateItem}
+        onDeleteItem={this.onDeleteItem}
       />
     )
   }
