@@ -2,6 +2,16 @@ import { delay } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 
+export function* deleteApiSaga (fn, args, position, loading, success, fail) {
+  yield put(loading())
+  try {
+    yield call(fn, ...args)
+    yield put(success(position))
+  } catch (err) {
+    yield put(fail(err))
+  }
+}
+
 export function* fetchApiSaga (fn, args, loadingAction, successAction, errorAction) {
   yield put(loadingAction())
   yield delay(1000)
