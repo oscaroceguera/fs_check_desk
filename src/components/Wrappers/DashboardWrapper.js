@@ -5,7 +5,6 @@ import breakpoint from 'styled-components-breakpoint'
 
 const Wrapper = styled.div`
   margin: auto;
-  border: 1px solid green;
   max-width: 530px;
   margin: auto;
   position: relative;
