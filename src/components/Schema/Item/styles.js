@@ -22,21 +22,28 @@ export const TableHeader = styled.div`
   display: flex;
   text-align: center;
   color: gray;
-  padding: 0 0.5em;
+  padding: 0;
 `
 export const RowHeaderStyled = styled.p`
   width: ${props => props.width};
+  margin: 0;
+  padding: .5em;
+  text-align: ${props => props.center ? 'center' : 'left'};
 `
 export const TableBodyStyled = styled.div`
   display: flex;
   font-size: 12px;
-  padding: .5em;
+  padding: 0;
+  transition: .3s;
+  &:hover {
+    background: #F5F5F5;
+  }
 `
 export const RowBodyStyled = styled.p`
   width: ${props => props.width};
   margin: 0;
   padding: .5em;
-  text-align: {props => props.align};
+  text-align: ${props => props.center ? 'center' : 'left'};
 `
 
 export const NotItemsMsg = styled.p`
@@ -44,3 +51,8 @@ export const NotItemsMsg = styled.p`
   color: gray;
   text-align: center;
 `
+
+export const IconStyl = {
+  color: '#757575',
+  cursor: 'pointer'
+}

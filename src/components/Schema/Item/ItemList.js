@@ -1,63 +1,71 @@
 import React from 'react'
+import { array, bool, func, number } from 'prop-types'
 import Divider from 'material-ui/Divider'
 import CircularLoading from '../../Progress/CircularLoading'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Modal from '../../Modal/Modal'
 import ItemFormContainer from '../../../containers/Schemas/Items/ItemFormContainer'
+import CreateIcon from 'material-ui/svg-icons/content/create'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import {
   Container, Title, Table,
   TableHeader, RowHeaderStyled,
   TableBodyStyled, RowBodyStyled,
-  NotItemsMsg, TitleContainer
+  NotItemsMsg, TitleContainer, IconStyl
 } from './styles'
-
 
 const NotItems = () => <NotItemsMsg>{'¡No hay reactivos registrados!'}</NotItemsMsg>
 
-const TableBody = ({item}) => (
+const TableBody = ({item, onUpdateItem, onDeleteItem, position}) => (
   <div>
     <TableBodyStyled>
-      <RowBodyStyled width={'20%'}>{item.moduleId.name}</RowBodyStyled>
-      <RowBodyStyled width={'35%'}>{item.answer}</RowBodyStyled>
-      <RowBodyStyled width={'35%'}>{item.recommend}</RowBodyStyled>
-      <RowBodyStyled width={'10%'} align='center'>{item.value}</RowBodyStyled>
+      <RowBodyStyled width={'100px'}>{item.moduleId.name}</RowBodyStyled>
+      <RowBodyStyled width={'200px'}>{item.answer}</RowBodyStyled>
+      <RowBodyStyled width={'200px'}>{item.recommend}</RowBodyStyled>
+      <RowBodyStyled width={'100px'} center>{item.value}</RowBodyStyled>
+      <RowBodyStyled width={'100px'} center>
+        <CreateIcon style={IconStyl} onClick={() => onUpdateItem(item._id, position)} />
+        <DeleteIcon style={IconStyl} onClick={() => onDeleteItem(item._id, position)} />
+      </RowBodyStyled>
     </TableBodyStyled>
     <Divider />
   </div>
 )
 
-TableBody.propTypes = { Items: React.PropTypes.array }
+TableBody.propTypes = {
+  Items: array,
+  onUpdateItem: func.isRequired,
+  onDeleteItem: func.isRequired,
+  position: number.isRequired
+}
 
 const TopTitle = ({onOpenForm}) => (
   <TitleContainer>
     <Title>{'Reactivos'}</Title>
-    <FloatingActionButton
-      onClick={onOpenForm}
-      secondary={true}
-      mini
-    >
+    <FloatingActionButton onClick={onOpenForm} secondary mini >
       <ContentAdd />
     </FloatingActionButton>
   </TitleContainer>
 )
 
-TopTitle.propTypes = { onOpenForm: React.PropTypes.func.isRequired }
+TopTitle.propTypes = { onOpenForm: func.isRequired }
 
 const TitleHeaderContainer = () => (
   <TableHeader>
-    <RowHeaderStyled width={'20%'}>{'Módulo'}</RowHeaderStyled>
-    <RowHeaderStyled width={'35%'}>{'Pregunta'}</RowHeaderStyled>
-    <RowHeaderStyled width={'35%'}>{'Métrica'}</RowHeaderStyled>
-    <RowHeaderStyled width={'10%'}>{'Valor'}</RowHeaderStyled>
+    <RowHeaderStyled width={'100px'}>{'Módulo'}</RowHeaderStyled>
+    <RowHeaderStyled width={'200px'}>{'Pregunta'}</RowHeaderStyled>
+    <RowHeaderStyled width={'200px'}>{'Métrica'}</RowHeaderStyled>
+    <RowHeaderStyled width={'100px'} center>{'Valor'}</RowHeaderStyled>
+    <RowHeaderStyled width={'100px'} center>{'Opción'}</RowHeaderStyled>
   </TableHeader>
 )
 
 const ModalContainer = (props) => <Modal {...props}><ItemFormContainer /></Modal>
 
-const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus}) => (
+const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus, onUpdateItem, onDeleteItem}) => (
   <Container>
-    <TopTitle onOpenForm={onOpenForm}/>
+    <TopTitle onOpenForm={onOpenForm} />
     <Table>
       <TitleHeaderContainer />
       <Divider />
@@ -65,7 +73,7 @@ const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus}) => (
         loading
           ? <CircularLoading />
           : items.length > 0
-            ? items.map((item, index) => <TableBody key={index} item={item}/>)
+            ? items.map((item, index) => <TableBody key={index} position={index} item={item} onUpdateItem={onUpdateItem} onDeleteItem={onDeleteItem} />)
             : <NotItems />
       }
     </Table>
@@ -79,11 +87,13 @@ const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus}) => (
 )
 
 ItemList.propTypes = {
-  Items: React.PropTypes.array,
-  loading: React.PropTypes.bool.isRequired,
-  onOpenForm: React.PropTypes.func.isRequired,
-  onCloseForm: React.PropTypes.func.isRequired,
-  modalStatus: React.PropTypes.bool.isRequired
+  Items: array,
+  loading: bool.isRequired,
+  onOpenForm: func.isRequired,
+  onCloseForm: func.isRequired,
+  modalStatus: bool.isRequired,
+  onUpdateItem: func.isRequired,
+  onDeleteItem: func.isRequired
 }
 
 export default ItemList
