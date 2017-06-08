@@ -53,6 +53,11 @@ export const getItemsBySchemaId = (schemaId, token) =>
     .get(`${api}/auth/items/${schemaId}`, headers(token))
     .then((items) => items.data)
 
+export const deleteItemById = (id, token) =>
+  axios
+    .delete(`${api}/auth/items/${id}`, headers(token))
+    .then((items) => items.data)
+
 export const putSchema = (schemaId, data, token) =>
   axios
     .put(`${api}/auth/schemas/${schemaId}`, data, headers(token))
