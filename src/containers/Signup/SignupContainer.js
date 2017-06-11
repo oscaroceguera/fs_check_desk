@@ -15,14 +15,10 @@ class SignupContainer extends Component {
     this.props.resetForm()
   }
 
-  onChangeInput = (e) => this.props.setFields('fields', e.target.name, e.target.value)
-
   handleErrorText = (field, type) => {
     const { fields } = this.props
     return aux.errorTextMessage(fields[field], type)
   }
-
-  handleSignup = (e) => this.props.setSignup()
 
   render () {
     const {
@@ -36,8 +32,8 @@ class SignupContainer extends Component {
             ? <CircularLoading />
             : <Signup
               errorTxtContainer={this.handleErrorText}
-              onChangeInput={this.onChangeInput}
-              handleSignup={this.handleSignup}
+              onChangeInput={(e) => this.props.setFields('fields', e.target.name, e.target.value)}
+              handleSignup={(e) => this.props.setSignup()}
               disabled={disabled}
               isPasswordEqual={isPasswordEqual}
               />

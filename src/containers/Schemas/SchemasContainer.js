@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { object, array, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as schemaActions from '../../reducers/getSchemasReducer'
@@ -10,16 +10,17 @@ import CircularLoading from '../../components/Progress/CircularLoading'
 
 class SchemasContainer extends React.Component {
   static contextTypes = {
-    router: PropTypes.object
+    router: object
   }
 
   static propTypes = {
-    location: PropTypes.object
+    router: object,
+    schemas: array.isRequired,
+    schemasLoading: bool.isRequired,
+    goToSchema: func.isRequired,
+    goToAddNewSchema: func.isRequired,
+    fetchSchemas: func.isRequired
   }
-
-  goToSchema = (e, id) => this.props.goToSchema(id)
-
-  goToAddSchema = (e) => this.props.goToAddNewSchema()
 
   componentWillMount () {
     this.props.fetchSchemas()
@@ -34,8 +35,10 @@ class SchemasContainer extends React.Component {
           title={'Esquemas'}
           desc={'Administrador de Esquemas'}
         >
-        <SchemaCard schemas={schemas} goToSchema={this.goToSchema}/>
-        <AddButton goToAddSchema={this.goToAddSchema}/>
+        <SchemaCard
+          schemas={schemas}
+          goToSchema={(e, id) => this.props.goToSchema(id)}/>
+        <AddButton goToAddSchema={(e) => this.props.goToAddNewSchema()}/>
       </DashboardWrapper>
   }
 }
@@ -53,7 +56,5 @@ const mapDispatchToProps = (dispatch) => {
     ...schemaActions
   }, dispatch)
 }
-
-// TODO: PROPTYPES
 
 export default connect(mapStateToProps, mapDispatchToProps)(SchemasContainer)

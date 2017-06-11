@@ -1,4 +1,5 @@
 import React from 'react'
+import { bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as modalActions from '../../reducers/modalReducer'
@@ -7,8 +8,12 @@ import AddIcon from 'material-ui/svg-icons/content/add';
 import Modal from '../../components/Modal/Modal'
 
 class ModalContainer extends React.Component {
-  handleModalOpen = () => this.props.openModal()
-  handleModalClose = () => this.props.closeModal()
+  static propTypes = {
+    modalStatus: bool.isRequired,
+    openModal: func.isRequired,
+    closeModal: func.isRequired
+  }
+
   render () {
     const { modalStatus } = this.props
     return (
@@ -18,11 +23,11 @@ class ModalContainer extends React.Component {
           label={this.props.label}
           primary
           fullWidth={true}
-          onClick={this.handleModalOpen}
+          onClick={() => this.props.openModal()}
         />
         <Modal
-          handleModalOpen={this.handleModalOpen}
-          handleModalClose={this.handleModalClose}
+          handleModalOpen={() => this.props.openModal()}
+          handleModalClose={() => this.props.closeModal()}
           modalStatus={modalStatus}
           title={this.props.label}
         >
@@ -30,15 +35,12 @@ class ModalContainer extends React.Component {
         </Modal>
       </div>
     )
-
   }
 }
 
-// TODO: Poaner aqui las props q recibe (state, props)
 const mapStateToProps = (state) => {
-  const modalJS = state.modalReducer.toJS()
   return {
-    modalStatus: modalJS.open,
+    modalStatus: state.modalReducer.toJS().open,
   }
 }
 
@@ -48,5 +50,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-// TODO: propTypes
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer)

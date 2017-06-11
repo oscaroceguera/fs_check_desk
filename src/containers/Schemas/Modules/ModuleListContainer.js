@@ -1,4 +1,5 @@
 import React from 'react'
+import { array, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as modulesActions from '../../../reducers/getModulesReducer'
@@ -16,6 +17,13 @@ const ListContainer = styled.div`
 `
 
 class ModuleListContainer extends React.Component {
+  static propTypes = {
+    modules: array.isRequired,
+    loading: bool.isRequired,
+    fetchModules: func.isRequired,
+    showModalUpdateModule: func.isRequired
+  }
+
   componentWillMount () {
     this.props.fetchModules()
   }
@@ -63,6 +71,5 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-// TODO: PROPTYPES
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModuleListContainer)

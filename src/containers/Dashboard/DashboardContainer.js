@@ -24,22 +24,13 @@ const PanelChildren = styled.div`
 `
 
 class DashboardContainer extends Component {
-  // Handle logout
-  onLogout = () => this.props.logoutUser()
-
-  // Handle Drawer menu
-  onMenu = () => this.props.drawerMenu()
-
-  // Handle Drawer menu close
-  onMenuClose = () => this.props.drawerMenuClose()
-
   render () {
     const { location } = this.props
     return (
       <div>
         <Appbar
-          logout={this.onLogout}
-          handleToggle={this.onMenu}
+          logout={() => this.props.logoutUser()}
+          handleToggle={() => this.props.drawerMenu()}
         />
         <PanelContainer>
           <MenuDesk
@@ -48,7 +39,7 @@ class DashboardContainer extends Component {
           />
           <DrawerMenu
             open={this.props.drawerOpen}
-            handleClose={this.onMenuClose}
+            handleClose={() => this.props.drawerMenuClose()}
             location={location.pathname}
             links={links}
           />

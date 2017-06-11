@@ -1,4 +1,5 @@
 import React from 'react'
+import { object, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../../reducers/schemasReducer'
@@ -15,7 +16,7 @@ const Modules = ({modulesLoading}) => (
   </div>
 )
 
-// TODO: Modules protypes
+Modules.propTypes = { modulesLoading: bool.isRequired }
 
 const Items = ({itemsLoading}) => (
   <div style={{width: '800px'}}>
@@ -23,7 +24,7 @@ const Items = ({itemsLoading}) => (
   </div>
 )
 
-// TODO: Items protypes
+Items.propTypes = { itemsLoading: bool.isRequired }
 
 const ModulesAndItems = (props) => (
   <div style={{display: 'flex'}}>
@@ -32,9 +33,13 @@ const ModulesAndItems = (props) => (
   </div>
 )
 
-// TODO: ModulesAndItems protypes
-
 class SchemaAdminContainer extends React.Component {
+  static propTypes = {
+    schema: object.isRequired,
+    modulesLoading: bool.isRequired,
+    itemsLoading: bool.isRequired,
+    fetchSchema: func.isRequired
+  }
 
   componentWillMount () {
     if (this.props.schema.id !== this.props.params.schemaId) {
@@ -69,5 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-// TODO: propTypes
 export default connect(mapStateToProps, mapDispatchToProps)(SchemaAdminContainer)

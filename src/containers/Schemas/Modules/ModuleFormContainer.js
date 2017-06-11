@@ -1,4 +1,5 @@
 import React from 'react'
+import { object, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as modulesActions from '../../../reducers/modulesReducer'
@@ -9,19 +10,21 @@ import { everyModuleItems } from '../../../selectors/schemaSelector'
 import CircularLoading from '../../../components/Progress/CircularLoading'
 
 // TODO: Al precionar cangelar o salir del modal limpiar datos del modal.
-
 class ModuleFormContainer extends React.Component {
 
-  onChangeInput = (e, section) => this.props.setModuleFields(section, e.target.name, e.target.value)
+  static propTpes = {
+    module: object.isRequired,
+    loading: bool.isRequired,
+    submitSchema: bool.isRequired,
+    setModuleFields: func.isRequired,
+    setSavedModule: func.isRequired,
+    setUpdateSchema: func.isRequired
+  }
 
   handleErrorText = (section, field, type) => {
     const _section = this.props[section]
     return aux.errorTextMessage(_section[field], type)
   }
-
-  onSaved = (e) => this.props.setSavedModule()
-
-  onUpdate = (e) => this.props.setUpdateModule()
 
   render () {
     return (
@@ -30,10 +33,10 @@ class ModuleFormContainer extends React.Component {
           this.props.loading
             ? <CircularLoading />
             : <ModuleForm
-                onChangeInput={this.onChangeInput}
+                onChangeInput={(e, section) => this.props.setModuleFields(section, e.target.name, e.target.value)}
                 handleErrorText={this.handleErrorText}
-                onSaved={this.onSaved}
-                onUpdate={this.onUpdate}
+                onSaved={(e) => this.props.setSavedModule()}
+                onUpdate={(e) => this.props.setUpdateModule()}
                 submit={this.props.submit}
                 module={this.props.module}
               />

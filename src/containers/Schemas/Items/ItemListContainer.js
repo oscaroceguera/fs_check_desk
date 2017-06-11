@@ -1,4 +1,5 @@
 import React from 'react'
+import { array, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/getItemsReducer'
@@ -6,6 +7,17 @@ import * as itemActions from '../../../reducers/itemsReducer'
 import ItemList from '../../../components/Schema/Item/ItemList'
 
 class ItemListContainer extends React.Component {
+  static propTypes = {
+    items: array.isRequired,
+    loading: bool.isRequired,
+    modalStatus: bool.isRequired,
+    fetchItems: func.isRequired,
+    showModalUpdateItem: func.isRequired,
+    setDeleteItem: func.isRequired,
+    openForm: func.isRequired,
+    closeForm: func.isRequired
+  }
+
   componentWillMount () {
     this.props.fetchItems()
   }
@@ -24,10 +36,6 @@ class ItemListContainer extends React.Component {
     this.props.showModalUpdateItem(index, _item)
   }
 
-  onDeleteItem = (id, index) => {
-    this.props.setDeleteItem(id, index)
-  }
-
   render () {
     return (
       <ItemList
@@ -35,13 +43,11 @@ class ItemListContainer extends React.Component {
         onOpenForm={() => this.props.openForm()}
         onCloseForm={() => this.props.closeForm()}
         onOpenFormUpdate={this.modalUpdate}
-        onDeleteItem={this.onDeleteItem}
+        onDeleteItem={(id, index) => this.props.setDeleteItem(id, index)}
       />
     )
   }
 }
-
-// TODO: PROPTYPES
 
 const mapStateToProps = (state, props) => ({
   items: state.getItemsReducer.toJS().items,

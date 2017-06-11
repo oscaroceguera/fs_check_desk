@@ -1,4 +1,5 @@
 import React from 'react'
+import { bool, func, array, object } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/itemsReducer'
@@ -10,20 +11,15 @@ import { everyItems } from '../../../selectors/schemaSelector'
 import CircularLoading from '../../../components/Progress/CircularLoading'
 
 class ItemFormContainer extends React.Component {
-  onChange = (e, section) =>
-    this.props.setItemFields(section, e.target.name, e.target.value)
-
-  onSelect = (event, index, value) =>
-    this.props.selectedModule(value)
-
-  errTxt = (section, field, type) =>
-    aux.errorTextMessage(this.props[section][field], type)
-
-  onSaved = (e) =>
-    this.props.setSavedItem()
-
-  onUpdate = () => {
-    this.props.setUpdateItem()
+  static propTypes = {
+    modulesTypes: array.isRequired,
+    item: object.isRequired,
+    submit: bool.isRequired,
+    loading: bool.isRequired,
+    setItemFields: func.isRequired,
+    selectedModule: func.isRequired,
+    setSavedItem: func.isRequired,
+    setUpdateItem: func.isRequired
   }
 
   render () {
@@ -34,11 +30,11 @@ class ItemFormContainer extends React.Component {
             ? <CircularLoading />
             : <ItemsForm
                 {...this.props}
-                selectChange={this.onSelect}
-                handleErrorText={this.errTxt}
-                onChangeInput={this.onChange}
-                onSaved={this.onSaved}
-                onUpdate={this.onUpdate}
+                selectChange={(event, index, value) => this.props.selectedModule(value)}
+                handleErrorText={(section, field, type) => aux.errorTextMessage(this.props[section][field], type)}
+                onChangeInput={(e, section) => this.props.setItemFields(section, e.target.name, e.target.value)}
+                onSaved={() => this.props.setSavedItem()}
+                onUpdate={() => this.props.setUpdateItem()}
               />
         }
       </div>
@@ -58,7 +54,5 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...itemsActions, ...itemActions }, dispatch)
-
-// TODO: PROPTYPES
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemFormContainer)

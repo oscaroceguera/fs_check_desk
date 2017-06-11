@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Snackbar from 'material-ui/Snackbar';
+import Snackbar from 'material-ui/Snackbar'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as snackbarActions from '../../reducers/snackbarReducer'
@@ -10,10 +10,6 @@ class SnackbarContainer extends Component {
     this.props.openSnackbar()
   }
 
-  handleActionTouchTap = () => this.props.closeSnackbar()
-
-  handleRequestClose = () => this.props.closeSnackbar()
-
   render () {
     const { open, msg } = this.props
     return (
@@ -21,8 +17,8 @@ class SnackbarContainer extends Component {
         open={open}
         message={msg}
         action={'Aceptar'}
-        onActionTouchTap={this.handleActionTouchTap}
-        onRequestClose={this.handleRequestClose}
+        onActionTouchTap={() => this.props.closeSnackbar()}
+        onRequestClose={this.props.closeSnackbar()}
       />
     )
   }
