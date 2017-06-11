@@ -1,11 +1,12 @@
 import { delay } from 'redux-saga'
-import { call, put, select, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import * as SR from '../../reducers/schemasReducer'
 import { postSchema, getSchemaById, putSchema } from '../../helpers/api'
 import { addApiSaga } from '../commons/genericSagas'
+import { getSimpleState } from '../commons/genericSelect'
 
 function* savedSchema () {
-  const data = yield select((state) => state.schemasReducer.toJS().schema)
+  const data = yield getSimpleState('schemasReducer', 'schema')
   yield * addApiSaga(
     postSchema,
     [data, localStorage.getItem('token')],
@@ -17,7 +18,7 @@ function* savedSchema () {
 
 function* updateSchema () {
   yield put(SR.setSavedSchemaLoading())
-  const data = yield select((state) => state.schemasReducer.toJS().schema)
+  const data = yield getSimpleState('schemasReducer', 'schema')
   yield delay(1000)
   try {
     const schema = yield call(putSchema, data.id, data, localStorage.getItem('token'))

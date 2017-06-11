@@ -6,7 +6,6 @@ import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import SchemaFormContainer from './SchemaFormContainer'
 import ModuleFormContainer from './Modules/ModuleFormContainer'
 import ModuleListContainer from './Modules/ModuleListContainer'
-// import ItemFormContainer from './Items/ItemFormContainer'
 import ItemListContainer from './Items/ItemListContainer'
 
 const Modules = ({modulesLoading}) => (
@@ -20,7 +19,6 @@ const Modules = ({modulesLoading}) => (
 
 const Items = ({itemsLoading}) => (
   <div style={{width: '800px'}}>
-    {/* <ItemFormContainer /> */}
     <ItemListContainer itemsLoading={itemsLoading} />
   </div>
 )
@@ -49,7 +47,6 @@ class SchemaAdminContainer extends React.Component {
       <DashboardWrapper title={'Esquemas'} desc={'Crear Esquema'}>
         <SchemaFormContainer />
         {this.props.schema.id && <ModulesAndItems {...this.props} />}
-        {/* <ModulesAndItems /> */}
       </DashboardWrapper>
     )
   }

@@ -1,15 +1,15 @@
 import { delay } from 'redux-saga'
-import { call, put, select, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import * as MR from '../../reducers/modulesReducer'
 import { fetchModules } from '../../reducers/getModulesReducer'
 import { fetchItems } from '../../reducers/getItemsReducer'
 import { closeModal, openModal } from '../../reducers/modalReducer'
 import { postModule, putModule } from '../../helpers/api'
+import { getSimpleState, getStateWithSecondItem } from '../commons/genericSelect'
 
 function* savedModule () {
   yield put(MR.setSavedModuleLoading())
-  const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
-  const data = yield select((state) => state.modulesReducer.toJS().module)
+  const [schemaId, data] = yield [getStateWithSecondItem('schemasReducer', 'schema', 'id'), getSimpleState('modulesReducer', 'module')]
   data.schemaId = schemaId
   yield delay(1000)
   try {
@@ -30,7 +30,7 @@ function* modalUpdateModule (action) {
 
 function* updateModule () {
   yield put(MR.setSavedModuleLoading())
-  const data = yield select((state) => state.modulesReducer.toJS().module)
+  const data = yield getSimpleState('modulesReducer', 'module')
   yield delay(1000)
   try {
     const module = yield call(putModule, data.id, data, localStorage.getItem('token'))

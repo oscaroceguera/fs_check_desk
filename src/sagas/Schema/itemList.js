@@ -1,10 +1,11 @@
-import { select, takeEvery } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga/effects'
 import { getItemsBySchemaId, deleteItemById } from '../../helpers/api'
 import * as GIR from '../../reducers/getItemsReducer'
 import { fetchApiSaga, deleteApiSaga } from '../commons/genericSagas'
+import { getStateWithSecondItem } from '../commons/genericSelect'
 
 function* fetchItems () {
-  const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
+  const schemaId = yield getStateWithSecondItem('schemasReducer', 'schema', 'id')
   yield * fetchApiSaga(
     getItemsBySchemaId,
     [schemaId, localStorage.getItem('token')],

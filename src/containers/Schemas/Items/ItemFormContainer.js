@@ -47,7 +47,6 @@ class ItemFormContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('STATE', state);
   const modulesJS = state.getModulesReducer.toJS()
   const itemsJS = state.itemsReducer.toJS()
   return {
