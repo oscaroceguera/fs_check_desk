@@ -1,16 +1,22 @@
 import { select, takeEvery } from 'redux-saga/effects'
 import { getModulesBySchemaId } from '../../helpers/api'
-import { FETCH_MODULES, fetchModulesLoading, fetchModulesSuccess, fetchModulesFail } from '../../reducers/getModulesReducer'
+import * as GMR from '../../reducers/getModulesReducer'
 import { fetchApiSaga } from '../commons/genericSagas'
 
 function* fetchModules () {
   const schemaId = yield select(state => state.schemasReducer.toJS().schema.id)
-  yield* fetchApiSaga(getModulesBySchemaId, [schemaId, localStorage.getItem('token')], fetchModulesLoading, fetchModulesSuccess, fetchModulesFail)
+  yield * fetchApiSaga(
+    getModulesBySchemaId,
+    [schemaId, localStorage.getItem('token')],
+    GMR.fetchModulesLoading,
+    GMR.fetchModulesSuccess,
+    GMR.fetchModulesFail
+  )
 }
 
 function* defaultSaga () {
   yield [
-    takeEvery(FETCH_MODULES, fetchModules)
+    takeEvery(GMR.FETCH_MODULES, fetchModules)
   ]
 }
 
