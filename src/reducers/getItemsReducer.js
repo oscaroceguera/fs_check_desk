@@ -5,18 +5,26 @@ export const FETCH_ITEMS_LOADING = 'src/item/FETCH_ITEMS_LOADING'
 export const FETCH_ITEMS_SUCCESS = 'src/item/FETCH_ITEMS_SUCCESS'
 export const FETCH_ITEMS_FAIL = 'src/item/FETCH_ITEMS_FAIL'
 
-export const SET_DELETE_ITEM = 'src/item/SET_DELETE_ITEM'
-export const SET_DELETE_ITEM_SUCCESS = 'src/item/SET_DELETE_ITEM_SUCCESS'
-export const SET_DELETE_ITEM_FAIL = 'src/item/SET_DELETE_ITEM_FAIL'
-
 export const fetchItems = () => ({ type: FETCH_ITEMS })
 export const fetchItemsLoading = () => ({ type: FETCH_ITEMS_LOADING })
 export const fetchItemsSuccess = (items) => ({ type: FETCH_ITEMS_SUCCESS, items })
 export const fetchItemsFail = (err) => ({ type: FETCH_ITEMS_FAIL, err })
 
+export const SET_DELETE_ITEM = 'src/item/SET_DELETE_ITEM'
+export const SET_DELETE_ITEM_SUCCESS = 'src/item/SET_DELETE_ITEM_SUCCESS'
+export const SET_DELETE_ITEM_FAIL = 'src/item/SET_DELETE_ITEM_FAIL'
+
 export const setDeleteItem = (id, index) => ({ type: SET_DELETE_ITEM, id, index })
 export const setDeleteItemSuccess = (index) => ({ type: SET_DELETE_ITEM_SUCCESS, index })
 export const setDeleteItemFail = (err) => ({ type: SET_DELETE_ITEM_FAIL, err })
+
+const SET_INDEX_OF_ITEM_UPDATE = 'src/item/SET_INDEX_OF_ITEM_UPDATE'
+
+export const setIndexOfItemUpdate = (index) => ({ type: SET_INDEX_OF_ITEM_UPDATE, index })
+
+export const SET_UPTATE_ITEM = 'src/items/SET_UPTATE_ITEM'
+
+export const setUpdateItem = () => ({ type: SET_UPTATE_ITEM })
 
 const initialState = fromJS({
   items: [],
