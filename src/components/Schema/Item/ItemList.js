@@ -17,7 +17,7 @@ import {
 
 const NotItems = () => <NotItemsMsg>{'¡No hay reactivos registrados!'}</NotItemsMsg>
 
-const TableBody = ({item, onUpdateItem, onDeleteItem, position}) => (
+const TableBody = ({item, onOpenFormUpdate, onDeleteItem, position}) => (
   <div>
     <TableBodyStyled>
       <RowBodyStyled width={'100px'}>{item.moduleId.name}</RowBodyStyled>
@@ -25,7 +25,7 @@ const TableBody = ({item, onUpdateItem, onDeleteItem, position}) => (
       <RowBodyStyled width={'200px'}>{item.recommend}</RowBodyStyled>
       <RowBodyStyled width={'100px'} center>{item.value}</RowBodyStyled>
       <RowBodyStyled width={'100px'} center>
-        <CreateIcon style={IconStyl} onClick={() => onUpdateItem(item._id, position)} />
+        <CreateIcon style={IconStyl} onClick={() => onOpenFormUpdate(position, item)} />
         <DeleteIcon style={IconStyl} onClick={() => onDeleteItem(item._id, position)} />
       </RowBodyStyled>
     </TableBodyStyled>
@@ -35,7 +35,7 @@ const TableBody = ({item, onUpdateItem, onDeleteItem, position}) => (
 
 TableBody.propTypes = {
   Items: array,
-  onUpdateItem: func.isRequired,
+  onOpenFormUpdate: func.isRequired,
   onDeleteItem: func.isRequired,
   position: number.isRequired
 }
@@ -63,7 +63,7 @@ const TitleHeaderContainer = () => (
 
 const ModalContainer = (props) => <Modal {...props}><ItemFormContainer /></Modal>
 
-const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus, onUpdateItem, onDeleteItem}) => (
+const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus, onOpenFormUpdate, onDeleteItem}) => (
   <Container>
     <TopTitle onOpenForm={onOpenForm} />
     <Table>
@@ -73,7 +73,7 @@ const ItemList = ({items, loading, onOpenForm, onCloseForm, modalStatus, onUpdat
         loading
           ? <CircularLoading />
           : items.length > 0
-            ? items.map((item, index) => <TableBody key={index} position={index} item={item} onUpdateItem={onUpdateItem} onDeleteItem={onDeleteItem} />)
+            ? items.map((item, index) => <TableBody key={index} position={index} item={item} onOpenFormUpdate={onOpenFormUpdate} onDeleteItem={onDeleteItem} />)
             : <NotItems />
       }
     </Table>
@@ -92,7 +92,7 @@ ItemList.propTypes = {
   onOpenForm: func.isRequired,
   onCloseForm: func.isRequired,
   modalStatus: bool.isRequired,
-  onUpdateItem: func.isRequired,
+  onOpenFormUpdate: func.isRequired,
   onDeleteItem: func.isRequired
 }
 

@@ -10,10 +10,20 @@ class ItemListContainer extends React.Component {
     this.props.fetchItems()
   }
 
-  onUpdateItem (id, index) {
-    console.log('Update', id, index)
+  modalUpdate = (index, item) => {
+    const _item = {
+      number: item.number,
+      order: item.order,
+      value: item.value,
+      answer: item.answer,
+      recommend: item.recommend,
+      moduleId: item.moduleId._id,
+      schemaId: item.schemaId._id,
+      id: item._id
+    }
+    this.props.showModalUpdateItem(index, _item)
   }
-  
+
   onDeleteItem = (id, index) => {
     this.props.setDeleteItem(id, index)
   }
@@ -24,7 +34,7 @@ class ItemListContainer extends React.Component {
         {...this.props}
         onOpenForm={() => this.props.openForm()}
         onCloseForm={() => this.props.closeForm()}
-        onUpdateItem={this.onUpdateItem}
+        onOpenFormUpdate={this.modalUpdate}
         onDeleteItem={this.onDeleteItem}
       />
     )

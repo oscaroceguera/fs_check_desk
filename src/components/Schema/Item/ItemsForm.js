@@ -11,7 +11,7 @@ const FormContainer = styled.div`
   flex-wrap: wrap;
 `
 
-const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeInput, submit, onSaved}) => (
+const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeInput, submit, onSaved, onUpdate}) => (
   <FormContainer>
     <SelectField
       errorText={handleErrorText('item', 'moduleId', 'txt')}
@@ -26,6 +26,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       floatingLabelText={'Número'}
       name={'number'}
       width={'15%'}
+      value={item.number || ''}
       errorText={handleErrorText('item', 'number', 'txtZero')}
       onChange={(e, section) => onChangeInput(e, 'item')}
     />
@@ -33,6 +34,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       floatingLabelText={'Orden'}
       name={'order'}
       width={'15%'}
+      value={item.order || ''}
       errorText={handleErrorText('item', 'order', 'number')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
     />
@@ -40,6 +42,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       floatingLabelText={'Valor'}
       name={'value'}
       width={'15%'}
+      value={item.value || ''}
       errorText={handleErrorText('item', 'value', 'number')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
     />
@@ -47,6 +50,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       floatingLabelText={'Pregunta'}
       name={'answer'}
       width={'100%'}
+      value={item.answer || ''}
       errorText={handleErrorText('item', 'answer', 'txt')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
       multiLine
@@ -56,6 +60,7 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
       floatingLabelText={'Métrica'}
       name={'recommend'}
       width={'100%'}
+      value={item.recommend || ''}
       errorText={handleErrorText('item', 'recommend', 'txt')}
       onChange={(e, section, type) => onChangeInput(e, 'item')}
       multiLine
@@ -63,8 +68,8 @@ const ItemsForm = ({item, modulesTypes, selectChange, handleErrorText, onChangeI
     />
     <GenericSubmit
       disabled={submit}
-      label={'Guardar'}
-      onClick={onSaved}
+      label={item.id ? 'Actualizar' : 'Guardar'}
+      onClick={item.id ? onUpdate : onSaved}
     />
   </FormContainer>
 )
@@ -76,7 +81,8 @@ ItemsForm.propTypes = {
   handleErrorText: PropTypes.func.isRequired,
   onChangeInput: PropTypes.func.isRequired,
   submit: PropTypes.bool.isRequired,
-  onSaved: PropTypes.func.isRequired
+  onSaved: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired
 }
 
 export default ItemsForm

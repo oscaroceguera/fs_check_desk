@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/itemsReducer'
+import * as itemActions from '../../../reducers/getItemsReducer'
 import aux from '../../../helpers/AuxFunctions'
 import ItemsForm from '../../../components/Schema/Item/ItemsForm'
 import { orderBy } from 'lodash/collection'
@@ -21,6 +22,10 @@ class ItemFormContainer extends React.Component {
   onSaved = (e) =>
     this.props.setSavedItem()
 
+  onUpdate = () => {
+    this.props.setUpdateItem()
+  }
+
   render () {
     return (
       <div style={{ paddingLeft: '2em' }}>
@@ -33,6 +38,7 @@ class ItemFormContainer extends React.Component {
                 handleErrorText={this.errTxt}
                 onChangeInput={this.onChange}
                 onSaved={this.onSaved}
+                onUpdate={this.onUpdate}
               />
         }
       </div>
@@ -41,6 +47,7 @@ class ItemFormContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('STATE', state);
   const modulesJS = state.getModulesReducer.toJS()
   const itemsJS = state.itemsReducer.toJS()
   return {
@@ -51,7 +58,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ...itemsActions }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...itemsActions, ...itemActions }, dispatch)
 
 // TODO: PROPTYPES
 
