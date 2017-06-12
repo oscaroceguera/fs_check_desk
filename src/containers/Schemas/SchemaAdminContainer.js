@@ -9,6 +9,7 @@ import ModuleFormContainer from './Modules/ModuleFormContainer'
 import ModuleListContainer from './Modules/ModuleListContainer'
 import ItemListContainer from './Items/ItemListContainer'
 
+// MODULE CONTAINER
 const Modules = ({modulesLoading}) => (
   <div style={{margin: '2em 0', width: '30%'}}>
     <ModuleFormContainer />
@@ -18,6 +19,7 @@ const Modules = ({modulesLoading}) => (
 
 Modules.propTypes = { modulesLoading: bool.isRequired }
 
+// ITEM CONTAINER
 const Items = ({itemsLoading}) => (
   <div style={{width: '800px'}}>
     <ItemListContainer itemsLoading={itemsLoading} />
@@ -26,6 +28,7 @@ const Items = ({itemsLoading}) => (
 
 Items.propTypes = { itemsLoading: bool.isRequired }
 
+// CONTAINER FOR MODULE & ITEM MANAGER
 const ModulesAndItems = (props) => (
   <div style={{display: 'flex'}}>
     <Modules {...props} />
@@ -33,6 +36,7 @@ const ModulesAndItems = (props) => (
   </div>
 )
 
+// MAIN CONTAINER
 class SchemaAdminContainer extends React.Component {
   static propTypes = {
     schema: object.isRequired,
