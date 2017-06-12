@@ -38,7 +38,7 @@ class SchemasContainer extends React.Component {
         <SchemaCard
           schemas={schemas}
           goToSchema={(e, id) => this.props.goToSchema(id)}/>
-        <AddButton goToAddSchema={(e) => this.props.goToAddNewSchema()}/>
+        <AddButton goTo={(e) => this.props.goToAddNewSchema()}/>
       </DashboardWrapper>
   }
 }
