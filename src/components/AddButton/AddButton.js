@@ -9,17 +9,17 @@ const FLOAT_CONTAINER = {
   bottom: '2em'
 }
 
-const AddButton = ({goToAddSchema}) => (
+const AddButton = ({goTo}) => (
   <FloatingActionButton
     secondary
     style={FLOAT_CONTAINER}
-    onTouchTap={goToAddSchema}>
+    onTouchTap={goTo}>
     <ContentAdd />
   </FloatingActionButton>
 )
 
 AddButton.propTypes = {
-  goToAddSchema: PropTypes.func.isRequired
+  goTo: PropTypes.func.isRequired
 }
 
 export default AddButton
