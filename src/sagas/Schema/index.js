@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga'
 import { call, put, takeLatest } from 'redux-saga/effects'
-import * as SR from '../../reducers/schemasReducer'
+import * as SR from '../../reducers/Schema/schemaForm'
 import { postSchema, getSchemaById, putSchema } from '../../helpers/api'
 import { addApiSaga } from '../commons/genericSagas'
 import { getSimpleState } from '../commons/genericSelect'

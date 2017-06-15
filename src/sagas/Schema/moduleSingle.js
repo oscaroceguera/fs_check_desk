@@ -1,9 +1,9 @@
 import { delay } from 'redux-saga'
 import { call, put, takeLatest } from 'redux-saga/effects'
-import * as MR from '../../reducers/modulesReducer'
-import { fetchModules } from '../../reducers/getModulesReducer'
-import { fetchItems } from '../../reducers/getItemsReducer'
-import { closeModal, openModal } from '../../reducers/modalReducer'
+import * as MR from '../../reducers/Module/moduleForm'
+import { fetchModules } from '../../reducers/Module/moduleList'
+import { fetchItems } from '../../reducers/Item/itemList'
+import { closeModal, openModal } from '../../reducers/Modal'
 import { postModule, putModule } from '../../helpers/api'
 import { getSimpleState, getStateWithSecondItem } from '../commons/genericSelect'
 

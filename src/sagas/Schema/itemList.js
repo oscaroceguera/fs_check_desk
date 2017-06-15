@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga/effects'
 import { getItemsBySchemaId, deleteItemById } from '../../helpers/api'
-import * as GIR from '../../reducers/getItemsReducer'
+import * as GIR from '../../reducers/Item/itemList'
 import { fetchApiSaga, deleteApiSaga } from '../commons/genericSagas'
 import { getStateWithSecondItem } from '../commons/genericSelect'
 

@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga/effects'
 import { getModulesBySchemaId } from '../../helpers/api'
-import * as GMR from '../../reducers/getModulesReducer'
+import * as GMR from '../../reducers/Module/moduleList'
 import { fetchApiSaga } from '../commons/genericSagas'
 import { getStateWithSecondItem } from '../commons/genericSelect'
 

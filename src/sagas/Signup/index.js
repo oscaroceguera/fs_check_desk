@@ -2,7 +2,7 @@ import { delay } from 'redux-saga'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 import { signupUser } from '../../helpers/api'
-import * as SR from '../../reducers/signupReducer'
+import * as SR from '../../reducers/Signup'
 import { getSimpleState } from '../commons/genericSelect'
 
 function* signupFanout () {

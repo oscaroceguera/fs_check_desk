@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
-import { AUTH_USER } from './reducers/authReducer'
+import { AUTH_USER } from './reducers/Auth'
 import { browserHistory } from 'react-router'
 
 import createSagaMiddleware from 'redux-saga'

@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga/effects'
-import { GO_TO_ADD_NEW_CHECKLIST } from '../../reducers/getChecklistReducer'
+import { GO_TO_ADD_NEW_CHECKLIST } from '../../reducers/Checklist/checklistList'
 import { browserHistory } from 'react-router'
 
 function* linkToChecklist () {

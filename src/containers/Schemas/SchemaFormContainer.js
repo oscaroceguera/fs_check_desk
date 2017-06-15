@@ -2,7 +2,7 @@ import React from 'react'
 import { object, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as schemaActions from '../../reducers/schemasReducer'
+import * as schemaActions from '../../reducers/Schema/schemaForm'
 import aux from '../../helpers/AuxFunctions'
 import { submitSchema } from '../../selectors/schemaSelector'
 

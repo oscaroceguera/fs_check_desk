@@ -2,7 +2,7 @@ import { delay } from 'redux-saga'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 import { login } from '../../helpers/api'
-import * as authReducer from '../../reducers/authReducer'
+import * as authReducer from '../../reducers/Auth'
 import { getSimpleState } from '../commons/genericSelect'
 
 const setTokenLS = (token) => localStorage.setItem('token', token)

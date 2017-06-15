@@ -2,8 +2,8 @@ import React from 'react'
 import { array, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as itemsActions from '../../../reducers/getItemsReducer'
-import * as itemActions from '../../../reducers/itemsReducer'
+import * as itemsActions from '../../../reducers/Item/itemList'
+import * as itemActions from '../../../reducers/Item/itemForm'
 import ItemList from '../../../components/Schema/Item/ItemList'
 
 class ItemListContainer extends React.Component {
@@ -41,7 +41,7 @@ class ItemListContainer extends React.Component {
       <ItemList
         {...this.props}
         onOpenForm={() => this.props.openForm()}
-        onCloseForm={() => this.props.closeForm()}
+        onCloseForm={() => this.props.setCloseModal()}
         onOpenFormUpdate={this.modalUpdate}
         onDeleteItem={(id, index) => this.props.setDeleteItem(id, index)}
       />

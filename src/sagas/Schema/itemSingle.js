@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import * as IR from '../../reducers/itemsReducer'
-import * as GIR from '../../reducers/getItemsReducer'
+import * as IR from '../../reducers/Item/itemForm'
+import * as GIR from '../../reducers/Item/itemList'
 import { postItem, putItem } from '../../helpers/api'
 import { getSimpleState, getStateWithSecondItem } from '../commons/genericSelect'
 
@@ -36,11 +36,17 @@ function* updateItem () {
   }
 }
 
+function* cancelModal () {
+  yield put(IR.resetState())
+  yield put(IR.closeForm())
+}
+
 function* defaultSaga () {
   yield [
     takeLatest(IR.SET_SAVED_ITEM, savedItem),
     takeLatest(IR.SHOW_MODAL_UPDATE_ITEM, modalUpdateItem),
-    takeLatest(GIR.SET_UPTATE_ITEM, updateItem)
+    takeLatest(GIR.SET_UPTATE_ITEM, updateItem),
+    takeLatest(IR.SET_CLOSE_MODAL, cancelModal)
   ]
 }
 

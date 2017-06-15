@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as loginActions from '../../reducers/authReducer'
+import * as loginActions from '../../reducers/Auth'
 import aux from '../../helpers/AuxFunctions'
 
 import SnackbarContainer from '../Snackbar/SnackbarContainer'

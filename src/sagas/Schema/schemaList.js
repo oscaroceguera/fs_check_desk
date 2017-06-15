@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga/effects'
 import { getSchemas } from '../../helpers/api'
-import * as GSR from '../../reducers/getSchemasReducer'
+import * as GSR from '../../reducers/Schema/schemaList'
 import { fetchApiSaga } from '../commons/genericSagas'
 
 function* fetchSchemas () {

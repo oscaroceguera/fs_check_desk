@@ -1,7 +1,7 @@
 import { takeLatest, put } from 'redux-saga/effects'
-import { GO_TO_ADD_NEW_SCHEMA, GO_TO_SCHEMA } from '../../reducers/getSchemasReducer'
-import { resetFields } from '../../reducers/schemasReducer'
-import { resetModules } from '../../reducers/getModulesReducer'
+import { GO_TO_ADD_NEW_SCHEMA, GO_TO_SCHEMA } from '../../reducers/Schema/schemaList'
+import { resetFields } from '../../reducers/Schema/schemaForm'
+import { resetModules } from '../../reducers/Module/moduleList'
 import { browserHistory } from 'react-router'
 
 function* goToSchemaWatch (action) {

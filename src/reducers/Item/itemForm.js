@@ -5,9 +5,11 @@ import { fromJS } from 'immutable'
 **/
 
 // MODAL
+export const SET_CLOSE_MODAL = 'src/items/SET_CLOSE_MODAL'
 const CLOSE_FORM = 'src/items/CLOSE_FORM'
 const OPEN_FORM = 'src/items/OPEN_FORM'
 
+export const setCloseModal = () => ({ type: SET_CLOSE_MODAL })
 export const closeForm = () => ({ type: CLOSE_FORM })
 export const openForm = () => ({ type: OPEN_FORM })
 

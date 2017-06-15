@@ -8,12 +8,14 @@ import { sagas as ItemSingleSagas } from './Schema/itemSingle'
 import { sagas as ItemListSagas } from './Schema/itemList'
 import { sagas as addSchemaSagas } from './Schema/addSchemaLink'
 import { sagas as ChecklistLink } from './Checklist/link'
+import { sagas as Modal } from './Modal'
 
 export default [
   ...SignupSagas,
   ...LoginSagas,
   ...SchemasSagas,
   ...SchemasListSagas,
+  ...Modal,
   ...ModuleSingleSagas,
   ...ModuleListSagas,
   ...ItemSingleSagas,

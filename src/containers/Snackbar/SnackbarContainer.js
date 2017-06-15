@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Snackbar from 'material-ui/Snackbar'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as snackbarActions from '../../reducers/snackbarReducer'
+import * as snackbarActions from '../../reducers/Snackbar'
 
 class SnackbarContainer extends Component {
   componentWillMount () {

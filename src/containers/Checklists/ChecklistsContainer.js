@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../../reducers/getChecklistReducer'
+import * as actions from '../../reducers/Checklist/checklistList'
 import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
 import AddButton from '../../components/AddButton/AddButton'
 

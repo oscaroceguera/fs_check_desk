@@ -18,10 +18,6 @@ export const setDeleteItem = (id, index) => ({ type: SET_DELETE_ITEM, id, index 
 export const setDeleteItemSuccess = (index) => ({ type: SET_DELETE_ITEM_SUCCESS, index })
 export const setDeleteItemFail = (err) => ({ type: SET_DELETE_ITEM_FAIL, err })
 
-const SET_INDEX_OF_ITEM_UPDATE = 'src/item/SET_INDEX_OF_ITEM_UPDATE'
-
-export const setIndexOfItemUpdate = (index) => ({ type: SET_INDEX_OF_ITEM_UPDATE, index })
-
 export const SET_UPTATE_ITEM = 'src/items/SET_UPTATE_ITEM'
 
 export const setUpdateItem = () => ({ type: SET_UPTATE_ITEM })
