@@ -7,7 +7,6 @@ import { getSimpleState } from '../commons/genericSelect'
 
 function* signupFanout () {
   yield put(SR.singupLoading())
-  yield delay(1000)
   const data = yield getSimpleState('signupReducer', 'fields')
   const dataPost = {
     firstName: data.firstName,
@@ -18,6 +17,7 @@ function* signupFanout () {
   try {
     yield call(signupUser, dataPost)
     yield put(SR.signupSuccess())
+    yield delay(1000)
     browserHistory.push('/home/login')
   } catch (err) {
     yield put(SR.signupFail(err))

@@ -18,7 +18,7 @@ class SnackbarContainer extends Component {
         message={msg}
         action={'Aceptar'}
         onActionTouchTap={() => this.props.closeSnackbar()}
-        onRequestClose={this.props.closeSnackbar()}
+        onRequestClose={() => this.props.closeSnackbar()}
       />
     )
   }

@@ -21,10 +21,7 @@ class SignupContainer extends Component {
   }
 
   render () {
-    const {
-      isPasswordEqual, disabled, savedLoading,
-      savedFail, savedSucces, message
-    } = this.props
+    const { isPasswordEqual, disabled, savedLoading, message } = this.props
     return (
       <div>
         {
@@ -38,8 +35,7 @@ class SignupContainer extends Component {
               isPasswordEqual={isPasswordEqual}
               />
         }
-        {savedFail && <SnackbarContainer msg={savedFail}/>}
-        {savedSucces && <SnackbarContainer msg={message}/>}
+        {message && <SnackbarContainer msg={message}/>}
       </div>
     )
   }
@@ -47,14 +43,13 @@ class SignupContainer extends Component {
 
 const mapStateToProps = (state) => {
   const stateJS = state.signupReducer.toJS()
+  let msg = stateJS.savedFail ? stateJS.savedFail : stateJS.message
   return {
     fields: stateJS.fields,
     isPasswordEqual: passEqualsTxtMsg(state),
     disabled: !showsubmit(state),
     savedLoading: stateJS.savedLoading,
-    savedFail: stateJS.savedFail,
-    savedSucces: stateJS.savedSucces,
-    message: stateJS.message
+    message: msg
   }
 }
 
@@ -64,15 +59,13 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const { object, string, bool, any } = PropTypes
+const { object, string, bool } = PropTypes
 
 SignupContainer.propTypes = {
   fields: object.isRequired,
   isPasswordEqual: string.isRequired,
   disabled: bool.isRequired,
   savedLoading: bool.isRequired,
-  savedFail: any,
-  savedSucces: bool.isRequired,
   message: string.isRequired
 }
 
