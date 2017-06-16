@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
-import LinkMenuDesk from '../Links/LinkMenuDesk'
+import { LinkMenuDesk } from '../index'
 
 const MenuContainer = styled.div`
   display: none;

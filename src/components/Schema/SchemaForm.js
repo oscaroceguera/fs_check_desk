@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TxtFieldId from '../Forms/TxtFieldId'
-import TxtFieldResponsive from '../Forms/TxtFieldResponsive'
-import GenericSubmit from '../Forms/GenericSubmit'
+import { TxtFieldId, TxtFieldResponsive, GenericSubmit } from '../index'
 
 const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, updateSchema, saveSchema }) => (
   <div>

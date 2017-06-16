@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import breakpoint from 'styled-components-breakpoint'
 import styled from 'styled-components'
 import { lightBlue900 } from '../../sharedStyles/variables'
-import {IconButton} from 'material-ui'
+import { IconButton } from 'material-ui'
 import Reorder from 'material-ui/svg-icons/action/reorder'
 
 const HamburgerStyled = styled.div`

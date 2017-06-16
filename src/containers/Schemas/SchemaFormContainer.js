@@ -6,8 +6,7 @@ import * as schemaActions from '../../reducers/Schema/schemaForm'
 import aux from '../../helpers/AuxFunctions'
 import { submitSchema } from '../../selectors/schemaSelector'
 
-import CircularLoading from '../../components/Progress/CircularLoading'
-import SchemaForm from '../../components/Schema/SchemaForm'
+import { CircularLoading, SchemaForm } from '../../components'
 
 class SchemaFormContainer extends React.Component {
   static propTypes = {

@@ -5,9 +5,8 @@ import { bindActionCreators } from 'redux'
 import * as modulesActions from '../../../reducers/Module/moduleForm'
 import aux from '../../../helpers/AuxFunctions'
 import Modal from '../../Modal/ModalContainer'
-import ModuleForm from '../../../components/Schema/Module/ModuleForm'
+import { ModuleForm, CircularLoading } from '../../../components'
 import { everyModuleItems } from '../../../selectors/schemaSelector'
-import CircularLoading from '../../../components/Progress/CircularLoading'
 
 class ModuleFormContainer extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Drawer, MenuItem } from 'material-ui'
-import LinkMenuDesk from '../Links/LinkMenuDesk'
+import { LinkMenuDesk } from '../index'
 
 const DrawerMenu = ({ open, handleClose, links, location }) => (
   <Drawer open={open} width={150}>

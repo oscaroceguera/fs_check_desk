@@ -3,10 +3,7 @@ import { object, array, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as schemaActions from '../../reducers/Schema/schemaList'
-import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
-import SchemaCard from '../../components/Cards/SchemaCard'
-import AddButton from '../../components/AddButton/AddButton'
-import CircularLoading from '../../components/Progress/CircularLoading'
+import { DashboardWrapper, SchemaCard, AddButton, CircularLoading } from '../../components'
 
 class SchemasContainer extends React.Component {
   static contextTypes = {

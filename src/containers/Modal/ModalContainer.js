@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as modalActions from '../../reducers/Modal'
 import RaisedButton from 'material-ui/RaisedButton';
 import AddIcon from 'material-ui/svg-icons/content/add';
-import Modal from '../../components/Modal/Modal'
+import { Modal } from '../../components'
 
 class ModalContainer extends React.Component {
   static propTypes = {

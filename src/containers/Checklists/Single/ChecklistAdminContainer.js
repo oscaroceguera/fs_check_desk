@@ -1,5 +1,5 @@
 import React from 'react'
-import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
+import { DashboardWrapper } from '../../../components'
 import ChecklistFormContainer from './ChecklistFormContainer'
 
 // TODO: 4 Al guardar el checklist mostar los reactivos

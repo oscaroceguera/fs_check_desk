@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {SelectField, MenuItem} from 'material-ui'
-import TxtFieldResponsive from '../../Forms/TxtFieldResponsive'
+import { SelectField, MenuItem } from 'material-ui'
+import { TxtFieldResponsive, GenericSubmit } from '../../index'
 import styled from 'styled-components'
-import GenericSubmit from '../../Forms/GenericSubmit'
 
 const FormContainer = styled.div`
   padding: .5em;

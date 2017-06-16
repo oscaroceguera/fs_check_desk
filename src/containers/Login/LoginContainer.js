@@ -6,8 +6,7 @@ import * as loginActions from '../../reducers/Auth'
 import aux from '../../helpers/AuxFunctions'
 
 import SnackbarContainer from '../Snackbar/SnackbarContainer'
-import CircularLoading from '../../components/Progress/CircularLoading'
-import Login from '../../components/Login/Login'
+import { CircularLoading, Login } from '../../components'
 import { fieldsNotNull } from '../../selectors/loginSelector'
 
 class LoginContainer extends Component {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { ChecklistForm } from '../../../components'
 
 // TODO: UI de ChecklistAdminContainer
 // TODO: 1 Seleccionar el tipo de check-list
@@ -20,7 +21,7 @@ import React from 'react'
 class ChecklistFormContainer extends React.Component {
   render () {
     return (
-      <h1>Formulario</h1>
+      <ChecklistForm />
     )
   }
 }

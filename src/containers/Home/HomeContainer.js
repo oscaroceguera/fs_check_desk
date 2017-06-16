@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Logo from '../../components/Logo/Logo'
-import LinkTitle from '../../components/Links/LinkTitle'
+import { Logo, LinkTitle } from '../../components'
 import './styles.css'
 
 class HomeContainer extends Component {

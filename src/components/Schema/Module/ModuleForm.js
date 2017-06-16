@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TxtFieldResponsive from '../../Forms/TxtFieldResponsive'
-import GenericSubmit from '../../Forms/GenericSubmit'
+import { TxtFieldResponsive, GenericSubmit } from '../../index'
 import styled from 'styled-components'
 
 const Container = styled.div`

@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Hamburger from './Hamburger'
-import Logo from '../../components/Logo/Logo'
-import IconMenuAppbar from './IconMenuAppbar'
+import { Logo, Hamburger, IconMenuAppbar } from '../index'
 import {BX_SHADOW} from '../../sharedStyles/variables'
 
 const AppbarStyled = styled.div`
