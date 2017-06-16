@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects'
 import * as MODAL from '../../reducers/Modal'
-import * as MODULE from '../../reducers/Module/moduleList'
+import * as MODULE from '../../reducers/Module/moduleForm'
 
 function* cancelModal () {
   yield put(MODULE.resetFields())
