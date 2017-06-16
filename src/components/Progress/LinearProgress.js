@@ -1,5 +1,5 @@
 import React from 'react'
-import {LinearProgress} from 'material-ui'
+import { LinearProgress } from 'material-ui'
 import './style.css'
 
 const LnProgress = () => (

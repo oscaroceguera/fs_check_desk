@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Dialog, FlatButton} from 'material-ui'
+import { Dialog, FlatButton } from 'material-ui'
 
 const Modal = ({ handleModalOpen, handleModalClose, modalStatus, title, children }) => (
   <Dialog
