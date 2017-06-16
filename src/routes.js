@@ -9,8 +9,8 @@ import RequiredAuth from './containers/Auth/RequiredAuth'
 import DashboardContainer from './containers/Dashboard/DashboardContainer'
 import SchemasContainer from './containers/Schemas/SchemasContainer'
 import SchemaAdminContainer from './containers/Schemas/SchemaAdminContainer'
-import ChecklistsContainer from './containers/Checklists/ChecklistsContainer'
-import ChecklistAdminContainer from './containers/Checklists/ChecklistAdminContainer'
+import ChecklistsContainer from './containers/Checklists/List/ChecklistsContainer'
+import ChecklistAdminContainer from './containers/Checklists/Single/ChecklistAdminContainer'
 
 // TODO: Crear UI para esta ruta
 const My404Component = () => <h1>{'ESTA RUTA NO EXISTE!'}</h1>

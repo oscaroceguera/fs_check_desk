@@ -5,9 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as loginActions from '../../reducers/Auth'
 import * as dashboarActions from '../../reducers/Dashboard'
 import styled from 'styled-components'
-import Appbar from '../../components/Appbar/Appbar'
-import DrawerMenu from '../../components/DrawerMenu/DrawerMenu'
-import MenuDesk from '../../components/MenuDesk/MenuDesk'
+import { Appbar, DrawerMenu, MenuDesk } from '../../components'
 
 const links = [
   { path: '/dashboard/schemas', label: 'Esquemas' },

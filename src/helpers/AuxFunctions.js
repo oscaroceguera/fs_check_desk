@@ -33,7 +33,7 @@ export default {
   },
   max140 (item) {
     if (item.length < 1) return 'Requerido'
-    if (item.length > 140) return 'es max 140'
+    if (item.length > 140) return '140 caracteres como máximo'
   },
   number (item) {
     return Number(item) ? '' : 'Formato númerico'

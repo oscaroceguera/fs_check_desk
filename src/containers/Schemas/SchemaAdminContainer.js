@@ -3,11 +3,8 @@ import { object, bool, func } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../../reducers/Schema/schemaForm'
-import DashboardWrapper from '../../components/Wrappers/DashboardWrapper'
-import SchemaFormContainer from './SchemaFormContainer'
-import ModuleFormContainer from './Modules/ModuleFormContainer'
-import ModuleListContainer from './Modules/ModuleListContainer'
-import ItemListContainer from './Items/ItemListContainer'
+import { DashboardWrapper } from '../../components'
+import { SchemaFormContainer, ModuleFormContainer, ModuleListContainer, ItemListContainer } from '../index'
 
 // MODULE CONTAINER
 const Modules = ({modulesLoading}) => (

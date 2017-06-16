@@ -7,7 +7,7 @@ import * as modulesUpdateActions from '../../../reducers/Module/moduleForm'
 import {orderBy} from 'lodash/collection'
 import styled from 'styled-components'
 import ModuleList, { NotModules } from '../../../components/Schema/Module/ModuleList'
-import LnProgress from '../../../components/Progress/LinearProgress'
+import { LinearProgress as LnProgress } from '../../../components'
 
 const ListContainer = styled.div`
   box-shadow: 0px 0px 5px gray;

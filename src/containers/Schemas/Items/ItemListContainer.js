@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/Item/itemList'
 import * as itemActions from '../../../reducers/Item/itemForm'
-import ItemList from '../../../components/Schema/Item/ItemList'
+import { ItemList } from '../../../components'
 
 class ItemListContainer extends React.Component {
   static propTypes = {

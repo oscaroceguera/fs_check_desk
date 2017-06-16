@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/Item/itemList'
 import * as itemActions from '../../../reducers/Item/itemForm'
-import aux from '../../../helpers/AuxFunctions'
-import ItemsForm from '../../../components/Schema/Item/ItemsForm'
-import { orderBy } from 'lodash/collection'
 import { everyItems } from '../../../selectors/schemaSelector'
-import CircularLoading from '../../../components/Progress/CircularLoading'
+import aux from '../../../helpers/AuxFunctions'
+import { ItemsForm, CircularLoading } from '../../../components'
+import { orderBy } from 'lodash/collection'
 
 class ItemFormContainer extends React.Component {
   static propTypes = {

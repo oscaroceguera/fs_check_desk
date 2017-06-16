@@ -6,8 +6,7 @@ import * as singupActions from '../../reducers/Signup'
 import aux from '../../helpers/AuxFunctions'
 import { passEqualsTxtMsg, showsubmit } from '../../selectors/signupSelector'
 
-import Signup from '../../components/Signup/Signup'
-import CircularLoading from '../../components/Progress/CircularLoading'
+import { Signup, CircularLoading } from '../../components'
 import SnackbarContainer from '../Snackbar/SnackbarContainer'
 
 class SignupContainer extends Component {

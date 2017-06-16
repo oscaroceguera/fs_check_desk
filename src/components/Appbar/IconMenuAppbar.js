@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {IconButton, IconMenu, MenuItem, Avatar} from 'material-ui'
-import {greenA700} from '../../sharedStyles/variables'
+import { greenA700 } from '../../sharedStyles/variables'
 
 const IconMenuAppbar = ({logout}) => (
   <IconMenu

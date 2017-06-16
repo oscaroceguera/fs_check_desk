@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TxtFieldId from '../Forms/TxtFieldId'
-import TxtFieldResponsive from '../Forms/TxtFieldResponsive'
-import GenericSubmit from '../Forms/GenericSubmit'
+import { TxtFieldId, TxtFieldResponsive, GenericSubmit, FormWrapper } from '../index'
 
 const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, updateSchema, saveSchema }) => (
   <div>
     <TxtFieldId item={item} />
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <FormWrapper>
       <TxtFieldResponsive
         floatingLabelText={'Nombre'}
         name={'name'}
@@ -36,7 +34,7 @@ const SchemaForm = ({ item, handleErrorText, onChangeInput, submitSchema, update
         label={item.id ? 'Actualizar' : 'Guardar'}
         onClick={item.id ? updateSchema : saveSchema}
       />
-    </div>
+    </FormWrapper>
   </div>
 )
 

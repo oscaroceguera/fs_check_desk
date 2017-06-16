@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SignupLoginWrapper from '../Wrappers/SignupLoginWrapper'
-import GenericTextField from '../Forms/GenericTextField'
-import GenericSubmit from '../Forms/GenericSubmit'
+import { SignupLoginWrapper, GenericTextField, GenericSubmit } from '../index'
 
 const Signup = ({errorTxtContainer, onChangeInput, disabled, isPasswordEqual, handleSignup}) => {
   return (
