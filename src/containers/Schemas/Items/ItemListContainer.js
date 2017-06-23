@@ -6,6 +6,8 @@ import * as itemsActions from '../../../reducers/Item/itemList'
 import * as itemActions from '../../../reducers/Item/itemForm'
 import { ItemList } from '../../../components'
 
+import { orderBy } from 'lodash/collection'
+
 class ItemListContainer extends React.Component {
   static propTypes = {
     items: array.isRequired,
@@ -50,7 +52,7 @@ class ItemListContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  items: state.getItemsReducer.toJS().items,
+  items: orderBy(state.getItemsReducer.toJS().items, ['moduleId.order', 'order'], ['asc', 'asc']),
   loading: props.itemsLoading,
   modalStatus: state.itemsReducer.toJS().openFormModal
 })
