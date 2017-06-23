@@ -1,6 +1,6 @@
 import React from 'react'
 import { TxtFieldId, TxtFieldResponsive, GenericSubmit, FormWrapper } from '../index'
-import { SelectField, MenuItem } from 'material-ui'
+import { SelectField, MenuItem, DatePicker } from 'material-ui'
 
 // TODO: UI de ChecklistAdminContainer
 // TODO: 2 Información del checklist:
@@ -87,6 +87,10 @@ const ChecklistForm = ({ checklist, catalog, handleErrorText, onChangeInput, sel
         width={'100%'}
         errorText={handleErrorText('checklist', 'description', 'max140')}
         onChange={(e, section) => onChangeInput(e, 'checklist')}
+      />
+      <DatePicker
+        hintText='Fecha'
+        defaultDate={new Date()}
       />
     </FormWrapper>
   </div>
