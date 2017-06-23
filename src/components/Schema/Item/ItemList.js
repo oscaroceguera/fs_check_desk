@@ -19,7 +19,7 @@ const TableBody = ({item, onOpenFormUpdate, onDeleteItem, position}) => (
   <div>
     <TableBodyStyled>
       <RowBodyStyled width={'100px'}>{item.moduleId.name}</RowBodyStyled>
-      <RowBodyStyled width={'200px'}>{item.answer}</RowBodyStyled>
+      <RowBodyStyled width={'200px'}>{`${item.number}.- ${item.answer}`}</RowBodyStyled>
       <RowBodyStyled width={'200px'}>{item.recommend}</RowBodyStyled>
       <RowBodyStyled width={'100px'} center>{item.value}</RowBodyStyled>
       <RowBodyStyled width={'100px'} center>
