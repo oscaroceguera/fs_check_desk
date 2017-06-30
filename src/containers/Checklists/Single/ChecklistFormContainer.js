@@ -21,6 +21,11 @@ class ChecklistFormContainer extends React.Component {
     return aux.errorTextMessage(_section[field], type)
   }
 
+  handleDate = (e, date) => {
+    console.log('E', e)
+    console.log('Date', date);
+  }
+
   render () {
     return (
       <ChecklistForm
@@ -28,6 +33,7 @@ class ChecklistFormContainer extends React.Component {
         selectChange={(event, index, value) => this.props.selectedSchema(value)}
         handleErrorText={this.handleErrorText}
         onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
+        handleDate={this.handleDate}
       />
     )
   }

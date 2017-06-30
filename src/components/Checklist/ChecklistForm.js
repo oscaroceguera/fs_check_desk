@@ -8,7 +8,7 @@ import { SelectField, MenuItem, DatePicker } from 'material-ui'
 // TODO: 3 Guardar checklist y obtener el Id
 // TODO: Prop types
 
-const ChecklistForm = ({ checklist, catalog, handleErrorText, onChangeInput, selectChange }) => (
+const ChecklistForm = ({ checklist, catalog, handleErrorText, onChangeInput, selectChange, handleDate }) => (
   <div>
     <TxtFieldId item={checklist} />
     <FormWrapper>
@@ -91,6 +91,8 @@ const ChecklistForm = ({ checklist, catalog, handleErrorText, onChangeInput, sel
       <DatePicker
         hintText='Fecha'
         defaultDate={new Date()}
+        name={'date'}
+        onChange={handleDate}
       />
     </FormWrapper>
   </div>
