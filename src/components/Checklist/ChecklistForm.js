@@ -3,9 +3,6 @@ import { func, object, array, bool } from 'prop-types'
 import { TxtFieldId, TxtFieldResponsive, GenericSubmit, FormWrapper } from '../index'
 import { SelectField, MenuItem, DatePicker } from 'material-ui'
 
-// TODO: UI de ChecklistAdminContainer
-// TODO: 3 Guardar checklist y obtener el Id
-
 const ChecklistForm = (props) => (
   <div>
     <TxtFieldId item={props.checklist} />
@@ -62,6 +59,7 @@ const ChecklistForm = (props) => (
         floatingLabelText={'Número'}
         name={'number'}
         width={'7%'}
+        value={props.checklist.number}
         onChange={(e, section) => props.onChangeInput(e, 'checklist')}
       />
       <TxtFieldResponsive
@@ -88,7 +86,7 @@ const ChecklistForm = (props) => (
       />
       <DatePicker
         hintText='Fecha'
-        defaultDate={new Date()}
+        value={props.checklist.date !== '' ? new Date(props.checklist.date) : null}
         name={'date'}
         onChange={props.handleDate}
       />
