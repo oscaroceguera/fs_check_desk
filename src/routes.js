@@ -32,6 +32,7 @@ export default function getRoutes (history) {
         <Route path='schemas/new/:schemaId' component={RequiredAuth(SchemaAdminContainer)} />
         <Route path='checklists' component={RequiredAuth(ChecklistsContainer)} />
         <Route path='checklists/new' component={RequiredAuth(ChecklistAdminContainer)} />
+        <Route path='checklists/new/:checklistId' component={RequiredAuth(ChecklistAdminContainer)} />
       </Route>
       <Route path='*' component={My404Component} />
     </Router>
