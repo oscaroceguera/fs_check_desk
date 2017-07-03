@@ -6,8 +6,9 @@ import { sagas as ModuleSingleSagas } from './Schema/moduleSingle'
 import { sagas as ModuleListSagas } from './Schema/moduleList'
 import { sagas as ItemSingleSagas } from './Schema/itemSingle'
 import { sagas as ItemListSagas } from './Schema/itemList'
-import { sagas as addSchemaSagas } from './Schema/addSchemaLink'
+import { sagas as AddSchemaSagas } from './Schema/addSchemaLink'
 import { sagas as ChecklistLink } from './Checklist/link'
+import { sagas as AddChecklist } from './Checklist/addChecklist'
 import { sagas as Modal } from './Modal'
 
 export default [
@@ -20,6 +21,7 @@ export default [
   ...ModuleListSagas,
   ...ItemSingleSagas,
   ...ItemListSagas,
-  ...addSchemaSagas,
-  ...ChecklistLink
+  ...AddSchemaSagas,
+  ...ChecklistLink,
+  ...AddChecklist
 ]
