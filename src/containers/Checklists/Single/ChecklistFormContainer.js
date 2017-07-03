@@ -7,9 +7,8 @@ import * as schemaActions from '../../../reducers/Schema/schemaList'
 import aux from '../../../helpers/AuxFunctions'
 import { submitChecklist } from '../../../selectors/checklistSelector'
 
-import { ChecklistForm } from '../../../components'
+import { ChecklistForm,CircularLoading } from '../../../components'
 
-// TODO: 3 Guardar checklist y obtener el Id
 // TODO: Prop types
 
 class ChecklistFormContainer extends React.Component {
@@ -24,19 +23,25 @@ class ChecklistFormContainer extends React.Component {
     console.log('updateChecklist');
   }
   saveChecklist = (e) => {
-    console.log('saveChecklist');
+    this.props.setSavedChecklist()
   }
   render () {
     return (
-      <ChecklistForm
-        {...this.props}
-        selectChange={(event, index, value) => this.props.selectedSchema(value)}
-        handleErrorText={this.handleErrorText}
-        onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
-        handleDate={(e, date) => this.props.setFields('checklist', 'date', date)}
-        updateChecklist={this.updateChecklist}
-        saveChecklist={this.saveChecklist}
-      />
+      <div>
+        {
+          this.props.loading
+            ? <CircularLoading />
+            : <ChecklistForm
+                {...this.props}
+                selectChange={(event, index, value) => this.props.selectedSchema(value)}
+                handleErrorText={this.handleErrorText}
+                onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
+                handleDate={(e, date) => this.props.setFields('checklist', 'date', date)}
+                updateChecklist={this.updateChecklist}
+                saveChecklist={this.saveChecklist}
+            />
+        }
+      </div>
     )
   }
 }
@@ -48,7 +53,7 @@ const mapStateToProps = (state) => {
     checklist: checklist.checklist,
     catalog: schemas.schemas,
     submitChecklist: !submitChecklist(state),
-    // SSLoading: stateJS.savedSchemasLoading
+    loading: checklist.loading
   }
 }
 
