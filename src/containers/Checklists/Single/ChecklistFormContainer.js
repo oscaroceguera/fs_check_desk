@@ -19,12 +19,6 @@ class ChecklistFormContainer extends React.Component {
     const _section = this.props[section]
     return aux.errorTextMessage(_section[field], type)
   }
-  updateChecklist = (e) => {
-    console.log('updateChecklist');
-  }
-  saveChecklist = (e) => {
-    this.props.setSavedChecklist()
-  }
   render () {
     return (
       <div>
@@ -37,8 +31,8 @@ class ChecklistFormContainer extends React.Component {
                 handleErrorText={this.handleErrorText}
                 onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
                 handleDate={(e, date) => this.props.setFields('checklist', 'date', date)}
-                updateChecklist={this.updateChecklist}
-                saveChecklist={this.saveChecklist}
+                updateChecklist={(e) => this.props.setUpdateChecklist()}
+                saveChecklist={(e) => this.props.setSavedChecklist()}
             />
         }
       </div>
