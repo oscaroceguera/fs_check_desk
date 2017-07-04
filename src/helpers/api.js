@@ -77,3 +77,8 @@ export const postChecklist = (data, token) =>
   axios
     .post(`${api}/auth/checklist`, data, headers(token))
     .then((response) => response.data)
+
+export const putChecklist = (checklistId, data, token) =>
+  axios
+    .put(`${api}/auth/checklists/${checklistId}`, data, headers(token))
+    .then((response) => response.data)
