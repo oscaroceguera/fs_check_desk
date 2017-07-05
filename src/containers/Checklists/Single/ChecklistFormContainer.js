@@ -5,30 +5,37 @@ import { bindActionCreators } from 'redux'
 import * as checklistActions from '../../../reducers/Checklist/checklistForm'
 import * as schemaActions from '../../../reducers/Schema/schemaList'
 import aux from '../../../helpers/AuxFunctions'
+import { submitChecklist } from '../../../selectors/checklistSelector'
 
-import { ChecklistForm } from '../../../components'
+import { ChecklistForm,CircularLoading } from '../../../components'
 
-// TODO: 3 Guardar checklist y obtener el Id
 // TODO: Prop types
 
 class ChecklistFormContainer extends React.Component {
   componentWillMount () {
     this.props.fetchSchemas()
   }
-
   handleErrorText = (section, field, type) => {
     const _section = this.props[section]
     return aux.errorTextMessage(_section[field], type)
   }
-
   render () {
     return (
-      <ChecklistForm
-        {...this.props}
-        selectChange={(event, index, value) => this.props.selectedSchema(value)}
-        handleErrorText={this.handleErrorText}
-        onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
-      />
+      <div>
+        {
+          this.props.loading
+            ? <CircularLoading />
+            : <ChecklistForm
+                {...this.props}
+                selectChange={(event, index, value) => this.props.selectedSchema(value)}
+                handleErrorText={this.handleErrorText}
+                onChangeInput={(e, section) => this.props.setFields(section, e.target.name, e.target.value)}
+                handleDate={(e, date) => this.props.setFields('checklist', 'date', date)}
+                updateChecklist={(e) => this.props.setUpdateChecklist()}
+                saveChecklist={(e) => this.props.setSavedChecklist()}
+            />
+        }
+      </div>
     )
   }
 }
@@ -39,8 +46,8 @@ const mapStateToProps = (state) => {
   return {
     checklist: checklist.checklist,
     catalog: schemas.schemas,
-    // submitSchema: !submitSchema(state),
-    // SSLoading: stateJS.savedSchemasLoading
+    submitChecklist: !submitChecklist(state),
+    loading: checklist.loading
   }
 }
 

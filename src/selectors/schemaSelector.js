@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import { orderBy } from 'lodash/collection'
 
 const lnMajor = (item, rang) => item.length > rang
 
@@ -43,4 +44,14 @@ export const everyItems = createSelector(
     lnMajor(item.answer, 1) &&
     lnMajor(item.recommend, 1) &&
     Number(item.value)
+)
+
+/**
+ ** Order answer
+ */
+
+const answer = (state) => state.getItemsReducer.toJS()
+export const orderItems = createSelector(
+  answer,
+  ({items}) => orderBy(items, ['moduleId.order', 'order'], ['asc', 'asc'])
 )

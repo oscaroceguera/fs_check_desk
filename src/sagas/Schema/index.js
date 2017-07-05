@@ -11,6 +11,7 @@ function* savedSchema () {
     postSchema,
     [data, localStorage.getItem('token')],
     true,
+    'schemas',
     SR.setSavedSchemaLoading,
     SR.setSavedSchemaSuccess,
     SR.setSavedSchemaFail)

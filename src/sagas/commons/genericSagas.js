@@ -23,21 +23,44 @@ export function* fetchApiSaga (fn, args, loadingAction, successAction, errorActi
   }
 }
 
-export function* addApiSaga (fn, args, route, loading, success, fail) {
+export function* addApiSaga (fn, args, hasRoute, routeName, loading, success, fail) {
   yield put(loading())
   yield delay(1000)
   try {
     const response = yield call(fn, ...args)
-    const _response = {
-      id: response._id,
-      name: response.name,
-      version: response.version,
-      description: response.description
-    }
-    yield put(success(response))
-    if (!route) return
-    browserHistory.push(`/dashboard/schemas/new/${_response.id}`)
+    const _response = matchData(routeName, response)
+    yield put(success(_response))
+    if (!hasRoute) return
+    browserHistory.push(`/dashboard/${routeName}/new/${_response.id}`)
   } catch (err) {
     yield put(fail(err))
+  }
+}
+
+const matchData = (type, data) => {
+  if (type === 'schemas') {
+    return {
+      id: data._id,
+      name: data.name,
+      version: data.version,
+      description: data.description
+    }
+  }
+
+  if (type === 'checklists') {
+    return {
+      id: data._id,
+      schemaType: data.schemaType,
+      companyName: data.companyName,
+      country: data.country,
+      state: data.state,
+      town: data.town,
+      street: data.street,
+      number: data.number,
+      neighborhood: data.neighborhood,
+      zipcode: data.zipcode,
+      date: data.date,
+      description: data.description
+    }
   }
 }

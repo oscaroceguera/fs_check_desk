@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as itemsActions from '../../../reducers/Item/itemList'
 import * as itemActions from '../../../reducers/Item/itemForm'
 import { ItemList } from '../../../components'
+import { orderItems } from '../../../selectors/schemaSelector'
 
 class ItemListContainer extends React.Component {
   static propTypes = {
@@ -50,7 +51,7 @@ class ItemListContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  items: state.getItemsReducer.toJS().items,
+  items: orderItems(state),
   loading: props.itemsLoading,
   modalStatus: state.itemsReducer.toJS().openFormModal
 })
