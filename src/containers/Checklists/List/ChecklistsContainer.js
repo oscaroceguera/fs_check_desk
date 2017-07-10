@@ -5,21 +5,40 @@ import * as actions from '../../../reducers/Checklist/checklistList'
 import { DashboardWrapper, AddButton } from '../../../components'
 
 class ChecklistsContainer extends React.Component {
+  componentWillMount () {
+    this.props.fetchChecklists()
+  }
   render () {
+    console.log('PROPS', this.props.checklists);
     return (
       <DashboardWrapper
         title={'Check-lists'}
         desc={'Admistrador de check-lists'}
       >
-        <h1>Lista de Items</h1>
+        {
+          this.props.checklists.map((item, key) => {
+            return (
+              <div key={key} style={{border: '1px solid black'}}>
+                <label>{item.companyName}</label>
+              </div>
+            )
+          })
+        }
         <AddButton goTo={(e) => this.props.goToAddNewChecklist()} />
       </DashboardWrapper>
     )
   }
 }
 
+const mapStateToProps = (state) => {
+  const stateJS = state.getChecklistsReducer.toJS()
+  return {
+    checklists: stateJS.checklists
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   dispatch => bindActionCreators({...actions}, dispatch)
 )(ChecklistsContainer)
 

@@ -13,7 +13,7 @@ export const FETCH_CHECKLISTS_FAIL = 'src/checklists/FETCH_CHECKLISTS_FAIL'
 
 export const fetchChecklists = () => ({ type: FETCH_CHECKLISTS })
 export const fetchChecklistsLoading = () => ({ type: FETCH_CHECKLISTS_LOADING })
-export const fetchChecklistsSuccess = (schemas) => ({ type: FETCH_CHECKLISTS_SUCCESS, schemas })
+export const fetchChecklistsSuccess = (checklists) => ({ type: FETCH_CHECKLISTS_SUCCESS, checklists })
 export const fetchChecklistsFail = (err) => ({ type: FETCH_CHECKLISTS_FAIL, err })
 
 const initialState = fromJS({

@@ -10,6 +10,7 @@ import { sagas as AddSchemaSagas } from './Schema/addSchemaLink'
 import { sagas as ChecklistLink } from './Checklist/link'
 import { sagas as AddChecklist } from './Checklist/addChecklist'
 import { sagas as Modal } from './Modal'
+import { sagas as ChecklistList } from './Checklist/checklistList'
 
 export default [
   ...SignupSagas,
@@ -23,5 +24,6 @@ export default [
   ...ItemListSagas,
   ...AddSchemaSagas,
   ...ChecklistLink,
-  ...AddChecklist
+  ...AddChecklist,
+  ...ChecklistList
 ]
