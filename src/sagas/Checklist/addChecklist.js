@@ -1,9 +1,20 @@
 import { delay } from 'redux-saga'
 import { put, call, takeLatest } from 'redux-saga/effects'
 import * as CR from '../../reducers/Checklist/checklistForm'
-import { postChecklist, putChecklist } from '../../helpers/api'
+import { postChecklist, putChecklist, getItemsBySchemaId } from '../../helpers/api'
 import { addApiSaga } from '../commons/genericSagas'
 import { getSimpleState } from '../commons/genericSelect'
+
+function* saveChecklistItems (data) {
+  yield console.log('saveChecklistItems DATA', data.schemaType);
+  try {
+    const schema = yield call(getItemsBySchemaId, data.schemaType, localStorage.getItem('token'))
+    console.log('Schema', schema);
+  } catch (err) {
+    console.log('Error', err);
+  }
+
+}
 
 function* savedChecklist () {
   const data = yield getSimpleState('checklistReducer', 'checklist')
@@ -15,6 +26,8 @@ function* savedChecklist () {
     CR.setLoading,
     CR.setSavedChecklistSuccess,
     CR.setSavedChecklistFail)
+
+  yield call(saveChecklistItems, data)
 }
 
 function* updateChecklist () {
