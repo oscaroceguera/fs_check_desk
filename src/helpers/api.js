@@ -87,3 +87,9 @@ export const getChecklists = (token) =>
   axios
     .get(`${api}/auth/checklists`, headers(token))
     .then(response => response.data)
+
+// ITEM EVALUATION
+export const addItemEvaluation = (data, token) =>
+  axios
+    .post(`${api}/auth/itemEvaluation`, data, headers(token))
+    .then(response => response.data)

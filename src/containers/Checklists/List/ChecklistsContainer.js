@@ -9,6 +9,7 @@ class ChecklistsContainer extends React.Component {
     this.props.fetchChecklists()
   }
   render () {
+    console.log('props', this.props.checklists);
     return (
       <DashboardWrapper
         title={'Check-lists'}
@@ -32,7 +33,7 @@ class ChecklistsContainer extends React.Component {
                   </div>
                   <div>
                     <label>{'Schema: '}</label>
-                    <span>{item.schemaType.name}</span>
+                    <span>{item.schemaType}</span>
                   </div>
                   <div>
                     <label>{'Descripción: '}</label>
