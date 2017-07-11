@@ -9,21 +9,40 @@ class ChecklistsContainer extends React.Component {
     this.props.fetchChecklists()
   }
   render () {
-    console.log('PROPS', this.props.checklists);
     return (
       <DashboardWrapper
         title={'Check-lists'}
         desc={'Admistrador de check-lists'}
       >
-        {
-          this.props.checklists.map((item, key) => {
-            return (
-              <div key={key} style={{border: '1px solid black'}}>
-                <label>{item.companyName}</label>
-              </div>
-            )
-          })
-        }
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          {
+            this.props.checklists.map((item, key) => {
+              return (
+                <div
+                  key={key}
+                  style={{
+                    width: '300px',
+                    fontSize: '12px',
+                    boxShadow: '0px 0px 5px gray',
+                    padding: '0.5em'
+                }}>
+                  <div>
+                    <label>{'Compañia: '}</label>
+                    <span>{item.companyName}</span>
+                  </div>
+                  <div>
+                    <label>{'Schema: '}</label>
+                    <span>{item.schemaType.name}</span>
+                  </div>
+                  <div>
+                    <label>{'Descripción: '}</label>
+                    <span>{item.description}</span>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
         <AddButton goTo={(e) => this.props.goToAddNewChecklist()} />
       </DashboardWrapper>
     )

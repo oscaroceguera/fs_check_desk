@@ -23,20 +23,6 @@ export function* fetchApiSaga (fn, args, loadingAction, successAction, errorActi
   }
 }
 
-export function* addApiSaga (fn, args, hasRoute, routeName, loading, success, fail) {
-  yield put(loading())
-  yield delay(1000)
-  try {
-    const response = yield call(fn, ...args)
-    const _response = matchData(routeName, response)
-    yield put(success(_response))
-    if (!hasRoute) return
-    browserHistory.push(`/dashboard/${routeName}/new/${_response.id}`)
-  } catch (err) {
-    yield put(fail(err))
-  }
-}
-
 const matchData = (type, data) => {
   if (type === 'schemas') {
     return {
@@ -62,5 +48,19 @@ const matchData = (type, data) => {
       date: data.date,
       description: data.description
     }
+  }
+}
+
+export function* addApiSaga (fn, args, hasRoute, routeName, loading, success, fail) {
+  yield put(loading())
+  yield delay(1000)
+  try {
+    const response = yield call(fn, ...args)
+    const _response = matchData(routeName, response)
+    yield put(success(_response))
+    if (!hasRoute) return
+    browserHistory.push(`/dashboard/${routeName}/new/${_response.id}`)
+  } catch (err) {
+    yield put(fail(err))
   }
 }
