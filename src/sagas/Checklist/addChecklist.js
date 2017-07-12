@@ -1,32 +1,16 @@
 import { delay } from 'redux-saga'
 import { put, call, takeLatest } from 'redux-saga/effects'
 import * as CR from '../../reducers/Checklist/checklistForm'
-import { postChecklist, putChecklist, getItemsBySchemaId, addItemEvaluation } from '../../helpers/api'
+import { postChecklist, putChecklist, getItemsBySchemaId } from '../../helpers/api'
 import { addApiSaga } from '../commons/genericSagas'
 import { getSimpleState } from '../commons/genericSelect'
 
-function* saveChecklistItems (data) {
-  const checklist = yield getSimpleState('checklistReducer', 'checklist')
-  try {
-    const schema = yield call(getItemsBySchemaId, data.schemaType, localStorage.getItem('token'))
-    const itemsOfChecklist = schema.map((item) => {
-      return {
-        checklistId: checklist.id,
-        itemId: item._id,
-        value: item.value
-
-      }
-    })
-    const itemEvaluation = yield call(addItemEvaluation, itemsOfChecklist, localStorage.getItem('token'))
-    console.log('itemEvaluation', itemEvaluation);
-  } catch (err) {
-    console.log('Error', err);
-  }
-
-}
-
 function* savedChecklist () {
   const data = yield getSimpleState('checklistReducer', 'checklist')
+  const schema = yield call(getItemsBySchemaId, data.schemaType, localStorage.getItem('token'))
+
+  data.items = schema
+
   yield * addApiSaga(
     postChecklist,
     [data, localStorage.getItem('token')],
@@ -34,9 +18,8 @@ function* savedChecklist () {
     'checklists',
     CR.setLoading,
     CR.setSavedChecklistSuccess,
-    CR.setSavedChecklistFail)
-
-  yield call(saveChecklistItems, data)
+    CR.setSavedChecklistFail
+  )
 }
 
 function* updateChecklist () {

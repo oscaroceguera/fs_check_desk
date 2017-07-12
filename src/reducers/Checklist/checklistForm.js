@@ -45,7 +45,8 @@ const initialState = fromJS({
     neighborhood: '',
     zipcode: '',
     date: new Date(),
-    description: ''
+    description: '',
+    items: []
   },
   loading: false,
   error: null

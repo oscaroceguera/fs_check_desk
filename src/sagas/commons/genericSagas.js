@@ -46,7 +46,8 @@ const matchData = (type, data) => {
       neighborhood: data.neighborhood,
       zipcode: data.zipcode,
       date: data.date,
-      description: data.description
+      description: data.description,
+      items: data.items
     }
   }
 }
