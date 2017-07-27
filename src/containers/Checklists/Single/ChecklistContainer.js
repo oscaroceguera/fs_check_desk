@@ -6,7 +6,19 @@ import React from 'react'
 
 class ChecklistContainer extends React.Component {
   render () {
-    return <h1>Items</h1>
+    const {items} = this.props.checklist
+    return (
+      <div style={{border: '1px solid black'}}>
+        {
+          items.map((item, key) => (
+            <div key={key} style={{border: '1px solid black'}}>
+              <p>{item.answer}</p>
+              <p>{item.recommend}</p>
+            </div>
+          ))
+        }
+      </div>
+    )
   }
 }
 

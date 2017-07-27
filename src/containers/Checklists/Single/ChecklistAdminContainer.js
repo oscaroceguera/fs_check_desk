@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import { DashboardWrapper } from '../../../components'
 import ChecklistFormContainer from './ChecklistFormContainer'
+import ChecklistContainer from './ChecklistContainer'
 
 // TODO: 4 Al guardar el checklist mostar los reactivos
 // TODO: 7 Cierre de checklist
@@ -16,9 +19,17 @@ class ChecklistAdminContainer extends React.Component {
         desc={'Aplicar Check-list'}
       >
         <ChecklistFormContainer />
+        {this.props.checklist.id && <ChecklistContainer checklist={this.props.checklist} />}
       </DashboardWrapper>
     )
   }
 }
 
-export default ChecklistAdminContainer
+const mapStateToProps = (state) => {
+  const checklist = state.checklistReducer.toJS()
+  return {
+    checklist: checklist.checklist
+  }
+}
+
+export default connect(mapStateToProps)(ChecklistAdminContainer)
